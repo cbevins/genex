@@ -54,7 +54,6 @@ export function constructGedcomINDIBlock(gedcomNestedRecords, head) {
 
 // NOTE : copy ALL multiple records to preferred file,
 // and manually arrange them with preferred at index 0!!!
-// 
 export function applyPreferredData(block, preferred) {
     const {gedcomKey, birt, deat, famc, fams, name, sex} = block
     // Apply any preferred NAME data for this Person
@@ -80,6 +79,7 @@ export function applyPreferredData(block, preferred) {
     if (preferred.has(block.gedcomKey+'-FAMC')) {
         block.famc = [preferred.get(block.gedcomKey+'-FAMC')]
     }
+    return block
 }
 
 // Builds a JSON string of multiple records
