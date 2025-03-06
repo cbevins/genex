@@ -82,6 +82,35 @@ export function applyPreferredData(block, preferred) {
     return block
 }
 
+export function block2Json(block) {
+    const {gedcomKey, birt, deat, famc, fams, name, sex} = block
+    const n = name[0]
+    const b = birt.length ? birt[0] : {date: [''], plac: ['']}
+    const d = deat.length ? deat[0] : {date: [''], plac: ['']}
+    const s = sex.length ? sex[0] : 'U'
+    const f = famc.length ? famc[0] : ''
+    const fs = []
+    for(let i=0; i<fams.length; i++) fs.push(`"${fams[i]}"`)
+    const famsList = fs.join(', ')
+    const ar = [
+        `["${gedcomKey}", [`,
+        `{`,
+        `    name: {`,
+        `        name: "${n.name}",`,
+        `        givn: "${n.givn[0]}",`,
+        `        surn: "${n.surn[0]}",`,
+        `        nsfx: "${n.nsfx[0]}",`,
+        `    },`,
+        `    sex: "${s}",`,
+        `    birt: {date: "${b.date}", plac: "${b.plac}"},`,
+        `    deat: {date: "${d.date}", plac: "${d.plac}"},`,
+        `    famc: "${f}",`,
+        `    fams: [${famsList}]`,
+        `}]],`,
+    ]
+    return ar
+}
+
 // Builds a JSON string of multiple records
 export function checkMultipleRecords(block) {
     const ar = []
