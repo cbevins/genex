@@ -7,7 +7,7 @@
 export function constructGedcomINDIBlock(gedcomNestedRecords, head) {
     const [gedcomKey, indi] = head // 'indi' is an INDI GedcomRecord ref
     const data0 = indi.data() // {content, level, recNo, lines, parent, subs, type}
-    // Person object holds array of each sub record of interest that is returned to caller
+    // Block object holds array of each sub record of interest that is returned to caller
     const block = {gedcomKey, birt: [], deat: [], famc: [], fams: [], name: [], sex: []}
     // console.log(data0.level, data0.type, data0.content)
 
@@ -113,48 +113,43 @@ export function block2Json(block) {
 
 // Builds a JSON string of multiple records
 export function checkMultipleRecords(block) {
-    const ar = []
+    const mult = []
+    // Checks for multiple <type> records
+    function checkSimple(label, key, type, arr) {
+        if (arr.length > 1) {
+            mult.push(`// ${label} has ${arr.length} possible ${type} records (uncomment the preferred):`)
+            for(let i=0; i<arr.length; i++) {
+                mult.push(`${i?'//':'  '}    ["${key}-${type}", "${arr[i]}"], // ${i}`)
+            }
+        }
+    }
+    // Check for multiple <type> records with epected BIRT and/or DEAT sub records
+    function checkDatePlace(label, key, type, arr) {
+        if (arr.length > 1) {
+            mult.push(`// ${label} has ${arr.length} possible ${type} DATE and/or PLAC records (uncomment the preferred):`)
+            for(let i=0; i<arr.length; i++) {
+                const {date, plac} = arr[i]
+                mult.push(`${i?'//':'  '}    ["${key}-${type}", ["${date}", "${plac}"]], // ${i}`)
+            }
+        }
+    }
+
     const {gedcomKey, birt, deat, famc, fams, name, sex} = block
     const label = name.length ? name[0].name : 'Unknown'
     // Check for multiple NAME blocks
     if (name.length > 1) {
-        ar.push(`// ${label} has ${name.length} possible NAME record blocks (uncomment the preferred):`)
+        mult.push(`// ${label} has ${name.length} possible NAME record blocks (uncomment the preferred):`)
         for(let i=0; i<name.length; i++) {
             const n = name[i]
-            ar.push(`${i?'//':'  '}    ["${gedcomKey}-NAME", ["${n.name}", "${n.givn}", "${n.surn}", "${n.nsfx}"]], // ${i}`)
+            mult.push(`${i?'//':'  '}    ["${gedcomKey}-NAME", ["${n.name}", "${n.givn}", "${n.surn}", "${n.nsfx}"]], // ${i}`)
         }
     }
-    // Check for multiple SEX
-    if (sex.length > 1) {
-        ar.push(`// ${label} has ${sex.length} possible SEX records (uncomment the preferred):`)
-        for(let i=0; i<sex.length; i++) {
-            ar.push(`${i?'//':'  '}    ["${gedcomKey}-SEX", "${sex[i]}"], // ${i}`)
-        }
-    }
-    // Check for multiple BIRT
-    if (birt.length > 1) {
-        ar.push(`// ${label} has ${birt.length} possible BIRT DATE and/or PLAC records (uncomment the preferred):`)
-        for(let i=0; i<birt.length; i++) {
-            const {date, plac} = birt[i]
-            ar.push(`${i?'//':'  '}    ["${gedcomKey}-BIRT", ["${date}", "${plac}"]], // ${i}`)
-        }
-    }
-    // Check for multiple DEAT
-    if (deat.length > 1) {
-        ar.push(`// ${label} has ${deat.length} possible DEAT DATE and/or PLAC records (uncomment the preferred):`)
-        for(let i=0; i<deat.length; i++) {
-            const {date, plac} = deat[i]
-            ar.push(`${i?'//':'  '}    ["${gedcomKey}-DEAT", ["${date}", "${plac}"]], // ${i}`)
-        }
-    }
-    // Check for multiple FAMC
-    if (famc.length > 1) {
-        ar.push(`// ${label} has ${famc.length} possible FAMC records (uncomment the preferred):`)
-        for(let i=0; i<famc.length; i++) {
-            ar.push(`${i?'//':'  '}    ["${gedcomKey}-FAMC", "${famc[i]}"], // ${i}`)
-        }
-    }
-    return ar
+
+    checkSimple(label, gedcomKey, 'SEX', sex)
+    checkDatePlace(label, gedcomKey, 'BIRT', birt)
+    checkDatePlace(label, gedcomKey, 'DEAT', birt)
+    checkSimple(label, gedcomKey, 'FAMC', famc)
+    return mult
 }
 
 export function fmtINDIBlock(block) {
