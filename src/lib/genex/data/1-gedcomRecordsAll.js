@@ -12,6 +12,7 @@ const progName = (process.argv[1]).split('\\').pop()
 const gedcomFile = './generated/gedcom/Ancestry.ged'
 const varName = '_gedcomRecordsAll'
 const outputFile = `./generated/gedcom/${varName}.js`
+
 const records = await file2JsonArray(gedcomFile)
 
 const head = [
@@ -24,6 +25,7 @@ for(let i=0; i<records.length; i++) js += JSON.stringify(records[i]) + ',\n'
 js += ']\n'
 fs.writeFile(outputFile, js, function (err) { if (err) throw err })
 
-const time2 = new Date()
-console.log( `${progName} (${time2-time1} msec)`)
-console.log(`    Wrote ${records.length} GEDCOM file records from '${gedcomFile}' into '${outputFile}'.`)
+console.log(`\n${progName}`)
+console.log(`    1 - read ${records.length} GEDCOM file records from '${gedcomFile}'.`)
+console.log(`    2 - wrote ${records.length} [<GEDCOM record>] elements into '${outputFile}'.`)
+console.log(`    Successfully completed in ${new Date()-time1} msec`)

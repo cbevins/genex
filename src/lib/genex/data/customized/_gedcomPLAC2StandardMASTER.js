@@ -1,17 +1,17 @@
 /**
- * GedcomPlaceKeys maps arbitrary GEDCOM 'PLAC' record text to the GeoLocationsDb
- * database of known geo-locations.
+ * _gedcomPLAC2StandardMASTER.js maps arbitrary GEDCOM 'PLAC' record text
+ * to a better defined set of 'standard' place keys.
  * 
- * GedcomPlaces is an array of all extant 'PLAC' records from my GEDCOM files.
- * 'PLAC' record text may be blank, brief and abstract, long and detailed, or contain
- * arbitrary content from the info provider that we want to preserve and display
- * as needed.
+ * _gedcomPLAC2StandardMASTER is an array of all extant 'PLAC' records from my GEDCOM files.
+ * While 'PLAC' record text may be blank, brief and abstract, long and detailed,
+ * or contain arbitrary content from the info provider, we still we want to
+ * preserve and display the content as needed.
  * 
  * However, we also need a way to assign geolocations to each place as accurately
- * as may be inferred from the PLAC text, and the keys to those geolocations are
- * specified here.
+ * as may be inferred from the PLAC text, and the 'standard' keys to those
+ * geolocations are specified here.
  */
-export const _gedcomPlaceKeys = new Map([
+export const _gedcomPLAC2StandardMASTER = [
     ["  Älmeboda, Kronoberg, Sverige", "SWE,KRO,Älmeboda"], 
     ["  Brethren, Manistee, Michigan, USA", "USA,MI,Manistee,Brethen"],
     [" Älmeboda, Kronoberg, Sverige", "SWE,KRO,Älmeboda"], 
@@ -1942,15 +1942,4 @@ export const _gedcomPlaceKeys = new Map([
     ["Zuid-Holland, Netherlands", "NLD,ZUI"], // 2
     ["Zuid-Holland, Pays-Bas", "NLD,ZUI"],
     ["Zweibrucken, Rhineland-Palatinate, Allemagne", "DEU,RP,Zweibrucken"],
-])
-
-const Canada = [
-    ['QC', [
-        ['Lanaudiere', [
-            ["D'Autray", ["Brethierville", "Brethier, ST Didace"]],
-            ['Joliette', ["Joliette", "St Ambrose"]],
-            ["l'Assomption", ["l'Assomption"]]  // off-island Montreal
-            ['Montcalm', []]
-        ],
-    ]]
-]]
+]

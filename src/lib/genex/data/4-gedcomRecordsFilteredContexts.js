@@ -23,6 +23,7 @@ for(let i=0; i<contexts.length; i++) {
 js += ']\n'
 fs.writeFile(outputFile, js, function (err) { if (err) throw err })
 
-const time2 = new Date()
-console.log( `${progName} (${time2-time1} msec)`)
-console.log(`    Wrote ${contexts.length} unique GEDCOM record contexts from '${inputFile}' into '${outputFile}'.`)
+console.log(`\n${progName}`)
+console.log(`    1 - read ${_gedcomRecordsFiltered.length} [<GEDCOM record>] elements from '${inputFile}'.`)
+console.log(`    2 - wrote ${contexts.length} [<GEDCOM context>, count] elements into '${outputFile}'.`)
+console.log(`    Successfully completed in ${new Date()-time1} msec`)

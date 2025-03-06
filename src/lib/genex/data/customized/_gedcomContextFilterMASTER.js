@@ -1,8 +1,8 @@
 /**
- * List of all GEDCOM contexts to keep between the GedcomAllJson.js
- * and GedcomSelectedJson.js
+ * Array of those GEDCOM contexts to keep when filtering _gedcomRecordsAll.js
+ * into _gedcomRecordsFiltered.js
  */
-export const _gedcomContextFilter = [
+export const _gedcomContextFilterMASTER = [
     'FAM',
     'FAM-CHIL',
     'FAM-DIV',
