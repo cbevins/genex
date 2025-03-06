@@ -3,34 +3,36 @@
  * for a single GEDCOM file line.
  */
 export class GedcomRecord {
-    constructor(lineNo, level, type, content='', parent=null) {
+    constructor(recNo, level, type, content='', parent=null) {
         this._data = {
-            content: content,
-            level: level,
-            lineNo: lineNo,
+            content,
+            level,
+            recNo,      // Record number (base 1) in the input GEDCOM file
             lines: 1,   // total lines for this record, including 'CONT' and 'CONC'
-            parent: parent,
-            subs: [],
-            type: type
+            parent,     // reference to the parent GedcomRecord (or NULL if at head)
+            subs: [],   // array of sub GedcomRecords
+            type        // 'INDI', 'FAM', 'BIRT', 'DATE', 'PLAC', etc
         }
     }
 
-    // Called only by GedcomRecords
-    addContent(content) {
-        this._data.content += content
-        this._data.lines++
-    }
+    //--------------------------------------------------------------------------
+    // Client data access methods   
+    //--------------------------------------------------------------------------
 
-    // Adds a nested GedcomRecord to *this* parent
-    addSub(gedcomRecord) {
-        this._data.subs.push(gedcomRecord)
-        return this
-    }
-
-    // Returns the content, which may be a (possibly empty) string or an array of strings
     content() { return this._data.content }
+    data() { return this._data }
+    level() { return this._data.level }
+    lines() { return this._data.lines }
+    parent() { return this._data.parent }
+    recNo() { return this._data.recNo }
+    subs() { return this._data.subs }
+    type() { return this._data.type }
 
-    // Returns this record's type-chain context as an array
+    //--------------------------------------------------------------------------
+    // Client convenience methods
+    //--------------------------------------------------------------------------
+
+    // Returns this record's type-chain context as an array of 'type'
     context() {
         let ctx = []
         let curr = this
@@ -41,39 +43,37 @@ export class GedcomRecord {
         return ctx.reverse()
     }
 
-    isTopLevel() { return this.level() === 0 }
-
-    // Returns the record's nesting level with 0 being the top level command
-    level() { return this._data.level }
-
-    // Returns the original GEDCOM file line number
-    lineNo() { return this._data.lineNo }
-
-    // Returns total number of lines for this record (including 'CONC' and 'CONT')
-    lines() { return this._data.lines }
+    // Returns TRUE if *this* is a toplevel (head) object
+    isTopLevel() { return this._data.level === 0 }
 
     // Returns array of strings indented by level
     listBlock(block=null, spaces=2) {
+        const data = this._data
         if (! block) block = []
-        let pad = ' '.padStart(this.level()*spaces)
-        let str = `${pad} ${this.lineNo()}: ${this.level()} ${this.type()} ${this.content()}`
+        let pad = ' '.padStart(data.level*spaces)
+        let str = `${pad} ${data.recNo}: ${data.level} ${data.type} ${data.content}`
         block.push(str)
-        for(let i=0; i<this.subs().length; i++) {
-            const rec = this.sub(i)
+        for(let i=0; i<data.subs.length; i++) {
+            const rec = data.subs[i]
             rec.listBlock(block)
         }
         return block
     }
 
-    // Returns a reference to this record's parent record, or NULL if its a top-level
-    parent() { return this._data.parent }
+    //--------------------------------------------------------------------------
+    // Private methods used by Gedcom.constructor() and construtGedcom()
+    //--------------------------------------------------------------------------
+    
+    // Adds a nested GedcomRecord to *this* parent
+    _addContent(content) {
+        this._data.content += content
+        this._data.lines++
+    }
 
-    // Returns the nested GedcomRecord at index i
-    sub(i) { return this._data.subs[i] }
+    // Called only by Gedcom._addRecord() when it encounters a 'CONC' or 'CONT' record
+    _addSub(gedcomRecord) {
+        this._data.subs.push(gedcomRecord)
+        return this
+    }
 
-    // Returns array of nested GedcomRecords
-    subs() { return this._data.subs }
-
-    // Returns the original command field, like 'INDI' or 'FAM'
-    type() { return this._data.type }
 }

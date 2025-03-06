@@ -31,6 +31,11 @@ export const _gedcomContextFilter = [
     'INDI-DEAT-PLAC',
     'INDI-FAMC',
     'INDI-FAMS',
+    // These will require adding 37 new _gedcomPlaceKey records
+    // "INDI-MARR",
+    // "INDI-MARR-DATE",
+    // "INDI-MARR-NOTE",
+    // "INDI-MARR-PLAC",
     'INDI-NOTE',
     'INDI-SEX',
     'INDI-NAME',
@@ -40,9 +45,5 @@ export const _gedcomContextFilter = [
     'INDI-NAME-NSFX',
     'INDI-NAME-SURN',
     'INDI-NAME-SPFX',
-    '_PLAC',
-    '_PLAC-STND',
-    '_PLAC-MAP',
-    '_PLAC-MAP-LATI',
-    '_PLAC-MAP-LONG',
+    // "INDI-_MTTAG",
 ]

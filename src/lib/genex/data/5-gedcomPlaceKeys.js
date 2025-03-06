@@ -1,6 +1,6 @@
 import fs from 'fs'
 import { _gedcomRecordsFiltered } from './generated/gedcom/_gedcomRecordsFiltered.js'
-import { parseLine } from '../gedcom/parseLine.js'
+import { parseRecord } from '../gedcom/parseRecord.js'
 import { _gedcomPlaceKeys } from './customized/_gedcomPlaceKeys.js'
 
 const time1 = new Date()
@@ -16,7 +16,7 @@ function findGedcomPlaceKeys(records, placeMap) {
     const foundMap = new Map()
     const missing = []
     for (let i=0; i<records.length; i++) {
-        const data = parseLine(records[i], i+1)
+        const data = parseRecord(records[i], i+1)
         if (data) {
             const [level, type, content] = data
             if (type === 'PLAC') {

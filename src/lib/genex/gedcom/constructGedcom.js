@@ -1,15 +1,15 @@
 import { Gedcom } from './Gedcom.js'
-import { parseLine } from './parseLine.js'
+import { parseRecord } from './parseRecord.js'
 
 // Creates a Gedcom instance from a _gedcomRecords... array
-export function constructGedcom(_gedcomData) {
+export function constructGedcom(_gedcomRecords) {
     const gedcom = new Gedcom()
-    for(let i=0; i<_gedcomData.length; i++) {
-        const lineNo = i + 1
-        const data = parseLine(_gedcomData[i], lineNo)
+    for(let i=0; i<_gedcomRecords.length; i++) {
+        const recNo = i + 1
+        const data = parseRecord(_gedcomRecords[i], recNo)
         if (data) {
             const [level, type, content] = data
-            gedcom._addLine(lineNo, level, type, content)
+            gedcom._addRecord(recNo, level, type, content)
         }
     }
     return gedcom

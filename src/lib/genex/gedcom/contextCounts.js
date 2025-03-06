@@ -1,11 +1,11 @@
-import { parseLine } from './parseLine.js'
+import { parseRecord } from './parseRecord.js'
 
-export function contextCounts(_gedcomData) {
+export function contextCounts(_gedcomRecords) {
     const contexts = new Array(20).fill(0)
     const map = new Map()
-    for(let i=0; i<_gedcomData.length; i++) {
-        const lineNo = i + 1
-        const data = parseLine(_gedcomData[i], lineNo)
+    for(let i=0; i<_gedcomRecords.length; i++) {
+        const recNo = i + 1
+        const data = parseRecord(_gedcomRecords[i], recNo)
         if (data) {
             const [level, type, content] = data
             contexts[level] = type

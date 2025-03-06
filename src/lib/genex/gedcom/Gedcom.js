@@ -19,43 +19,42 @@ export class Gedcom {
         this._data = {
             current: null,    // reference to current
             maxLevel: 0,
-            topLevel: new Map() // keys are Level 0 GEDCOM type, entries are a Map of GedcomRecord level 0 key-record
+            topLevel: new Map() // keys are Level 0 GEDCOM 'type', entries are a Map of GedcomRecord level 0 key-record
         }
     }
 
-    // Creates a new GedcomRecord and adds it to the collection (called only by GedcomReader)
+    // Called by constructGedcom() to add a new GedcomRecord to its collection
     // Returns reference to the *current* GedcomRecord
-    _addLine(lineNo, level, type, content) {
+    _addRecord(recNo, level, type, content) {
         if (level === 0) {
             // Get (create if necessary) the GedcomRecord Map object for this record *type*
             if (! this.topLevel().has(type)) this.topLevel().set(type, new Map())
             const recMap = this.topLevel().get(type)
             // Create a new GedcomRecord with no parent
-            const gedcomRecord = new GedcomRecord(lineNo, level, type, content, null)
-            // Add the new GedcomRecord to its record *type* Map object
+            const gedcomRecord = new GedcomRecord(recNo, level, type, content, null)
+            // Add the new GedcomRecord to its record *type* Map object in the Gedcom
             recMap.set(content, gedcomRecord)
-            // Make the new level 0  record the current record
+            // Make the new level 0 record the current record
             this._setCurrent(gedcomRecord)
         }
-
         // If 'CONC', simply append content to the current record
         else if (type === 'CONC') {
-            this._current().addContent(content)
+            this._current()._addContent(content)
         }
-        // If 'CONT', append both a newline and new content to the current record
+        // If 'CONT', append both a newline AND new content to the current record
         else if (type === 'CONT') {
-            this._current().addContent('/n' + content)
+            this._current()._addContent('/n' + content)
         }
         // else this is a new record
         else {
-            // if necessary, move pointer upwards to line level's parent
+            // if necessary, move pointer upwards to record level's parent
             while(this._current().level() >= level) {
                 this._setCurrent(this._current().parent())
             }
             // Create a new GedcomRecord
-            const gedcomRecord = new GedcomRecord(lineNo, level, type, content, this._current())
+            const gedcomRecord = new GedcomRecord(recNo, level, type, content, this._current())
             // Add the new GedcomRecord to its parent record's *subs* array
-            this._current().addSub(gedcomRecord)
+            this._current()._addSub(gedcomRecord)
             // Update the current record reference
             this._setCurrent(gedcomRecord)
         }
@@ -63,71 +62,71 @@ export class Gedcom {
         return this._current()
     }
 
-    // Returns an array of [context, count] arrays sorted by context
-    contexts() {
-        const contextMap = new Map()
-        for(const [type0, typeMap] of this.topLevel().entries()) {
-            const context = []
-            for(const [gedKey, gedRec] of typeMap.entries()) {
-                this._contextsRecurse(gedRec, context, contextMap)
-            }
-        }
-        return Array.from(contextMap).sort()
-    }
+    // // Returns an array of [context, count] arrays sorted by context
+    // contexts() {
+    //     const contextMap = new Map()
+    //     for(const [type0, typeMap] of this.topLevel().entries()) {
+    //         const context = []
+    //         for(const [gedKey, gedRec] of typeMap.entries()) {
+    //             this._contextsRecurse(gedRec, context, contextMap)
+    //         }
+    //     }
+    //     return Array.from(contextMap).sort()
+    // }
 
-    _contextsRecurse(record, context, contextMap) {
-        // Add the current record type to the context array
-        context.push(record.type())
-        // Get the current record count for this context
-        const key = context.join('-')
-        if (! contextMap.has(key)) contextMap.set(key, 0)
-        let n = contextMap.get(key)
-        // Update the current record count for this context
-        n++
-        contextMap.set(key, n)
-        // Recurse
-        for(let i=0; i<record.subs().length; i++) {
-            this._contextsRecurse(record.sub(i), context, contextMap)
-        }
-        context.pop()
-    }
+    // _contextsRecurse(record, context, contextMap) {
+    //     // Add the current record type to the context array
+    //     context.push(record.type())
+    //     // Get the current record count for this context
+    //     const key = context.join('-')
+    //     if (! contextMap.has(key)) contextMap.set(key, 0)
+    //     let n = contextMap.get(key)
+    //     // Update the current record count for this context
+    //     n++
+    //     contextMap.set(key, n)
+    //     // Recurse
+    //     for(let i=0; i<record.subs().length; i++) {
+    //         this._contextsRecurse(record.sub(i), context, contextMap)
+    //     }
+    //     context.pop()
+    // }
 
     _current() { return this._data.current }
 
     // Finds ALL GedcomRecords matching the *type* and *context* starting at the top level
     // and returns their content strings in an array
-    findAllContent(key, context, missing='') {
-        const recs = this.findAllRecords(key, context)
-        const contents = []
-        for (let i=0; i<recs.length; i++) contents.push(recs[i].content())
-        return contents
-    }
+    // findAllContent(key, context, missing='') {
+    //     const recs = this.findAllRecords(key, context)
+    //     const contents = []
+    //     for (let i=0; i<recs.length; i++) contents.push(recs[i].content())
+    //     return contents
+    // }
 
     // Finds ALL GedcomRecords matching the *type* and *context* starting at the top level
     // and returns their <GedcomRecord> references in an array
-    findAllRecords(key, context) {
-        const found = []
-        const head = this.findHead(context[0], key)
-        if (head) {
-            // Recurse through all the sub records matching the context
-            this._findRecurse(head, context, 1, found)
-        }
-        return found
-    }
+    // findAllRecords(key, context) {
+    //     const found = []
+    //     const head = this.findHead(context[0], key)
+    //     if (head) {
+    //         // Recurse through all the sub records matching the context
+    //         this._findRecurse(head, context, 1, found)
+    //     }
+    //     return found
+    // }
 
     // Finds FIRST GedcomRecords matching the *type* and *context* starting at the top level
     // and returns its contents as a string
-    findFirstContent(key, context, missing='') {
-        const rec = this.findFirstRecord(key, context)
-        return rec ? rec.content() : missing
-    }
+    // findFirstContent(key, context, missing='') {
+    //     const rec = this.findFirstRecord(key, context)
+    //     return rec ? rec.content() : missing
+    // }
 
     // Finds FIRST GedcomRecords matching the *type* and *context* starting at the top level
     // and returns its reference or NULL
-    findFirstRecord(key, context) {
-        const recs = this.findAllRecords(key, context)
-        return recs.length ? recs[0] : null
-    }
+    // findFirstRecord(key, context) {
+    //     const recs = this.findAllRecords(key, context)
+    //     return recs.length ? recs[0] : null
+    // }
     
     // Returns reference to the Level 0 GedcomRecord with *key*
     findHead(type, key) {
@@ -140,19 +139,19 @@ export class Gedcom {
     }
 
     // Recursive search
-    _findRecurse(head, context, lvl, found) {
-        for(let i=0; i<head.subs().length; i++) {
-            const rec = head.sub(i)
-            if (rec.type() === context[lvl]) {
-                // If there is another contezxt level to test...
-                if (lvl+1 < context.length) {
-                    this._findRecurse(rec, context, lvl+1, found)
-                } else {
-                    found.push(rec)
-                }
-            }
-        }
-    }
+    // _findRecurse(head, context, lvl, found) {
+    //     for(let i=0; i<head.subs().length; i++) {
+    //         const rec = head.sub(i)
+    //         if (rec.type() === context[lvl]) {
+    //             // If there is another context level to test...
+    //             if (lvl+1 < context.length) {
+    //                 this._findRecurse(rec, context, lvl+1, found)
+    //             } else {
+    //                 found.push(rec)
+    //             }
+    //         }
+    //     }
+    // }
 
     _setCurrent(gedcomRecord) { this._data.current = gedcomRecord }
 

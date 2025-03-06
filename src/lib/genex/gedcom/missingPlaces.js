@@ -1,9 +1,10 @@
-import { parseLine } from './parseLine.js'
+import { parseRecord } from './parseRecord.js'
 
-export function missingPlaces(gedcomLines, knownKeys) {
+export function missingPlaces(_gedcomRecords, knownKeys) {
     const missing = new Map()
-    for (let i=0; i<gedcomLines.length; i++) {
-        const data = parseLine(gedcomLines[i], i+1)
+    for (let i=0; i<_gedcomRecords.length; i++) {
+        const recNo = i + 1
+        const data = parseRecord(_gedcomRecords[i], recNo)
         if (data) {
             const [level, type, content] = data
             if (type === 'PLAC') {
