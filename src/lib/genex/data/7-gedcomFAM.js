@@ -1,7 +1,7 @@
 import fs from 'fs'
 import {_gedcomRecordsFiltered} from './generated/gedcom/_gedcomRecordsFiltered.js'
 import { parseLine } from '../gedcom/parseLine.js'
-import { constructGedcom } from '../gedcom/constructGedcom.js'
+import { constructGedcom } from '../gedcom/constructGedcomNestedRecords.js'
 
 
 function getToplevel(records, recType) {

@@ -1,6 +1,9 @@
-export const _gedcomPreferredData = new Map([
+/**
+ * 
+ */
+export const _gedcomINDIPreferredMASTER = [
 //-------------------------------------------------------------------------------
-// The following have multiple BIRT DATE and PLAC records:
+// The following GEDCOM INDI records have multiple BIRT DATE and PLAC records:
 // Specify a preferred by commenting out the others
 //-------------------------------------------------------------------------------
 
@@ -468,4 +471,4 @@ export const _gedcomPreferredData = new Map([
 ["@I292603846857@-FAMC", "@F32@"],
 // ["@I292603846857@-FAMC", "@F398@"],
 
-])
+]
