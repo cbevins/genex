@@ -47,12 +47,12 @@ export function block2Json(block) {
     for(let i=0; i<chil.length; i++) c.push(`"${chil[i]}"`)
     const chilList = c.join(', ')
     const ar = [
-        `["${gedcomKey}", [{}`,
+        `["${gedcomKey}", {`,
         `    husb: "${h}",`,
         `    wife: "${w}",`,
-        `    marr: {date: "${m.date}", plac: "${m.plac}"},`,
+        `    marr: {date: ${JSON.stringify(m.date)}, plac: ${JSON.stringify(m.plac)}},`,
         `    chil: [${chilList}]`,
-        `}]],`,
+        `}],`,
     ]
     return ar
 }

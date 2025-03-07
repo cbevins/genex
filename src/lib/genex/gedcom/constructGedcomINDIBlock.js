@@ -93,20 +93,19 @@ export function block2Json(block) {
     for(let i=0; i<fams.length; i++) fs.push(`"${fams[i]}"`)
     const famsList = fs.join(', ')
     const ar = [
-        `["${gedcomKey}", [`,
-        `{`,
+        `["${gedcomKey}", {`,
         `    name: {`,
-        `        name: "${n.name}",`,
-        `        givn: "${n.givn[0]}",`,
-        `        surn: "${n.surn[0]}",`,
-        `        nsfx: "${n.nsfx[0]}",`,
+        `        name: ${JSON.stringify(n.name)},`,
+        `        givn: ${JSON.stringify(n.givn[0])},`,
+        `        surn: ${JSON.stringify(n.surn[0])},`,
+        `        nsfx: ${JSON.stringify(n.nsfx[0])},`,
         `    },`,
         `    sex: "${s}",`,
-        `    birt: {date: "${b.date}", plac: "${b.plac}"},`,
-        `    deat: {date: "${d.date}", plac: "${d.plac}"},`,
+        `    birt: {date: ${JSON.stringify(b.date)}, plac: ${JSON.stringify(b.plac)}},`,
+        `    deat: {date: ${JSON.stringify(d.date)}, plac: ${JSON.stringify(d.plac)}},`,
         `    famc: "${f}",`,
         `    fams: [${famsList}]`,
-        `}]],`,
+        `}],`,
     ]
     return ar
 }
