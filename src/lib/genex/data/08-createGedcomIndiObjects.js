@@ -1,30 +1,36 @@
+/**
+ * Collects GEDCOM INDI info into a JSON object for subsequent diagnostics and processing.
+ * This allows checking for multiple/conflicting NAME, SEX, BIRT, DEAT, FAMC info.
+ */
 // Modules
 import fs from 'fs'
 import { constructGedcomNestedRecords } from '../gedcom/constructGedcomNestedRecords.js'
-import { constructGedcomFAMBlock, block2Json, checkMultipleRecords, applyPreferredData } from '../gedcom/constructGedcomFAMBlock.js'
+import { constructGedcomINDIBlock, block2Json, fmtINDIBlock, checkMultipleRecords, applyPreferredData } from '../gedcom/constructGedcomINDIBlock.js'
 // Data
 import { _gedcomRecordsFiltered } from './generated/gedcom/_gedcomRecordsFiltered.js'
 import { _gedcomINDIPreferredMASTER } from './customized/_gedcomINDIPreferredMASTER.js'
 
+const samuelBevins = '@I292505359674@'
+const williamLongfordBevins = '@I292505366205@'
+
 const time1 = new Date()
 const progName = (process.argv[1]).split('\\').pop()
 const inputFile = './generated/gedcom/_gedcomRecordsFiltered.js'
-const preferredFile = './customized/_gedcomINDIPreferredMASTER.js'  // used for both INDI and FAM
-const multiplesName = '_gedcomFAMMultipleRecords'
+const preferredFile = './customized/_gedcomIndiPreferredMASTER.js'
+const multiplesName = '_gedcomIndiMultipleRecords'
 const multiplesFile = `./generated/gedcom/${multiplesName}.js`
-const outputName = '_gedcomFAM'
+const outputName = '_gedcomIndiObjects'
 const outputFile = `./generated/gedcom/${outputName}.js`
 
 // Use a GedcomNestedRecords instance since it handles all parsing, CONC, and CONT
 const gedcom = constructGedcomNestedRecords(_gedcomRecordsFiltered)
-const map = gedcom.topLevelRecordsFor('FAM')
+const map = gedcom.topLevelRecordsFor('INDI')
 const blocks = Array.from(map.entries())
 const preferredMap = new Map(_gedcomINDIPreferredMASTER)
 const multiples = []
 const json = []
-
 for(let i=0; i<blocks.length; i++) {
-    let block = constructGedcomFAMBlock(gedcom, blocks[i]) // blocks[i] is the head record
+    let block = constructGedcomINDIBlock(gedcom, blocks[i]) // blocks[i] is the head record
     block = applyPreferredData(block, preferredMap)
     
     const mult = checkMultipleRecords(block)

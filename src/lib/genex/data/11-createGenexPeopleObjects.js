@@ -1,15 +1,17 @@
 // Modules
 import fs from 'fs'
 // Data
-import { _gedcomINDI } from './generated/gedcom/_gedcomINDI.js'
-import { _gedcomFAM } from './generated/gedcom/_gedcomFAM.js'
+import { _gedcomIndiObjects } from './generated/gedcom/_gedcomIndiObjects.js'
+import { _gedcomFamObjects } from './generated/gedcom/_gedcomFamObjects.js'
 
 const time1 = new Date()
 const progName = (process.argv[1]).split('\\').pop()
-const famName = '_gedcomFAM'
-const famFile = `./generated/gedcom/${famName}.js`
-const indiName = '_gedcomINDI'
+const indiName = '_gedcomIndiObjects'
 const indiFile = `./generated/gedcom/${indiName}.js`
+const famName = '_gedcomFamObjects'
+const famFile = `./generated/gedcom/${famName}.js`
+const peopleName = '_genexPeople'
+const peopleFile = `./generated/genex/${peopleName}.js`
 
 function addName(part, full) {
     if (part.length) {
@@ -19,8 +21,8 @@ function addName(part, full) {
     return full
 }
 
-for(let i=0; i<_gedcomINDI.length; i++) {
-    const [indiKey, indi] = _gedcomINDI[i]
+for(let i=0; i<_gedcomIndiObjects.length; i++) {
+    const [indiKey, indi] = _gedcomIndiObjects[i]
     const name = {first: '', middle: '', last: '', nick: '', suffix: '', prefix: '', file: '', full: ''}
     if(indi.name.givn) {
         const given = indi.name.givn.split(' ')
@@ -51,11 +53,11 @@ for(let i=0; i<_gedcomINDI.length; i++) {
     name.full = addName(name.nick, name.full)
     name.full = addName(name.last, name.full)
     name.full = addName(name.suffix, name.full)
-    if (name.nick !== '') console.log(`${name.full} nick named [${name.nick}]`)
+    // if (name.nick !== '') console.log(`${name.full} nick named [${name.nick}]`)
 }
 
 console.log(`\n${progName}`)
-console.log(`    1 - read ${_gedcomINDI.length} [<GEDCOM INDI>] elements from '${indiFile}'.`)
-console.log(`    2 - read ${_gedcomFAM.length} [<GEDCOM FAM>] elements from '${famFile}'.`)
+console.log(`    1 - read ${_gedcomIndiObjects.length} [<GEDCOM INDI>] elements from '${indiFile}'.`)
+console.log(`    2 - read ${_gedcomFamObjects.length} [<GEDCOM FAM>] elements from '${famFile}'.`)
 console.log(`    3 - didn't do anything else yet.`)
 console.log(`    Successfully completed in ${new Date()-time1} msec`)
