@@ -46,4 +46,8 @@ export const _gedcomContextFilterMASTER = [
     'INDI-NAME-SURN',
     'INDI-NAME-SPFX',
     // "INDI-_MTTAG",
+    "INDI-RESI",
+    "INDI-RESI-DATE",
+    "INDI-RESI-NOTE",
+    "INDI-RESI-PLAC",
 ]

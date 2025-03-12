@@ -188,6 +188,7 @@ export const _gedcomPLAC2StandardMASTER = [
     ["Bethlehem Township, Cass County, Indiana", "USA,IN,Clark,Bethlehem Township"],
     ["Bethlehem, Cass, Indiana, United States", "USA,IN,Clark,Bethlehem Township"], 
     ["Bethlehem, Cass, Indiana, USA", "USA,IN,Clark,Bethlehem Township"],
+    ["Birdsville, Anne Arundel County, Maryland, United States of America", "USA,MD,Anne Arundel,Birdsville"],
     ["Bisbee, Towner, North Dakota, United States", "USA,ND,Towner,Bisbee"],
     ["Bjørnebyqvern, Åsnes, Hedmark, Norvège", "NOR,HED,Åsnes,Bjørnebyqvern"],
     ["Black Hawk War, Bartholomew, Indiana, United States", "USA,IN,Bartholomew,Black Hawk War"],
@@ -308,6 +309,9 @@ export const _gedcomPLAC2StandardMASTER = [
     ["Champlin, Hennepin, Minnesota, USA", "USA,MN,Hennepin,Champlin"], // 8
     ["Champlin, Hennepin, Minnesota", "USA,MN,Hennepin,Champlin"], // 4
     ["Champlin, Minnesota, USA", "USA,MN,Hennepin,Champlin"],
+    ["Champlin, Hennepin County, Minnesota, USA", "USA,MN,Hennepin,Champlin"],
+    ["Champlin, Hennepin County, Minnesota, United States of America", "USA,MN,Hennepin,Champlin"],
+    ["Champlin, Hennepin, Minnesota ", "USA,MN,Hennepin,Champlin"],
     ["Channelview, Texas, USA", "USA,TX,Harris,Channelview"],
     ["Channelview, TX", "USA,TX,Harris,Channelview"],
     ["Charles County, Maryland, USA", "USA,MD,Charles"],
@@ -417,6 +421,7 @@ export const _gedcomPLAC2StandardMASTER = [
     ["Crawfordsville, Iowa", "USA,IA,Washington,Crawfordsville"],
     ["Crawfordsville, Washington, Iowa, USA", "USA,IA,Washington,Crawfordsville"],
     ["Crawfordsville,Washington County, Iowa, USA", "USA,IA,Washington,Crawfordsville"],
+    ["Crawfordsville, Washington County, Iowa, United States of America", "USA,IA,Washington,Crawfordsville"],
     ["Crowell, Foard, Texas, United States", "USA,TX,Foard,Crowell"],
     ["Culpeper County, Virginia, USA", "USA,VA,Culpeper"],
     ["Culpeper, VA.", "USA,VA,Culpeper"],
@@ -446,6 +451,7 @@ export const _gedcomPLAC2StandardMASTER = [
     ["Deer River, Minnesota, USA", "USA,MN,Itasca,Deer River"],
     ["Deer River, Minnesota", "USA,MN,Itasca,Deer River"],
     ["Deer River, MN", "USA,MN,Itasca,Deer River"],
+    ["Deer River, Itasca County, Minnesota, United States of America", "USA,MN,Itasca,Deer River"],
     ["Deer River", "USA,MN,Itasca,Deer River"],
     ["defaulted, New York, USA", "USA,NY"],
     ["Defiance, Defiance, Ohio, United States", "USA,OH,Defiance,Defiance"],
@@ -548,6 +554,8 @@ export const _gedcomPLAC2StandardMASTER = [
     ["Floyd, Kentucky", "USA,KY,Floyd"],
     ["Floyd, Virginia, USA", "USA,VA,Floyd"],
     ["Floyd", "USA,KY,Floyd"],
+    ["Floyd Co.  KY", "USA,KY,Floyd"],
+    ["Floyd Co., KY ", "USA,KY,Floyd"],
     ["Floydsburg, Oldham County, Kentucky, United States of America", "USA,KY,Oldham,Floydsburg"],
     ["Forks, Hanover, Virginia, USA", "USA,VA,Hanover,Forks"],
     ["Forks, New Kent, Virginia, USA", "USA,VA,New Kent,Forks"],
@@ -798,6 +806,7 @@ export const _gedcomPLAC2StandardMASTER = [
     ["Kingston, Kingston, Meeker, Minnesota, USA", "USA,MN,Meeker,Kingston"], // 6
     ["Kingston, Meeker, Minnesota, United States", "USA,MN,Meeker,Kingston"],
     ["Kingston, Meeker, Minnesota, USA", "USA,MN,Meeker,Kingston"],
+    ["Kingston, Meeker County, Minnesota, United States of America", "USA,MN,Meeker,Kingston"],
     ["Kingston, Wright, Minnesota, USA", "USA,MN,Meeker,Kingston"],
     ["Kinnanäs, Älmeboda, Kronoberg, Sverige", "SWE,KRO,Älmeboda,Kinnanäs"],
     ["Kirk Michael, Michael, Isle of Man", "ENG,IOM,Michael,Kirk Michael"], 
@@ -854,9 +863,11 @@ export const _gedcomPLAC2StandardMASTER = [
     ["Lawrence, Kentucky, USA", "USA,KY,Lawrence"],
     ["Lawrence, KY, USA", "USA,KY,Lawrence"], 
     ["Lawton, Comanche County, Oklahoma, United States of America", "USA,OK,Comanche,Lawton"],
+    ["Le Roy, Coffey County, Kansas, United States of America", "USA,KS,Coffey,Le Roy"],
     ["Lee County, Virginia, USA", "USA,VA,Lee"],
     ["Lee, Lee, Illinois, United States", "USA,IL,Lee,Lee"],
     ["Lehi, UT, USA", "USA,UT,Lehi"],
+    ["Lehi, UT. USA", "USA,UT,Lehi"],
     ["Lehigh County, Pennsylvania, United States of America", "USA,PA,Lehigh"],
     ["Lehigh County, Pennsylvania, USA", "USA,PA,Lehigh"],
     ["Leicester, Leicester Unitary Authority, Leicestershire, England", "ENG,LEI,Leicester"],
@@ -866,6 +877,9 @@ export const _gedcomPLAC2StandardMASTER = [
     ["Leichester, Leicestershire, England", "ENG,LEI,Leicester"],
     ["Leichestershire, England", "ENG,LEI"],
     ["Lewis", "USA,KY,Lewis"], // Barbara L Bevins residence 
+    ["Lewis, Kentucky", "USA,KY,Lewis"],
+    ["Lexington, Lexington City, Virginia, USA", "USA,VA,Lexington,Lexington"],
+    ["Lexington, Lexington City, Virginia, United States of America", "USA,VA,Lexington,Lexington"],
     ["Liberty Twp, Indiana", "USA,IN,Fulton,Liberty Township"],  // Fredrick Lee Heddens marriage record
     ["Liberty Twp, St Joseph Co., Indiana, USA", "USA,IN,St. Joseph,Liberty Township"],
     ["Liberty, Frederick, Maryland", "USA,MD,Frederick,Liberty"], // 3
@@ -913,6 +927,7 @@ export const _gedcomPLAC2StandardMASTER = [
     ["Los Angeles, Los Angeles, California, USA", "USA,CA,Los Angeles,Los Angeles"],
     ["Loughborough, Leicestershire, England", "ENG,LEI,Longborough"],
     ["Louisville Ward 5, Jefferson, Kentucky, USA", "USA,KY,Jefferson,Louisville,Ward 5"],
+    ["Louisville, Jefferson County, Kentucky, United States of America", "USA,KY,Jefferson,Louisville"],
     ["Lunenburg, Lunenburg, Colony of Virginia, British Colonial A, Virginia, USA", "USA,VA,Lunenburg"], 
     ["Lunenburg, Lunenburg, Virginia, USA", "USA,VA,Lunenburg"], 
     ["Lunenburg, Virginia, USA", "USA,VA,Lunenburg"],
@@ -948,6 +963,8 @@ export const _gedcomPLAC2StandardMASTER = [
     ["Marion, Ohio, USA", "USA,OH,Marion"],
     ["Market Bosworth district, Leicestershire, England", "ENG,LEI,Market Bosworth"], // 7
     ["Market Bosworth, Leicestershire, England", "ENG,LEI,Market Bosworth"], 
+    ["Market Bosworth, Leicestershire, United Kingdom", "ENG,LEI,Market Bosworth"],
+    ["Market Bosworth, Leicestershire", "ENG,LEI,Market Bosworth"],
     ["Market Harborough, Leicestershire, England", "ENG,LEI,Market Harborough"], 
     ["Markfield, Leicestershire, England", "ENG,LEI,Markfield"],
     ["Marshall County, Indiana, USA", "USA,IN,Marshall"], 
@@ -957,6 +974,8 @@ export const _gedcomPLAC2StandardMASTER = [
     ["Marshall, Minnesota, USA", "USA,MN,Lyon,Marshall"], 
     ["Marshalltown, Marshall, Iowa, USA", "USA,IA,Marshall,Marshalltown"],
     ["Martin, Kentucky, USA", "USA,KY,Martin"], 
+    ["Martin County, Kentucky, USA", "USA,KY,Martin"],
+    ["Martin County, Kentucky, United States of America", "USA,KY,Martin"],
     ["Maryland, Maryland, USA", "USA,MD"],
     ["Maryland, United States", "USA,MD"], 
     ["Maryland, USA", "USA,MD"],
@@ -990,11 +1009,14 @@ export const _gedcomPLAC2StandardMASTER = [
     ["Mesa, AZ", "USA,AZ,Maricopa,Mesa"],
     ["Mesa, Maricopa, Arizona, United States of America", "USA,AZ,Maricopa,Mesa"],
     ["Mesa, Maricopa, Arizona, USA", "USA,AZ,Maricopa,Mesa"],
+    ["Metea, Cass County, Indiana, United States of America", "USA,IN,Cass,Metea"],
     ["Mevagissey, Cornwall, England", "ENG,COR,Mevagissey"],
     ["Mexico, Indiana", "USA,IN,Miami,Mexico"],
     ["Mexico, Jefferson Township, Miami County, Indiana", "USA,IN,Miami,Mexico,Jefferson Township"],
     ["Mexico, Miami County, Indiana, United States of America", "USA,IN,Miami,Mexico"],
     ["Mexico, Miami, Indiana, USA", "USA,IN,Miami,Mexico"],
+    ["MEXICO, MIAMI CO., IN USA", "USA,IN,Miami,Mexico"],
+    ["MEXICO, MIAMI CO., IN", "USA,IN,Miami,Mexico"],
     ["Miami County, Indiana, USA", "USA,IN,Miami"],
     ["Miami, Indiana, United States", "USA,IN,Miami"], 
     ["Michigan City, Laporte, Indiana, USA", "USA,IN,LaPorte,Michigan City"],
@@ -1042,6 +1064,10 @@ export const _gedcomPLAC2StandardMASTER = [
     ["Minneapolis, MN", "USA,MN,Hennepin,Minneapolis"],
     ["Minneapolis,Hennepin,Minnesota,USA", "USA,MN,Hennepin,Minneapolis"], 
     ["Minneapolis", "USA,MN,Hennepin,Minneapolis"], 
+    ["Minneapolis, Hennepin, Minnesota ", "USA,MN,Hennepin,Minneapolis"],
+    ["Minneapolis, Minn", "USA,MN,Hennepin,Minneapolis"],
+    ["Minneapolis, Minnesota", "USA,MN,Hennepin,Minneapolis"],
+    ["Minneapolis, Mn", "USA,MN,Hennepin,Minneapolis"],
     ["Minnesota City, Winona, Minnesota, United States", "USA,MN,Winona,Minnesota City"],
     ["Minnesota, United States of America", "USA,MN"],
     ["Minnesota, United States", "USA,MN"],
@@ -1085,6 +1111,7 @@ export const _gedcomPLAC2StandardMASTER = [
     ["Mylo Rollett, North Dakota, USA", "USA,ND,Rolette,Mylo"],
     ["Mylo, Rolette County, North Dakota, United States of America", "USA,ND,Rolette,Mylo"],
     ["Mylo, Rolette, North Dakota, USA", "USA,ND,Rolette,Mylo"],
+    ["Mylo, North Dakota", "USA,ND,Rolette,Mylo"],
     ["Naaidwijk, Zuid-Holland, Pays-Bas", "NLD,ZUI,Naaldwijk"],
     ["Naaldwijk, Naaldwijk, Zuid-Holland, Pays-Bas", "NLD,ZUI,Naalswijk"],
     ["Naaldwijk, South Holland, Zuid-Holland, Pays-Bas", "NLD,ZUI,Naaldwijk"],
@@ -1128,6 +1155,7 @@ export const _gedcomPLAC2StandardMASTER = [
     ["New York", "USA,NY"],
     ["Newark, NJ", "USA,NJ,Essex,Newark"],
     ["Newberry, LaGrange, Indiana, USA", "USA,IN,LaGrange,Newberry"],
+    ["Newbold Verdon", "ENG,LEI,Newbold Verdon"],
     ["Newbold Verdon, Leicester, England", "ENG,LEI,Newbold Verdon"],
     ["Newbold Verdon, Leicestershire, , England", "ENG,LEI,Newbold Verdon"],
     ["Newbold Verdon, Leicestershire, England", "ENG,LEI,Newbold Verdon"],
@@ -1352,7 +1380,8 @@ export const _gedcomPLAC2StandardMASTER = [
     ["Primghar, O'Brien County, Iowa, United States of America", "USA,IA,O'Brien,Primghar"], 
     ["Prince George's, Maryland", "USA,MD,Prince George's"],
     ["Prince William County, Virginia, USA", "USA,VA,Prince William"], 
-    ["Provo, UT, USA", "USA,UT,Provo"],
+    ["Provo, UT, USA", "USA,UT,Utah,Provo"],
+    ["Provo, UT", "USA,UT,Utah,Provo"],
     ["Putnam County, Illinois, USA", "USA,IL,Putnam"], 
     ["Puttershoek, South Holland, Zuid-Holland, Pays-Bas", "NLD,ZUI,Puttershoek"],
     ["Puttershoek, Zuid-Holland, Nl", "NLD,ZUI,Puttershoek"],
@@ -1378,6 +1407,9 @@ export const _gedcomPLAC2StandardMASTER = [
     ["Reno, Nevada, USA", "USA,NV,Washoe,Reno"],
     ["Reno, NV", "USA,NV,Washoe,Reno"],
     ["Reno, Washoe, Nevada, USA", "USA,NV,Washoe,Reno"], // 4
+    ["Reno, Nevada",  "USA,NV,Washoe,Reno"],
+    ["Reno, Washoe County, Nevada, USA", "USA,NV,Washoe,Reno"],
+    ["Reno, Washoe County, Nevada, United States of America", "USA,NV,Washoe,Reno"],
     ["Repentigny, L'Assomption, Quebec, Canada", "CAN,QC,Lanaudiere,l'Assomption,Repentigny"], // 1
     ["Resolis A Cree Wisconsin, USA", "USA,WI,Adams,Roche a Cri"], 
     ["Rheinland-Pfalz, Rheinland Pfalz, Allemagne", "DEU,RP"], // 1
@@ -1816,9 +1848,13 @@ export const _gedcomPLAC2StandardMASTER = [
     ["Wadena, Minnesota, United States", "USA,MN,Wadena"],
     ["Wadena, Minnesota, USA", "USA,MN,Wadena"],
     ["Wadena, Minnesota", "USA,MN,Wadena"],
+    ["Wadena, MN", "USA,MN,Wadena"],
     ["Wadena, Wadena, Minnesota, United States", "USA,MN,Wadena,Wadena"], // 1
     ["Wadena, Wadena, Minnesota, USA", "USA,MN,Wadena,Wadena"],
     ["Waitsburg, Walla Walla, Washington, United States", "USA,WA,Walla Walla,Waitsburg"], // 1
+    ["Walker, Cass County, Minnesota, USA", "USA,MN,Cass,Walker"],
+    ["Walker, Cass County, Minnesota, United States of America", "USA,MN,Cass,Walker"],
+    ["Walker, Cass, Minnesota, USA", "USA,MN,Cass,Walker"],
     ["Walker, Cass Co., MN, Minnesota, USA", "USA,MN,Cass,Walker"], 
     ["Walker, Northumberland, England", "ENG,NBL,Walker"],
     ["Walsh Co, North Dakota, USA", "USA,ND,Walsh"], // 1
@@ -1832,6 +1868,7 @@ export const _gedcomPLAC2StandardMASTER = [
     ["Warrentown, Fauquier, VA, Virginia, USA", "USA,VA,Fauquier,Warrentown"],
     ["Warsaw, Kosciusko, Indiana, USA", "USA,IN,Kosciusko,Warsaw"], 
     ["Wartenburg, Erding, Bayern, Allemagne", "DEU,BY,Erding,Wartenburg"], 
+    ["Washington Co., VA", "USA,VA,Washington"],
     ["Washington Co., Virginia, USA", "USA,VA,Washington"], 
     ["Washington County, Iowa, USA", "USA,IA,Washington"],
     ["Washington County, Virginia, United States of America", "USA,VA,Washington"], // 1
@@ -1891,6 +1928,7 @@ export const _gedcomPLAC2StandardMASTER = [
     ["White Earth, Minnesota, USA", "USA,MN,Becker,White Earth"],
     ["White Earth, MN", "USA,MN,Becker,White Earth"],
     ["White Earth", "USA,MN,Becker,White Earth"], 
+    ["White Earth Township, Becker County, Minnesota, United States of America", "USA,MN,Becker,White Earth"],
     ["Whitehall, Northampton, Pennsylvania, USA", "USA,PA,Northampton,Whitehall"],
     ["Whitley County, Indiana, United States of America", "USA,IN,Whitley"], 
     ["Wieboda Södergård, Kronobergs län, Sverige", "SWE,KRO,Wieboda Södergård"],
@@ -1917,6 +1955,7 @@ export const _gedcomPLAC2StandardMASTER = [
     ["Woodruff, Phillips, Kansas", "USA,KS,Phillips,Woodruff"], // 1
     ["Woodsboro, Frederick, Maryland, USA", "USA,MD,Frederick,Woodsboro"],
     ["Woodsborough, Frederick, Maryland, USA", "USA,MD,Frederick,Woodsborough"], // 1
+    ["Worcester, Massachusetts, USA", "USA,MA,Worcester"],
     ["Worth, Hancock, Indiana, USA", "USA,IN,Hancock,Worth"],
     ["Wright County, Minnesota, USA", "USA,MN,Wright"],
     ["Wright, Minnesota, USA", "USA,MN,Wright"],
@@ -1940,9 +1979,11 @@ export const _gedcomPLAC2StandardMASTER = [
     ["York, Quebec, Canada", "CAN,ON,York"], 
     ["Yorkhampton, York, Virginia, USA", "USA,VA,York,Yorkhampton"],  // 3
     ["Yuma, Arizona, USA", "USA,AZ,Yuma"],
+    ["Yuma, Yuma County, Arizona", "USA,AZ,Yuma,Yuma"],
     ["Yuma, Yuma County, Arizona, USA", "USA,AZ,Yuma,Yuma"], // 1
     ["Yuma, Yuma, Arizona, USA", "USA,AZ,Yuma,Yuma"], // 1
     ["Zanesville, Muskingum, Ohio, United States", "USA,OH,Muskingum,Zanesville"], // 1
+    ["Zionsville, Lehigh County, Pennsylvania, United States of America", "USA,PA,Lehigh,Zionsville"],
     ["Zuid-Holland, Netherlands", "NLD,ZUI"], // 2
     ["Zuid-Holland, Pays-Bas", "NLD,ZUI"],
     ["Zweibrucken, Rhineland-Palatinate, Allemagne", "DEU,RP,Zweibrucken"],

@@ -1,4 +1,4 @@
-import { Tokenizer } from './Tokenizer2.js'
+import { Tokenizer } from './Tokenizer.js'
 
 const str = 'token1, "token2a, token2b token2c" {token3a token3b}'
 function example0() {

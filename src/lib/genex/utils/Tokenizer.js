@@ -1,153 +1,171 @@
 export class Tokenizer {
     constructor() {
-        const quote = 34
-        const apost = 39
-        
         this._data = {
-            seps: [' ', ','],
-            open: [],    // [String.fromCharCode(quote), String.fromCharCode(apost)]
-            close: [], // [String.fromCharCode(quote), String.fromCharCode(apost)]
-            delims: [],  // filled by tokenize()
-            tokens: [],  // filled by tokenize()
+            // A block is a token that may contain separator chars
+            // Blocks are set of by an opening char and a closing char
+            blocks: [{open: null, close: null, enclose: false}],
+            delimsAreSep: false,
+            seps: [],   // array of chars that separate tokens and blocks
+        }
+        this._results = {
+            delims: [], // matching array of token [open, close] chars
+            tokens: [], // array of parsed tokens
         }
     }
-
-    addDelims(open, close) {
-        this._data.open.push(open)
-        this._data.close.push(close)
+    
+    addBlock(open, close, enclose=false) {
+        this._data.blocks.push({open, close, enclose})
         return this
     }
+    blockApostrophe(enclose=false) { return this.addBlock("'", "'", enclose) }
+    blockBraces(enclose=false) { return this.addBlock('{', '}', enclose) }
+    blockBrackets(enclose=false) { return this.addBlock('[', ']', enclose) }
+    blockParens(enclose=false) { return this.addBlock('(', ')', enclose) }
+    blockQuotes(enclose=false) { return this.addBlock('"', '"', enclose) }
+    blockSlashes(enclose=false) { return this.addBlock('/', '/', enclose) }
 
     addSep(sep) {
-        this._seps.push(sep)
+        this._data.seps.push(sep)
         return this
     }
 
     data() { return this._data }
 
-    delimApostrophe() { return this.addDelims("'", "'") }
+    // Returns the {open, close, enclose} for block at idx
+    block(idx) { return this._data.blocks[idx] }
 
-    delimBrackets() { return this.addDelims('[', ']') }
-    
-    delimBraces() { return this.addDelims('{', '}') }
+    delims() { return this._results.delims }
 
-    delimParens() { return this.addDelims('(', ')') }
-
-    delimQuotes() { return this.addDelims('"', '"') }
-
-    delimSlashes() { return this.addDelims('/', '/') }
-
-    delim(idx) { return this._data.delims[idx] }
-
-    // Returns array of opening delimiters matching each token
-    delims() { return this._data.delims }
-
-    token(idx) { return this._data.tokens[idx] }
-    
-    tokens() { return this._data.tokens }
-
-    _closer(opener) {
-        for (let i=0; i<this._data.open.length; i++) {
-            if (opener === this._data.open[i])
-                return this._data.close[i]
-        }
-    }
+    tokens() { return this._results.tokens }
 
     tokenize(str) {
         if (! str) return []
-        // Data
-        const tokens = []
+        // Results
         const delims = []
+        const tokens = []
         let currentToken = ''
-        // States
-        let inDelim = ''       // holds delim opening char
-        let inToken = false
-        let closer = ''         // holds delim closing char
-    
-        function store() {
-            
+
+        // Create an array of block opening chars
+        // and a Map() of block open char => index
+        const openers = []
+        const closers = new Map()
+        for(let i=0; i<this._data.blocks.length; i++) {
+            const block = this._data.blocks[i]
+            // console.log('block', i, block)
+            openers.push(block.open)
+            closers.set(block.open, i)
         }
 
+        // Make these class props  available to local functions
+        const blocks = this._data.blocks
+        const delimsAreSep = this._data.delimsAreSep
+        const seps = this._data.seps
+
+        // States
+        let inBlock = 0         // index of current Block (0===none)
+        let inToken = false
+        let opener = ''
+        let closer = ''         // closing char of the current block
+        let enclose = false
+
+        function isCloser(chr) { return chr === closer }
+
+        function isOpener(chr) {
+            return openers.includes(chr)
+            // console.log(`chr [${chr}] in`, openers, ` is ${result}`)
+            // return result
+        }
+
+        function isSeparator(chr) {
+            if (delimsAreSep && isOpener(chr)) return true
+            return seps.includes(chr)
+        }
+
+        function startBlock(chr) {
+            inBlock = closers.get(chr)
+            opener = chr
+            closer = blocks[inBlock].close
+            enclose = blocks[inBlock].enclose
+        }
+
+        function storeToken() {
+            if (inBlock && enclose)
+                currentToken = opener + currentToken + closer
+            tokens.push(currentToken)
+            delims.push(inBlock)        // block index
+            currentToken = ''
+            inBlock = 0
+            inToken = false
+        }
+
+        // Examine each char in the str
         for(let i=0; i<str.length; i++) {
             const chr = str[i]
-            if (inDelim) {
-                if (chr === closer) {
-                // if (this._data.close.includes(chr)) {
-                    tokens.push(currentToken)
-                    delims.push(inDelim)
-                    currentToken = ''
-                    inDelim = false
-                    inToken = false
+            let info = `Chr [${chr}]`
+            if (inBlock) {
+                info += ' state:inBlock'
+                if (isCloser(chr)) {
+                    info += ' char:isCloser'
+                    storeToken()
+                    info += ' stored'
                 } else {
-                    currentToken += chr    // add chr to current token
+                    info += ' char:isToken'
+                    currentToken += chr
+                    info += ' appended'
                 }
             } else if (inToken) {
-                if (this._data.seps.includes(chr)) {
-                    tokens.push(currentToken)
-                    delims.push(inDelim)   // pushes an empty char
-                    currentToken = ''
-                    inToken = false
+                info += ' state:inToken'
+                if (isSeparator(chr)) { // separators may include block openers
+                    info += ' char:isSeparator'
+                    storeToken()
+                    info += ' stored'
+                    if (isOpener(chr)) {
+                        info += ' char:isOpener'
+                        startBlock(chr)
+                        info += ' startBlock'
+                    }
                 } else {
+                    info += ' char:isToken'
                     currentToken += chr
+                    info += ' appended'
                 }
-            } else {
-                if (this._data.seps.includes(chr)) {
-                    // ignore it
-                } else if (this._data.open.includes(chr)) {
-                    inDelim = chr // save opening chr
-                    closer = this._closer(inDelim)
-                    console.log(`Closer for ${chr} is ${closer}`)
-                } else {
-                    currentToken = chr
+            } else {                    // not in a token or a block
+                info += ' state:searching'
+                if (isOpener(chr)) {    // start a new block
+                    info += ' char:isOpener'
+                    startBlock(chr)
+                    info += ' startBlock'
+                } else if (isSeparator(chr)) {
+                    info += ' char:isSeparator'
+                    // ignore 
+                } else {                // start a new token
+                    info += ' char:isToken'
                     inToken = true
+                    currentToken += chr
+                    info += ' appended'
                 }
             }
-            // if (debug) console.log(info)
+            // console.log(info)
         }
-        if (currentToken != '') {
-            tokens.push(currentToken)
-            delims.push(inDelim)
-        }
-        this._data.tokens = tokens
-        this._data.delims = delims
+        // Handle any trailing token
+        if (currentToken) storeToken()
+        // Store
+        this._results.delims = delims
+        this._results.tokens = tokens
         return tokens
     }
 
-    log(label) {
-        let str = `${label}:\n`
-        for(let i=0; i<this._data.tokens.length; i++) {
-            str += `    [${this._data.delims[i]}]  [${this._data.tokens[i]}]\n`
+    log(label, str) {
+        const {delims, tokens} = this._results
+        let s = `${label} parses the string:\n${str}\n`
+            + `into ${tokens.length} tokens:\n`
+        for(let i=0; i<tokens.length; i++) {
+            let b = this._data.blocks[delims[i]].open
+            b =  b ? b : ' '
+            s += `    [${b}]  [${tokens[i]}]\n`
         }
-        console.log(str)
+        console.log(s)
     }
+
+    results() { return this._data.results }
 }
-
-function example() {
-    const str = 'token0 \"quoteToken1a quoteToken1b\" token2 (parenToken3, parenToken4),  ,, ,, ,,   '
-    + '[bracketToken5, bracketToken6], {braceToken7, braceToken8}, /slashToken9, /slashToken10'
-    + ' *starBangToken11 (starBangToken12)! lastToken'
-    const t = new Tokenizer()
-    console.log('No Delims\n', t.tokenize(str))
-
-    t.delimQuotes()
-    console.log('delimQuotes()\n',t.tokenize(str))
-
-    t.delimApostrophe()
-    console.log('delimApostrophe()\n',t.tokenize(str))
-    
-    t.delimParens()
-    console.log('delimParen()\n',t.tokenize(str))
-        
-    t.delimBrackets()
-    console.log('delimBrackets()\n',t.tokenize(str))
-        
-    t.delimBraces()
-    console.log('delimBraces()\n', t.tokenize(str))
-        
-    t.delimSlashes()
-    console.log('delimSlashes()\n', t.tokenize(str))
-
-    t.addDelims('*', '!').tokenize(str)
-    t.log(`9: delim('*!')`)
-}
-example()
