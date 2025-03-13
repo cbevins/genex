@@ -5,11 +5,10 @@
  * @return {gedcomKey, child: [], husb: [], marr: [], wife: []}
  */
 export function constructGedcomFAMBlock(gedcomNestedRecords, head) {
-    const [gedcomKey, fam] = head // 'fam' is an FAM GedcomRecord ref
-    const data0 = fam.data() // {content, level, recNo, lines, parent, subs, type}
+    const [gedcomKey, gedcomRec] = head // 'fam' is an FAM GedcomRecord ref
+    const data0 = gedcomRec.data() // {content, level, recNo, lines, parent, subs, type}
     // Block object holds array of each sub record of interest that is returned to caller
     const block = {gedcomKey, chil: [], husb: [], marr: [], wife: []}
-    // console.log(data0.level, data0.type, data0.content)
     
     for(let lvl1=0; lvl1<data0.subs.length; lvl1++) {
         const data1 = data0.subs[lvl1].data() // {content, level, recNo, lines, parent, subs, type}
@@ -30,8 +29,8 @@ export function constructGedcomFAMBlock(gedcomNestedRecords, head) {
             }
             block.marr.push(marr)
         }
-        return block
     }
+    return block
 }
 
 export function applyPreferredData(block, preferred) {
