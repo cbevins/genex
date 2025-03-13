@@ -10,9 +10,11 @@ export const _gedcomKnownDateQuals = [
     ['btw', 'between'],
     ['cir', 'about'],
     ['def', 'defaulted'],
+    ['ear', 'early'],
     ['est', 'about'],
     ['or', 'or'],
     ['pre', 'before'],
+    ['to', 'to'],
     ['unk', 'unknown'],
 ]
 

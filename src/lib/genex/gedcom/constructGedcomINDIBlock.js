@@ -8,7 +8,7 @@ export function constructGedcomINDIBlock(gedcomNestedRecords, head) {
     const [gedcomKey, indi] = head // 'indi' is an INDI GedcomRecord ref
     const data0 = indi.data() // {content, level, recNo, lines, parent, subs, type}
     // Block object holds array of each sub record of interest that is returned to caller
-    const block = {gedcomKey, birt: [], deat: [], famc: [], fams: [], name: [], sex: []}
+    const block = {gedcomKey, birt: [], deat: [], famc: [], fams: [], name: [], resi: [], sex: []}
     // console.log(data0.level, data0.type, data0.content)
 
     for(let lvl1=0; lvl1<data0.subs.length; lvl1++) {
@@ -46,6 +46,14 @@ export function constructGedcomINDIBlock(gedcomNestedRecords, head) {
                 // console.log('        ', data2.level, data2.type, data2.content)
             }
             block.name.push(name)
+        } else if (data1.type === 'RESI') {
+            const event = {type: 'RESI', date: [], plac: []}
+            for(let lvl2=0; lvl2<data1.subs.length; lvl2++) {
+                const data2 = data1.subs[lvl2].data() // {content, level, recNo, lines, parent, subs, type}
+                if (data2.type === 'DATE') event.date.push(data2.content)
+                if (data2.type === 'PLAC') event.plac.push(data2.content)
+            }
+            block.resi.push(event)
         } else if (data1.type === 'NOTE') {
         } else if (data1.type === 'SEX') block.sex.push(data1.content)
     }
@@ -75,6 +83,11 @@ export function applyPreferredData(block, preferred) {
     if (preferred.has(block.gedcomKey+'-SEX')) {
         block.sex = [preferred.get(block.gedcomKey+'-SEX')]
     }
+    // Apply any preferred RESI data for this Person
+    if (preferred.has(block.gedcomKey+'-RESI')) {
+        const [date,plac] = preferred.get(block.gedcomKey+'-RESI')
+        block.resi = [{date: [date], plac: [plac]}]
+    }
     // Apply any preferred FAMC data for this Person
     if (preferred.has(block.gedcomKey+'-FAMC')) {
         block.famc = [preferred.get(block.gedcomKey+'-FAMC')]
@@ -83,30 +96,56 @@ export function applyPreferredData(block, preferred) {
 }
 
 export function block2Json(block) {
-    const {gedcomKey, birt, deat, famc, fams, name, sex} = block
+    const missing = JSON.stringify("")
+    function event2Json(dateAr, placAr) {
+        const d = dateAr.length ? JSON.stringify(dateAr[0]) : missing
+        const p = placAr.length ? JSON.stringify(placAr[0]) : missing
+        return `{date: ${d}, plac: ${p}},`
+    }
+
+    function name2Json(nameAr) {
+        return nameAr.length ? JSON.stringify(nameAr[0]) : missing
+    }
+
+    const {gedcomKey, birt, deat, famc, fams, name, resi, sex} = block
+    // There may only be one NAME, SEX, BIRT, DEAT, and FAMC record
     const n = name[0]
     const b = birt.length ? birt[0] : {date: [''], plac: ['']}
     const d = deat.length ? deat[0] : {date: [''], plac: ['']}
     const s = sex.length ? sex[0] : 'U'
     const f = famc.length ? famc[0] : ''
+
+    // There may be multiple FAMS records
     const fs = []
     for(let i=0; i<fams.length; i++) fs.push(`"${fams[i]}"`)
     const famsList = fs.join(', ')
+        
     const ar = [
         `["${gedcomKey}", {`,
         `    name: {`,
         `        name: ${JSON.stringify(n.name)},`,
-        `        givn: ${JSON.stringify(n.givn[0])},`,
-        `        surn: ${JSON.stringify(n.surn[0])},`,
-        `        nsfx: ${JSON.stringify(n.nsfx[0])},`,
+        `        givn: ${name2Json(n.givn)},`,
+        `        surn: ${name2Json(n.surn)},`,
+        `        nsfx: ${name2Json(n.nsfx)},`,
         `    },`,
         `    sex: "${s}",`,
-        `    birt: {date: ${JSON.stringify(b.date)}, plac: ${JSON.stringify(b.plac)}},`,
-        `    deat: {date: ${JSON.stringify(d.date)}, plac: ${JSON.stringify(d.plac)}},`,
-        `    famc: "${f}",`,
-        `    fams: [${famsList}]`,
-        `}],`,
+        `    birt: ${event2Json(b.date, b.plac)}`,
+        `    deat: ${event2Json(d.date, d.plac)}`,
+        `    famc: ${JSON.stringify(f)},`,
+        `    fams: [${famsList}],`,
     ]
+    
+    // There may be multiple RESI records
+    if (true) {
+        ar.push(`    resi: [`)
+        for(let i=0; i<resi.length; i++) {
+            const {date, plac} = resi[i]
+            ar.push('        '+event2Json(date, plac))
+        }
+        ar.push(`    ],`)
+    }
+
+    ar.push(`}],`)
     return ar
 }
 
@@ -122,7 +161,7 @@ export function checkMultipleRecords(block) {
             }
         }
     }
-    // Check for multiple <type> records with epected BIRT and/or DEAT sub records
+    // Check for multiple <type> records with expected BIRT and/or DEAT sub records
     function checkDatePlace(label, key, type, arr) {
         if (arr.length > 1) {
             mult.push(`// ${label} has ${arr.length} possible ${type} DATE and/or PLAC records (uncomment the preferred):`)
@@ -147,6 +186,7 @@ export function checkMultipleRecords(block) {
     checkSimple(label, gedcomKey, 'SEX', sex)
     checkDatePlace(label, gedcomKey, 'BIRT', birt)
     checkDatePlace(label, gedcomKey, 'DEAT', birt)
+    checkDatePlace(label, gedcomKey, 'RESI', birt)
     checkSimple(label, gedcomKey, 'FAMC', famc)
     return mult
 }

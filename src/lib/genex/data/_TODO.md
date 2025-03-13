@@ -50,5 +50,5 @@
     - return {text, day, month, year, qual}
 
 ### implement *gedcom/constructPlace.js*
-    - use */data/generated/_gedcomPLAC2Standard.js*
+    - use */data/generated/_gedcomKnownPlaces.js*
     - returns {text, keys: [<string>], locationKeys: [<string]}

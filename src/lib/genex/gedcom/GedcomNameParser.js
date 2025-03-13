@@ -35,7 +35,7 @@ export class GedcomNameParser {
             delims.shift()
             const prefix = this._data.knownPrefixes.get(token)
             name.prefixes.push(token)
-            console.log(`Prefix "${prefix}"`)
+            // console.log(`Prefix "${prefix}"`)
         }
         // Separate remaining given names into middle and nick
         while(tokens.length) {

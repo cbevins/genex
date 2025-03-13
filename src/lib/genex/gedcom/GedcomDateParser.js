@@ -14,6 +14,7 @@ export class GedcomDateParser {
             knownMonths: new Map(knownMonths),
             knownQuals: new Map(knownQuals),
         }
+        this._result = {parsed: null, date: null}
     }
 
     getMonth(token) {
@@ -84,27 +85,72 @@ export class GedcomDateParser {
 
         // Check possible cases
         const seq = d.seq.join(' ')
-        if (! seq.length) d.useCase = 1
-        else if (seq === 'year') d.useCase = 2
-        else if (seq === 'month year') d.useCase = 3
-        else if (seq === 'day month year') d.useCase = 4
-        else if (seq === 'qual day month year') d.useCase = 5
-        else if (seq === 'qual month year') d.useCase = 6
-        else if (seq === 'qual year') d.useCase = 7
-        else if (seq === 'month day year') d.useCase = 8
-        else if (seq === 'month qual year') d.useCase = 9
-        else if (seq === 'day month qual year') d.useCase = 10
-        else if (seq === 'year year') d.useCase = 11
-        else if (seq === 'qual year year') d.useCase = 12
-        else if (seq === 'qual year qual year') d.useCase = 12
-        else if (seq === 'day month year qual day month year') d.useCase = 13   // 0
-        else if (seq === 'qual qual year qual year') d.useCase = 14    // 0
-        // else if (seq === 'span') d.useCase = 15 // 0
-        else if (seq === 'date') d.useCase = 16
-        else if (seq === 'date time') d.useCase = 17 //
-        else if (seq === 'date time ampm') d.useCase = 18 //
-        else if (seq === 'qual' && d.quals[0] === 'unknown') d.useCase = 19
+        let d8
+        if (! seq.length) {
+            d.useCase = 1
+            d8 = {y: 0, m: 0, d: 0, q: '', y2: 0}
+        } else if (seq === 'year') {
+            d.useCase = 2
+            d8 = {y: d.years[0], m: 0, d: 0, q: '', y2: 0}
+        } else if (seq === 'month year') {
+            d.useCase = 3
+            d8 = {y: d.years[0], m: d.months[0], d: 0, q: '', y2: 0}
+        } else if (seq === 'day month year') {
+            d.useCase = 4
+            d8 = {y: d.years[0], m: d.months[0], d: d.days[0], q: '', y2: 0}
+        } else if (seq === 'qual day month year') {
+            d.useCase = 5
+            d8 = {y: d.years[0], m: d.months[0], d: d.days[0], q: d.quals[0], y2: 0}
+        } else if (seq === 'qual month year') {
+            d.useCase = 6
+            d8 = {y: d.years[0], m: d.months[0], d: 0, q: d.quals[0], y2: 0}
+        } else if (seq === 'qual year') {
+            d.useCase = 7
+            d8 = {y: d.years[0], m: 0, d: 0, q: d.quals[0], y2: 0}
+        } else if (seq === 'month day year') {
+            d.useCase = 8
+            d8 = {y: d.years[0], m: d.months[0], d: d.days[0], q: '', y2: 0}
+        } else if (seq === 'month qual year') {
+            d.useCase = 9
+            d8 = {y: d.years[0], m: d.months[0], d: 0, q: d.quals[0], y2: 0}
+        } else if (seq === 'day month qual year') {
+            d.useCase = 10
+            d8 = {y: d.years[0], m: d.months[0], d: d.days[0], q: d.quals[0], y2: 0}
+        } else if (seq === 'year year') {
+            d.useCase = 11
+            d8 = {y: d.years[0], m: 0, d: 0, q: '', y2: d.years[1]}
+        } else if (seq === 'qual year year') {
+            d.useCase = 12
+            d8 = {y: d.years[0], m: 0, d: 0, q: d.quals[0], y2: d.years[1]}
+        } else if (seq === 'year qual year') {
+            d.useCase = 12
+            d8 = {y: d.years[0], m: 0, d: 0, q: d.quals[0], y2: d.years[1]}
+        } else if (seq === 'qual year qual year') {
+            d.useCase = 12
+            d8 = {y: d.years[0], m: 0, d: 0, q: d.quals[0], y2: d.years[1]}
+        } else if (seq === 'day month year qual day month year') {
+            d.useCase = 13   // 0
+            d8 = {y: d.years[0], m: d.months[0], d: d.days[0], q: d.quals[0], y2: d.years[1]}
+        } else if (seq === 'qual qual year qual year') {
+            d.useCase = 14    // 0
+            d8 = {y: d.years[0], m: d.months[0], d: d.days[0], q: d.quals[0], y2: d.years[1]}
+        // } else if (seq === 'span') {
+        // useCase = 15 // 0
+        } else if (seq === 'date') {
+            d.useCase = 16
+            d8 = {y: d.years[0], m: d.months[0], d: d.days[0], q: '', y2: 0}
+        } else if (seq === 'date time') {
+            d.useCase = 17 //
+            d8 = {y: d.years[0], m: d.months[0], d: d.days[0], q: '', y2: 0}
+        } else if (seq === 'date time ampm') {
+            d.useCase = 18 //
+            d8 = {y: d.years[0], m: d.months[0], d: d.days[0], q: '', y2: 0}
+        } else if (seq === 'qual' && d.quals[0] === 'unknown') {
+            d.useCase = 19
+            d8 = {y: 0, m: 0, d: 0, q: '', y2: 0}
+        }
         d.seq = seq
+        this._result = {parsed: d, date: d8}
         return d
     }
 
@@ -173,5 +219,10 @@ export class GedcomDateParser {
         }
         const year = parseInt(str)
         return (year >= 1000 && year <= 2050)
+    }
+
+    eventDate(dateStr) {
+        this.parse(dateStr)
+        return this._result.date
     }
 }
