@@ -89,5 +89,8 @@ export class Genex {
         for(let j=0; j<family.children().length; j++) {
             family.setChildPerson(j, this.getPerson(family.childKey(j)))
         }
+        family.setUnionEvent(new GenEvent('union',
+            new GenDate(family.unionObj().date),
+            this.getPlace(family.unionObj().placeIndex)))
     }
 }
