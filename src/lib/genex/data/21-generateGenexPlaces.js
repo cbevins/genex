@@ -14,7 +14,7 @@ const missingFile = `./diagnostics/genex/${missingName}.js`
 
 // Checks if each PLAC record content is in the MASTER array
 function findGedcomPlaceKeys(records, placeMap) {
-    const foundMap = new Map([["", ["Not-Stated", 31]]])
+    const foundMap = new Map([["", "Not-Stated", 31]])
     const missing = []
     for (let i=0; i<records.length; i++) {
         const data = parseRecord(records[i], i+1)
