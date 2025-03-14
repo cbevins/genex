@@ -10,6 +10,8 @@ node .\07-diagnoseGedcomFilteredPlacesUnknown.js
 node .\08-diagnoseGedcomAllDatesUnknown.js
 node .\09-diagnoseGedcomFilteredDatesUnknown.js
 node .\10-generateGedcomIndiObjects.js
-node .\10-generateGedcomFamObjects.js
-node .\20-generateGenexPlaces.js
-node .\21-generateGenexPeopleObjects.js
+node .\11-generateGedcomFamObjects.js
+node .\12-diagnoseGedcomGivenNames.js
+node .\21-generateGenexPlaces.js
+node .\22-generateGenexPeopleObjects.js
+node .\23-generateGenexFamilyObjects.js

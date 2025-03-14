@@ -133,7 +133,7 @@ export class GedcomDateParser {
             d8 = {y: d.years[0], m: d.months[0], d: d.days[0], q: d.quals[0], y2: d.years[1]}
         } else if (seq === 'qual qual year qual year') {
             d.useCase = 14    // 0
-            d8 = {y: d.years[0], m: d.months[0], d: d.days[0], q: d.quals[0], y2: d.years[1]}
+            d8 = {y: d.years[0], m: 0, d: 0, q: d.quals[0], y2: d.years[1]}
         // } else if (seq === 'span') {
         // useCase = 15 // 0
         } else if (seq === 'date') {

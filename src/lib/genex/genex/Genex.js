@@ -40,7 +40,13 @@ export class Genex {
     people() { return this._data._people }
     peopleMap() { return this._data._peopleMap }
     places() { return this._data._places }
-    
+
+    getFamily(gedKey) { return this._data._familyMap.get(gedKey) }
+
+    getPerson(gedKey) { return this._data._peopleMap.get(gedKey) }
+
+    getPlace(idx) { return this._data._placesArr[idx] }
+
     // Hydrate all Person references to Family and Place
     _hydratePeople() {
         for (let i=0; i<_people.length; i++) this._hydratePerson(_people[i])
@@ -84,17 +90,4 @@ export class Genex {
             family.setChildPerson(j, this.getPerson(family.childKey(j)))
         }
     }
-
-    getFamily(gedKey) { return this._data._familyMap.get(gedKey) }
-
-    getPerson(gedKey) { return this._data._peopleMap.get(gedKey) }
-
-    getPlace(idx) { return this._data._placesArr[idx] }
 }
-
-const person = _people[0]
-const genex = new Genex()
-// genex._hydratePerson(person)
-// genex._hydrateFamily(person)
-const info = new PersonInfo(person)
-console.log(info.getLines())

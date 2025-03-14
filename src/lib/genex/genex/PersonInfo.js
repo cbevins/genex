@@ -5,7 +5,8 @@ export class PersonInfo {
         this.addNames(person)
         this.addBirth(person)
         this.addDeath(person)
-        this.addResidence(person, 0)
+        for(let i=0; i<person.residences().length; i++)
+            this.addResidence(person, i)
         this.addFamily(person)
     }
 
@@ -54,11 +55,12 @@ export class PersonInfo {
     }
     addFamily(p) {
         this._lines.push(`Childhood Family:`)
-        const mother = p.famcFamily().motherPerson()
-        this._lines.push(`    Mother: ${mother ? mother.fullName() : 'Unknown'}`)
-        const father = p.famcFamily().fatherPerson()
-        this._lines.push(`    Father: ${father ? father.fullName() : 'Unknown'}`)
-
+        if (p.famcKey()) {
+            const mother = p.famcFamily().motherPerson()
+            this._lines.push(`    Mother: ${mother ? mother.fullName() : 'Unknown'}`)
+            const father = p.famcFamily().fatherPerson()
+            this._lines.push(`    Father: ${father ? father.fullName() : 'Unknown'}`)
+        }
     }
     getLines() { return this._lines }
 }

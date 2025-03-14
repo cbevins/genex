@@ -216,7 +216,7 @@ export const _gedcomResolvedDuplicates = [
 //    ["@I292512102889@-DEAT", ["1910", "Iowa"]], // 1
 
 // Lizzie /Riley/ has 2 possible DEAT DATE and/or PLAC records (uncomment the preferred):
-        ["@I292512102890@-DEAT", ["EST BET 1912 AND 1992", ""]], // 0
+        ["@I292512102890@-DEAT", ["30 Jun 1947", "Los Angeles, Los Angeles, California, USA"]], // 0
 //    ["@I292512102890@-DEAT", ["EST BET 1912 AND 1992", ""]], // 1
 
 // Frances /Ferry/ has 2 possible BIRT DATE and/or PLAC records (uncomment the preferred):
