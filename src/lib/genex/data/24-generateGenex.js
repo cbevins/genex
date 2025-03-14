@@ -1,8 +1,8 @@
 import { _family } from './generated/genex/_family.js'
 import { _people } from './generated/genex/_people.js'
 import { _places } from './generated/genex/_places.js'
-import { Family } from '../gedcom/Family.js'
-import { Person } from '../gedcom/Person.js'
+import { Family } from '../genex/Family.js'
+import { Person } from '../genex/Person.js'
 
 const time1 = new Date()
 const progName = (process.argv[1]).split('\\').pop()
