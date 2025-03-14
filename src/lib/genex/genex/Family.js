@@ -3,10 +3,9 @@ export class Family {
         this._data = family
     }
 
-    child(idx) { return this._data.children(idx) }
     childKey(idx) { return this._data.children[idx].key }
     childPerson(idx) { return this._data.children[idx].person }
-    children() { return this._data.children() }
+    children() { return this._data.children }
 
     fatherPerson() { return this._data.father.person }
     fatherKey() { return this._data.father.key }

@@ -86,7 +86,7 @@ export class Genex {
     _hydrateFamily(family) {
         family.setFatherPerson(this.getPerson(family.fatherKey()))
         family.setMotherPerson(this.getPerson(family.motherKey()))
-        for(let j=0; j<family.children.length; j++) {
+        for(let j=0; j<family.children().length; j++) {
             family.setChildPerson(j, this.getPerson(family.childKey(j)))
         }
     }

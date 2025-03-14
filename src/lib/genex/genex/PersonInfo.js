@@ -7,7 +7,9 @@ export class PersonInfo {
         this.addDeath(person)
         for(let i=0; i<person.residences().length; i++)
             this.addResidence(person, i)
-        this.addFamily(person)
+        this.addChildhoodFamily(person)
+        for(let i=0; i<person.fams().length; i++)
+            this.addAdulthoodFamily(person, i)
     }
 
     addNames(p) {
@@ -53,13 +55,34 @@ export class PersonInfo {
         this._lines.push(`    Place Text : ${p.residencePlaceText(i)}`)
         this._lines.push(`    Place Standard: ${p.residencePlaceStandard(i)}`)
     }
-    addFamily(p) {
+    addChildhoodFamily(p) {
         this._lines.push(`Childhood Family:`)
         if (p.famcKey()) {
-            const mother = p.famcFamily().motherPerson()
-            this._lines.push(`    Mother: ${mother ? mother.fullName() : 'Unknown'}`)
-            const father = p.famcFamily().fatherPerson()
-            this._lines.push(`    Father: ${father ? father.fullName() : 'Unknown'}`)
+            const family = p.famcFamily()
+            const mother = family.motherPerson()
+            this._lines.push(`    Mother  : ${mother ? mother.fullName() : 'Unknown'}`)
+            const father = family.fatherPerson()
+            this._lines.push(`    Father  : ${father ? father.fullName() : 'Unknown'}`)
+            this._lines.push(`    Siblings: ${family.children().length}`)
+            for(let i=0; i<family.children().length; i++) {
+                const child = family.childPerson(i)
+                this._lines.push(`        ${i+1} : ${child.fullName()}`)
+            }
+        }
+    }
+    addAdulthoodFamily(p, idx) {
+        this._lines.push(`Adulthood Family: ${idx+1}`)
+        if (p.famsKey(idx)) {
+            const family = p.famsFamily(idx)
+            const mother = family.motherPerson()
+            this._lines.push(`    Mother  : ${mother ? mother.fullName() : 'Unknown'}`)
+            const father = family.fatherPerson()
+            this._lines.push(`    Father  : ${father ? father.fullName() : 'Unknown'}`)
+            this._lines.push(`    Children: ${family.children().length}`)
+            for(let i=0; i<family.children().length; i++) {
+                const child = family.childPerson(i)
+                this._lines.push(`        ${i+1} : ${child.fullName()}`)
+            }
         }
     }
     getLines() { return this._lines }

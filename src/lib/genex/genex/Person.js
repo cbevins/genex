@@ -3,8 +3,8 @@ import { GenEvent } from './GenEvent.js'
 export class Person {
     constructor(person) {
         this._data = person
-        this.mon3 = ['', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-            'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+        // this.mon3 = ['', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+        //     'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
     }
 
     // Internal data access
