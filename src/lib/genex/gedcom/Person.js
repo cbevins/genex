@@ -40,9 +40,17 @@ export class Person {
     otherNames() {return this.name().others.join(' ') }
     prefixNames() {return this.name().prefixes.join(' ') }
     suffixNames() {return this.name().suffixes.join(' ') }
-    fullName() { return [this.firstName(), this.middleNames(), this.lastNames()].join(' ') }
-    label() { return [this.prefixNames(), this.fullName(), this.suffixNames(), this.birthYear(), this.deathYear()].join(' ')}
-    
+    fullName() { return ([this.firstName(), this.middleNames(), this.lastNames()].join(' ')).trim() }
+    longName() { return ([this.prefixNames(), this.fullName(), this.suffixNames()].join(' ')).trim()}
+    label() { return `${this.longName()} (${this.lifeSpan()})` }
+
+    sex() { return this._data.sex }
+    lifeSpan() {
+        const b = this.birthYear()
+        const d = this.deathYear()
+        return d ? `${b}-${d}` : `${b}-present`
+    }
+
     birthDate() { return `${this.birthDay()} ${this.birthMon3()} ${this.birthYear()}` }
     birthDay() { return this.bDate().d}
     birthMon3() { return this.mon3[this.bDate().m]}
@@ -71,12 +79,16 @@ export class Person {
     info(person) {
         const lines = []
         lines.push(`Names:`)
+        lines.push(`    GedKey: ${this.gedKey()}`)
         lines.push(`    Key   : ${this.nameKey()}`)
         lines.push(`    First : ${this.firstName()}`)
         lines.push(`    Middle: ${this.middleNames()}`)
         lines.push(`    Last  : ${this.lastNames()}`)
         lines.push(`    Full  : ${this.fullName()}`)
+        lines.push(`    Long  : ${this.longName()}`)
         lines.push(`    Label : ${this.label()}`)
+        lines.push(`    Life  : ${this.lifeSpan()}`)
+        lines.push(`    Sex   : ${this.sex()}`)
         lines.push(`Birth:`)
         lines.push(`    Year : ${this.birthYear()}`)
         lines.push(`    Month: ${this.birthMonth()}`)
