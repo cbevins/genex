@@ -14,9 +14,13 @@ export class Family {
     
     unionObj() { return this._data.marr }
     unionEvent() { return this.unionObj() ? this._data.marr.event : null }
-    unionDate() { return this.unionEvent() ? this.unionEvent().date().date() : 'Unknown' }
-    unionYear() { return this.unionEvent() ? this.unionEvent().date().y() : '?' }
-    unionPlaceStandard() { return this.unionEvent().place().standard() }
+    // UNION date
+    unionDate() { return this.unionEvent() ? this.unionEvent().date() : null }
+    unionDateStandard() { return this.unionDate() ? this.unionDate().standard() : null }
+    unionYear() { return this.unionDate() ? this.unionDate().y() : '?' }
+    // UNION place
+    unionPlace() { return this.unionEvent() ? this.unionEvent().place() : null }
+    unionPlaceStandard() { return this.unionPlace() ? this.unionPlace().standard() : null }
     unionPlaceText() { return this.unionEvent().place().text() }
 
     motherPerson() { return this._data.mother.person }

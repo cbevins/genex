@@ -13,39 +13,61 @@ export class Genex {
         this._data = {
             _family,
             _familyMap: new Map(),  // gedKey => Family
+            _namesMap: new Map(),   // Person.nameKey => Person
             _people,
-            _peopleMap: new Map(),  // gedKey => Person
+            _peopleMap: new Map(),  // Person.gedKey => Person
             _places,
             _placesArr: []
         }
 
+        // Create array of Place instances
         for (let i=0; i<_places.length; i++) {
             const [text, entry] = _places[i]
             const [standard, index] = entry
             this._data._placesArr.push(new Place(text, standard, index))
         }
 
+        // Create Map() of Family.gedKey => family
         for (let i=0; i<_family.length; i++)
             this._data._familyMap.set(_family[i].gedKey(), _family[i])
 
-        for (let i=0; i<_people.length; i++) 
+        // Create Map() of Person.gedKey => Person
+        for (let i=0; i<_people.length; i++) {
             this._data._peopleMap.set(_people[i].gedKey(), _people[i])
+            this._data._namesMap.set(_people[i].nameKey(), _people[i])
+        }
 
         this._hydratePeople()
         this._hydrateFamilies()
     }
 
+    //--------------------------------------------------------------------------
+    // Convenience methods
+    //--------------------------------------------------------------------------
+
+    // Returns Person instance given a gedKey, nameKey, or Person instance argument
+    person(key) {
+        if (this._data._peopleMap.has(key)) return this._data._peopleMap.get(key)
+        if (this._data._namesMap.has(key)) return this._data._namesMap.get(key)
+        if (key instanceof Person) return key
+        return null
+    }
+
+    getFamily(gedKey) { return this._data._familyMap.get(gedKey) }
+    getPerson(gedKey) { return this._data._peopleMap.get(gedKey) }
+    getPlace(idx) { return this._data._placesArr[idx] }
+
+    //--------------------------------------------------------------------------
+    // Data access methods
+    //--------------------------------------------------------------------------
     family() { return this._data._family }
     familyMap() { return this._data._familyMap }
     people() { return this._data._people }
     peopleMap() { return this._data._peopleMap }
     places() { return this._data._places }
 
-    getFamily(gedKey) { return this._data._familyMap.get(gedKey) }
-
-    getPerson(gedKey) { return this._data._peopleMap.get(gedKey) }
-
-    getPlace(idx) { return this._data._placesArr[idx] }
+    // Adds a new key to the nameMap()
+    addPerson(person, key) { this._data._namesMap.set(key, person) }
 
     // Hydrate all Person references to Family and Place
     _hydratePeople() {

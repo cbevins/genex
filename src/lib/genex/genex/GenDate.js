@@ -13,5 +13,18 @@ export class GenDate {
     y() { return this._data.y }
     y2() { return this._data.y2 }
 
-    date() { return `${this.d()} ${this.mon3()} ${this.y()}` }
+    standard() {
+        let parts = []
+        if (this.q()) parts.push(this.q())
+
+        if (this.y2()) {
+            parts.push(this.y())
+            parts.push(this.y2())
+        } else {
+            if (this.d()) parts.push(this.d())
+            if (this.m()) parts.push(this.mon3())
+            if (this.y()) parts.push(this.y())
+        }
+        return parts.join(' ')
+    }
 }

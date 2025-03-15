@@ -1,4 +1,5 @@
 import fs from 'fs'
+import { Auditor } from '../genex/Auditor.js'
 import { Genex } from '../genex/Genex.js'
 import { PersonInfo } from '../genex/PersonInfo.js'
 

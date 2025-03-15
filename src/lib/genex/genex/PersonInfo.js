@@ -38,10 +38,11 @@ export class PersonInfo {
         this._info.push([1, `Year`, p.birthYear()])
         this._info.push([1, `Month`, p.birthMonth()])
         this._info.push([1, `Day`, p.birthDay()])
-        this._info.push([1, `Date`, p.birthDate()])
+        this._info.push([1, `Date`, p.birthDateStandard()])
         this._info.push([1, `Place Index`, p.birthPlaceIndex()])
         this._info.push([1, `Place Text`, p.birthPlaceText()])
         this._info.push([1, `Place Standard`, p.birthPlaceStandard()])
+        this._info.push([1, `Place Std Country`, p.birthPlaceStandardCountry()])
     }
 
     addDeath(p) {
@@ -49,7 +50,7 @@ export class PersonInfo {
         this._info.push([1, `Year`, p.deathYear()])
         this._info.push([1, `Month`, p.deathMonth()])
         this._info.push([1, `Day`, p.deathDay()])
-        this._info.push([1, `Date`, p.deathDate()])
+        this._info.push([1, `Date`, p.deathDateStandard()])
         this._info.push([1, `Place Index`, p.deathPlaceIndex()])
         this._info.push([1, `Place Text`, p.deathPlaceText()])
         this._info.push([1, `Place Standard`, p.deathPlaceStandard()])
@@ -60,7 +61,7 @@ export class PersonInfo {
         this._info.push([1, `Year`, p.residenceYear(i)])
         this._info.push([1, `Month`, p.residenceMonth(i)])
         this._info.push([1, `Day`, p.residenceDay(i)])
-        this._info.push([1, `Date`, p.residenceDate(i)])
+        this._info.push([1, `Date`, p.residenceDateStandard(i)])
         this._info.push([1, `Place Index`, p.residencePlaceIndex(i)])
         this._info.push([1, `Place Text`, p.residencePlaceText(i)])
         this._info.push([1, `Place Standard`, p.residencePlaceStandard(i)])
@@ -81,7 +82,7 @@ export class PersonInfo {
         this._info.push([1, `Father`, father ? father.label() : 'Unknown'])
 
         if (family.unionEvent()) {
-            this._info.push([1, `Union Date`, family.unionDate()])
+            this._info.push([1, `Union Date`, family.unionDateStandard()])
             this._info.push([1, `Union Place Standard`, family.unionPlaceStandard()])
         }
 
