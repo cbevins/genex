@@ -1,6 +1,5 @@
 import fs from 'fs'
 import { Channels } from '../genex/Channels.js'
-import { Lineage } from '../genex/Lineage.js'
 import { Genex } from '../genex/Genex.js'
 
 const time1 = new Date()
@@ -12,9 +11,8 @@ const genex = new Genex()
 const cdb = genex.person('Collin Douglas Bevins 1952')
 const wlb = genex.person("William Longford Bevins 1815")
 const wab = genex.person("William Alfred Bevins 1843")
-const bjr = genex.person("barabara Jeanne Riley 1953")
+const bjr = genex.person("Barbara Jeanne Riley 1953")
 
-// const lineage = new Lineage(cdb)
 const lineage = new Channels(cdb)
 const persons = lineage.persons()
 console.log('Lineage persons array length', persons.length)

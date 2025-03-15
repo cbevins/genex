@@ -28,10 +28,10 @@ export const _generationsData = [
 
 // Return {gen} for gen sequence number
 export function idGen(gen) {
-    for(let i=0; i<_generations.length; i++) {
-        if (gen <= _generations[i].thru) return _generations[i]
+    for(let i=0; i<_generationsData.length; i++) {
+        if (gen <= _generationsData[i].thru) return _generationsData[i]
     }
-    return _generations[_generations.length-1]
+    return _generationsData[_generationsData.length-1]
 }
 
 export function idGenAbbr(gen) { return idGen(gen).abbr }

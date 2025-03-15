@@ -86,6 +86,7 @@ export class Person {
     birthPlaceIndex() { return this.birthPlace().index() }
     birthPlaceStandard() { return this.birthPlace().standard() }
     birthPlaceStandardCountry() { return this.birthPlace().standardCountry() }
+    birthPlaceStandardState() { return this.birthPlace().standardState() }
     birthPlaceText() { return this.birthPlace().text() }
 
     //--------------------------------------------------------------------------

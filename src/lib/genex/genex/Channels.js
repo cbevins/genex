@@ -111,8 +111,8 @@ export class Channels extends Lineage {
         this._data.yearMin = 9999   // last ancestral birth year
         for(let i=0; i<this.nodes().length; i++) {
             const node = this.node(i)
-            node.birthCountry = node.person.birthCountry()
-            node.birthState = node.person.birthState()
+            node.birthCountry = node.person.birthPlaceStandardCountry()
+            node.birthState = node.person.birthPlaceStandardState()
             node.birthYear = node.person.birthYear()
             node.label = node.person.label()
             this._data.yearMin = Math.min(this._data.yearMin, node.birthYear)

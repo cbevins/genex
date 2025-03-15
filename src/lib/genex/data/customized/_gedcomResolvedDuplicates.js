@@ -361,9 +361,9 @@ export const _gedcomResolvedDuplicates = [
 //    ["@I292570029241@-DEAT", ["20 February 1881", "Pella, 5713, Verenigde Staten, Iowa, USA"]], // 1
 
 // Leendert Cornelisz De /Coman/ (#RT1328) has 2 possible FAMC records (uncomment the preferred):
-// F443 has just a HUSB, and F444 has just a WIFE
-        ["@I292570286950@-FAMC", "@F443@"], // 0
-//    ["@I292570286950@-FAMC", "@F444@"], // 1
+// F444 has just a HUSB, and F445 has just a WIFE
+        ["@I292570286950@-FAMC", "@F444@"], // 0
+//    ["@I292570286950@-FAMC", "@F445@"], // 1
 
 // Jan Arijensz /Van Driel/ (#RT85616) has 2 possible DEAT DATE and/or PLAC records (uncomment the preferred):
         ["@I292570435907@-DEAT", ["Aft 1500", "Nederland, Pays-Bas"]], // 0
