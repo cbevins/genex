@@ -17,14 +17,14 @@ export class Genex {
             _people,
             _peopleMap: new Map(),  // Person.gedKey => Person
             _places,
-            _placesArr: []
+            _placesArr: [],
         }
 
         // Create array of Place instances
         for (let i=0; i<_places.length; i++) {
             const [text, entry] = _places[i]
-            const [standard, index] = entry
-            this._data._placesArr.push(new Place(text, standard, index))
+            const [standard, index, vicKeys] = entry
+            this._data._placesArr.push(new Place(text, standard, vicKeys, index))
         }
 
         // Create Map() of Family.gedKey => family

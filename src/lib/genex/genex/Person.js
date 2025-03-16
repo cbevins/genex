@@ -86,8 +86,11 @@ export class Person {
     birthPlaceIndex() { return this.birthPlace().index() }
     birthPlaceStandard() { return this.birthPlace().standard() }
     birthPlaceStandardCountry() { return this.birthPlace().standardCountry() }
+    birthPlaceStandardParts(level) { return this.birthPlace().standardParts(level) }
+    birthPlaceStandardPrefix() { return this.birthPlace().standardPrefix() }
     birthPlaceStandardState() { return this.birthPlace().standardState() }
     birthPlaceText() { return this.birthPlace().text() }
+    birthPlaceVicKeys() { return this.birthPlace().vicKeys() }
 
     //--------------------------------------------------------------------------
     // DEATH
@@ -106,7 +109,10 @@ export class Person {
     deathPlaceIndex() { return this.deathPlace().index() }
     deathPlaceStandard() { return this.deathPlace().standard() }
     deathPlaceStandardCountry() { return this.deathPlace().standardCountry() }
+    deathPlaceStandardParts(level) { return this.deathPlace().standardParts(level) }
+    deathPlaceStandardPrefix() { return this.deathPlace().standardPrefix() }
     deathPlaceText() { return this.deathPlace().text() }
+    deathPlaceVicKeys() { return this.deathPlace().vicKeys() }
 
     father() { return this.famcFamily() ? this.famcFamily().fatherPerson() : null }
     mother() { return this.famcFamily() ? this.famcFamily().motherPerson() : null }
@@ -129,7 +135,10 @@ export class Person {
     residencePlaceIndex(idx) { return this.residencePlace(idx).index() }
     residencePlaceStandard(idx) { return this.residencePlace(idx).standard() }
     residencePlaceStandardCountry(idx) { return this.residencePlace(idx).standardCountry() }
+    residencePlaceStandardParts(idx, level) { return this.residencePlace(idx).standardParts(level) }
+    residencePlaceStandardPrefix(idx) { return this.residencePlace(idx).standardPrefix() }
     residencePlaceText(idx) { return this.residencePlace(idx).text() }
+    residencePlaceVicKeys(idx) { return this.residencePlace(idx).vicKeys() }
 
     //--------------------------------------------------------------------------
     // PRIVATE - used by hyrdatePerson and hydrateFamily methods
