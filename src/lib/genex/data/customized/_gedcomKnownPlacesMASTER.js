@@ -1658,7 +1658,7 @@ export const _gedcomKnownPlaces = [
     ["St-Louis, Kamouraska, Québec, Canada", "CAN,QC,Bas-Saint-Laurent,Kamouraska,St-Louis"],
     ["St-Roches-des-Aulnais, Quebec, Canada", "CAN,QC,Chaudiere-Appalaches,St Roches des Aulnais"],
     ["St-Sulpice, (l'Assomption), Québec, Canada", "CAN,QC,Lanaudiere,l'Assomption,St Sulpice"], // 1
-    ["St-Théodore-de-Chertsey ; 2462047 ; Québec ; Canada", "CAN,QC,Matawinie,Chertsey,St Theodore de Chertsey,2462047"], // 1
+    ["St-Théodore-de-Chertsey ; 2462047 ; Québec ; Canada", "CAN,QC,Lanaudiere,Matawinie,Chertsey,St Theodore de Chertsey,2462047"], // 1
     ["St. Alexis de Montcalm, Quebec, Canada", "CAN,QC,Lanaudiere,Montcalm,St Alexis"],  // 3
     ["St. Alphonse Rodriguez, Quebec, Canada", "CAN,QC,Lanaudiere,Matawinie,St Alphone Rodrigues"], 
     ["St. Alphonse Rodriguez, Quebec, canada", "CAN,QC,Lanaudiere,Matawinie,St Alphone Rodrigues"], // 1
