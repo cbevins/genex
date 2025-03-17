@@ -1,4 +1,6 @@
-
+/**
+ * Mappable array of all known GEDCOM DATE qualifiers mapped to their standard value.
+ */
 export const _gedcomKnownDateQuals = [
     ['ab', 'about'],
     ['abo', 'about'],
@@ -18,6 +20,10 @@ export const _gedcomKnownDateQuals = [
     ['unk', 'unknown'],
 ]
 
+/**
+ * Mappable array of all known GEDCOM DATE content month names
+ * whose key is a 3-char lowercase string and value is the month index [1-12].
+ */
 export const _gedcomKnownDateMonths = [
     ['jan', 1],
     ['feb', 2],

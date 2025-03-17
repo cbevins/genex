@@ -1,3 +1,7 @@
+/**
+ * Mappable array of all known GEDCOM GIVN content
+ * whose key is the first GIVN token and value is a standard prefix.
+ */
 export const _gedcomKnownNamePrefixes = [
     ['Bishop', 'Bishop'],
     ['Dr', 'Dr'],

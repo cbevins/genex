@@ -1,8 +1,8 @@
 /**
- * _gedcomPLAC2StandardMASTER.js maps arbitrary GEDCOM 'PLAC' record text
+ * _gedcomKnownPlacesMASTER.js maps arbitrary GEDCOM 'PLAC' record text
  * to a better defined set of 'standard' place keys.
  * 
- * _gedcomPLAC2StandardMASTER is an array of all extant 'PLAC' records from my GEDCOM files.
+ * _gedcomKnownPlacesMASTER is an array of all extant 'PLAC' records from my GEDCOM files.
  * While 'PLAC' record text may be blank, brief and abstract, long and detailed,
  * or contain arbitrary content from the info provider, we still we want to
  * preserve and display the content as needed.

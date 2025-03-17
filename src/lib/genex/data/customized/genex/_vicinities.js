@@ -29,7 +29,7 @@ export const _vicinities = [
     ['IRL', {label: 'Irish Republic', places: [
         "IRL"
     ]}],
-    ['NIR', {label: 'Northernn Ireland', places: [
+    ['NIR', {label: 'Northern Ireland', places: [
         "NIR"
     ]}],
     ['NLD-ZUI', {label: 'South Holland', places: [
