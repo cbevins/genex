@@ -1,4 +1,4 @@
-export const _vicinities = [
+export const _vicinityDefsAll = [
     ['CAN-QC-Lower', {label: 'Lower St Lawarence, Quebec', places: [
                                                 // Tot Birth Death Resid
         "CAN,QC,Bas-Saint-Laurent",             // 32,   25,    7,    0,

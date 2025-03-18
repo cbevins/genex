@@ -141,6 +141,14 @@ export class Person {
     residencePlaceVicKeys(idx) { return this.residencePlace(idx).vicKeys() }
 
     //--------------------------------------------------------------------------
+    // LINEAGE
+    //--------------------------------------------------------------------------
+    lineage() { return this._data.lineage }
+    lineageFile() { return this._data.lineage.file }
+    lineageGen() { return this._data.lineage.gen }
+    lineageSeq() { return this._data.lineage.seq }
+
+    //--------------------------------------------------------------------------
     // PRIVATE - used by hyrdatePerson and hydrateFamily methods
     //--------------------------------------------------------------------------
     setBirthEvent(genEvent) { this._data.birth.event = genEvent }

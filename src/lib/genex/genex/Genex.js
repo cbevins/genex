@@ -66,7 +66,27 @@ export class Genex {
     peopleMap() { return this._data._peopleMap }
     places() { return this._data._places }
 
+    addLineage(lineage, name='Bevins-Heddens', prefix='BH') {
+        const nodes = lineage.nodes()
+        // console.log(`Genex.addLineage(${nodes.length}, ${name}, ${prefix})`)
+        for(let i=0; i<nodes.length; i++) {
+            const node = nodes[i]
+            const p = node.person
+            p._data.lineage = {type : 1,
+                mother: node.mother ? node.mother.person : null,
+                father: node.father ? node.father.person : null,
+                child: node.child ? node.child.person : null,
+                tree: name,
+                gen: node.gen,
+                seq: node.seq,
+                channel: node.channel,
+                ancestors: node.ancestors,
+                file: `#${prefix}${node.seq}`}
+        }
+    }
+
     // Adds a new key to the nameMap()
+    // Used by clients to add, for example, 'cdb' or 'bjr' as a Person key
     addPerson(person, key) { this._data._namesMap.set(key, person) }
 
     // Hydrate all Person references to Family and Place

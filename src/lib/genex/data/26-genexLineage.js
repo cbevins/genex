@@ -13,10 +13,27 @@ const wlb = genex.person("William Longford Bevins 1815")
 const wab = genex.person("William Alfred Bevins 1843")
 const bjr = genex.person("Barbara Jeanne Riley 1953")
 
-const lineage = new Channels(cdb)
-const persons = lineage.persons()
-console.log('Lineage persons array length', persons.length)
-console.log(persons[4].label())
+function log(person) {
+    let lin = person.lineage()
+    const lines = [
+        `label: '${person.label()}'`,
+        `    tree: '${lin.tree}', gen: ${lin.gen}, seq: ${lin.seq}, ancestors: ${lin.ancestors}, file: '${lin.file}'`,
+        `    mother: ${lin.mother ? lin.mother.label() : 'Unknown'}`,
+        `    father: ${lin.father ? lin.father.label() : 'Unknown'}`,
+        `    child: ${lin.child ? lin.child.label() : '<isRoot>'}`]
+    console.log(lines.join('\n'))
+}
+
+// Add Lineages for Bevins-Heddens and Riley-Trombley to each Person
+const lineageCdb = new Channels(cdb)
+genex.addLineage(lineageCdb, 'Bevins-Heddens', 'BH')
+
+const lineageBjr = new Channels(bjr)
+genex.addLineage(lineageBjr, 'Riley-Trombley', 'RT')
+
+// Make sure it worked...
+log(wlb)
+log(bjr)
 
 console.log(`\n${progName}`)
 console.log(`    1 - created Genex with ${genex.people().length} Person and ${genex.family().length} Family instances.`)

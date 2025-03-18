@@ -2,7 +2,7 @@ import fs from 'fs'
 import { parseRecord } from '../gedcom/parseRecord.js'
 import { _filteredRecords } from './generated/gedcom/_filteredRecords.js'
 import { _gedcomKnownPlaces } from './customized/_gedcomKnownPlacesMASTER.js'
-import { _vicinities } from './customized/genex/_vicinities.js'
+import { _vicinityDefsAll } from './customized/genex/_vicinityDefsAll.js'
 
 const time1 = new Date()
 const progName = (process.argv[1]).split('\\').pop()
@@ -15,8 +15,8 @@ const missingFile = `./diagnostics/genex/${missingName}.js`
 
 function findVicinities(standardKey) {
     const found = []
-    for(let i=0; i<_vicinities.length; i++) {
-        const [vicKey, vicEntry] = _vicinities[i]
+    for(let i=0; i<_vicinityDefsAll.length; i++) {
+        const [vicKey, vicEntry] = _vicinityDefsAll[i]
         const {label, places} = vicEntry
         for (let j=0; j<places.length; j++) {
             if (standardKey.startsWith(places[j])) {
