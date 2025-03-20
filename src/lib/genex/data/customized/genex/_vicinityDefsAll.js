@@ -36,7 +36,7 @@ export const _vicinityDefsAll = [
     ['CAN-QC-Monteregie', {label: 'Monteregie, Quebec', places: [
         "CAN,QC,Monteregie",                    // 15,   13,    2,    0
     ]}],
-    ['DEU-RP', {label: 'Rhineland Plantinate, Germany', places: [
+    ['DEU-RP', {label: 'Rhineland-Palatinate, Germany', places: [
         "DEU,RP"
     ]}],
     ['DEU-BW', {label: ' Baden-Württemberg, Germany', places: [
@@ -48,11 +48,11 @@ export const _vicinityDefsAll = [
     ['DEU-HE', {label: 'Hessen, Germany', places: [
         "DEU,HE"
     ]}],
-    ['ENG-BKM', {label: 'Buckinghamshire, England', places: [
-        "ENG,BKM"
-    ]}],
     ['DEU-NW', {label: 'North Rhine-Westphalia, Germany', places: [
         "DEU,NW"
+    ]}],
+    ['ENG-BKM', {label: 'Buckinghamshire, England', places: [
+        "ENG,BKM"
     ]}],
     ['ENG-CAM', {label: 'Cambridgeshire, England', places: [
         "ENG,CAM"
@@ -107,7 +107,7 @@ export const _vicinityDefsAll = [
     ['ENG-OXF', {label: 'Oxfordshire, England', places: [
         "ENG,OXF"
     ]}],
-    ['ENG-SAL', {label: ' Shropshire (Salop), England', places: [
+    ['ENG-SAL', {label: 'Shropshire (Salop), England', places: [
         "ENG,SAL"
     ]}],
     ['ENG-SFK', {label: 'Suffolk, England', places: [
@@ -153,8 +153,7 @@ export const _vicinityDefsAll = [
         "NIR"
     ]}],
     ['NLD-DRE', {label: 'Drenth, Netherlands', places: [
-        // North East NLD
-        "NLD,DRE"
+        "NLD,DRE" // North East NLD
     ]}],
     ['NLD-GEL', {label: 'Gelderland, Netherlands', places: [
         "NLD,GEL"
@@ -163,7 +162,7 @@ export const _vicinityDefsAll = [
         // Southern NLD, borders Belguim, Zeeland, Zuid Holland, Gelderland, Utrect
         "NLD,NBR"
     ]}],
-    ['NLD-NOR', {label: ', Netherlands', places: [
+    ['NLD-NOR', {label: 'North Holland, Netherlands', places: [
         "NLD,NOR"
     ]}],
     ['NLD-ZUI', {label: 'South Holland, Netherlands', places: [
@@ -513,14 +512,14 @@ export const _vicinityDefsAll = [
     ['USA-NY-New York', {label: 'New York County, New York', places: [
         'USA,NY,New York'
     ]}],
+    ['USA-NY-Rensselaer', {label: 'Rensselaer County, New York', places: [
+        'USA,NY,Rensselaer'
+    ]}],
     ['USA-NY-Schenectady', {label: 'Schenectady County, New York', places: [
         'USA,NY,Schenectady'
     ]}],
     ['USA-NY-Washington', {label: 'Washington County, New York', places: [
         'USA,NY,Washington'
-    ]}],
-    ['USA-NY-Rensselaer', {label: 'Rensselaer County, New York', places: [
-        'USA,NY,Rensselaer'
     ]}],
     ['USA-OH-Ashtabula', {label: 'Ashtabula County, Ohio', places: [
         'USA,OH,Ashtabula'
@@ -564,12 +563,16 @@ export const _vicinityDefsAll = [
     ['USA-OH-Stark', {label: 'Stark County, Ohio', places: [
         'USA,OH,Stark'
     ]}],
+
+    // Oregon
     ['USA-OR-Lane', {label: 'Lane County, Oregon', places: [
         'USA,OR,Lane'   // Eugene
     ]}],
     ['USA-OR-Multnomah', {label: 'Multnomah County, Oregon', places: [
         'USA,OR,Multnomah'  // Portland
     ]}],
+
+    // Pennsylvania
     ['USA-PA-Blair', {label: 'Blair County, Pennsylvania', places: [
         'USA,PA,Blair'
     ]}],
@@ -603,6 +606,8 @@ export const _vicinityDefsAll = [
     ['USA-PA-Washington', {label: 'Washington County, Pennsylvania', places: [
         'USA,PA,Washington'
     ]}],
+
+    // Rhode Island
     ['USA-RI-Bristol', {label: 'Bristol County, Rhode Island', places: [
         'USA,RI,Bristol'
     ]}],
@@ -615,11 +620,16 @@ export const _vicinityDefsAll = [
     ['USA-RI-Washington', {label: 'Washington County, Rhode Island', places: [
         'USA,RI,Washington'
     ]}],
-    ['USA-VA-Augusta', {label: 'Augusta County, Virginia', places: [
-        'USA,VA,Augusta'
-    ]}],
+
+    // Virgina
     ['USA-VA-Accomack', {label: 'Accomack County, Virginia', places: [
         'USA,VA,Accomack'
+    ]}],
+    ['USA-VA-Albemarle', {label: 'Albemarle County, Virginia', places: [
+        'USA,VA,'
+    ]}],
+    ['USA-VA-Augusta', {label: 'Augusta County, Virginia', places: [
+        'USA,VA,Augusta'
     ]}],
     ['USA-VA-Bland', {label: 'Bland County, Virginia', places: [
         'USA,VA,Bland'
@@ -633,8 +643,14 @@ export const _vicinityDefsAll = [
     ['USA-VA-Chesterfield', {label: 'Chesterfield County, Virginia', places: [
         'USA,VA,Chesterfield'
     ]}],
+    ['USA-VA-Culpeper', {label: 'Culpeper County, Virginia', places: [
+        'USA,VA,Culpeper'
+    ]}],
     ['USA-VA-Fauquier', {label: 'Fauquier County, Virginia', places: [
         'USA,VA,Fauquier'
+    ]}],
+    ['USA-VA-Floyd', {label: 'Floyd County, Virginia', places: [
+        'USA,VA,Floyd'
     ]}],
     ['USA-VA-Franklin', {label: 'Franklin County, Virginia', places: [
         'USA,VA,Franklin'
@@ -648,54 +664,32 @@ export const _vicinityDefsAll = [
     ['USA-VA-Halifax', {label: 'Halifax County, Virginia', places: [
         'USA,VA,Halifax'
     ]}],
-    ['USA-VA-Lee', {label: 'Lee County, Virginia', places: [
-        'USA,VA,Lee'
-    ]}],
     ['USA-VA-Hanover', {label: 'Hanover COunty, Virginia', places: [
         'USA,VA,Hanover'
+    ]}],
+    ['USA-VA-Henrico', {label: 'Henrico County, Virginia', places: [
+        'USA,VA,Henrico'
+    ]}],
+    ['USA-VA-Henry', {label: 'Henry County, Virginia', places: [
+        'USA,VA,Henry'
     ]}],
     ['USA-VA-King William', {label: 'King William County, Virginia', places: [
         'USA,VA,King William'
     ]}],
-    ['USA-VA-New Kent', {label: 'New Kent County, Virginia', places: [
-        'USA,VA,New Kent'
-    ]}],
-    ['USA-VA-Powhatan', {label: 'Powhatan County, Virginia', places: [
-        'USA,VA,Powhatan'
-    ]}],
-    ['USA-VA-Scott', {label: 'Scott County, Virginia', places: [
-        'USA,VA,Scott'
-    ]}],
-    ['USA-VA-Washington', {label: 'Washington County, Virginia', places: [
-        'USA,VA,Washington'
-    ]}],
-
-    ['USA-VA-Albemarle', {label: 'Albemarle County, Virginia', places: [
-        'USA,VA,'
-    ]}],
-    ['USA-VA-Culpeper', {label: 'Culpeper County, Virginia', places: [
-        'USA,VA,Culpeper'
-    ]}],
-    ['USA-VA-Floyd', {label: 'Floyd County, Virginia', places: [
-        'USA,VA,Floyd'
-    ]}],
-    ['USA-VA-Henrico', {label: 'Henrico County, Virginia', places: [
-        'USA,VA,'
-    ]}],
-    ['USA-VA-Henrico', {label: ' County, Virginia', places: [
-        'USA,VA,'
-    ]}],
-    ['USA-VA-Henry', {label: 'Henry County, Virginia', places: [
-        'USA,VA,'
-    ]}],
-    ['USA-VA-Henry', {label: ' County, Virginia', places: [
-        'USA,VA,'
+    ['USA-VA-Lee', {label: 'Lee County, Virginia', places: [
+        'USA,VA,Lee'
     ]}],
     ['USA-VA-Montgomery', {label: 'Montgomery County, Virginia', places: [
         'USA,VA,Montgomery'
     ]}],
+    ['USA-VA-New Kent', {label: 'New Kent County, Virginia', places: [
+        'USA,VA,New Kent'
+    ]}],
     ['USA-VA-Patrick', {label: 'Patrick County, Virginia', places: [
         'USA,VA,Patrick'
+    ]}],
+    ['USA-VA-Powhatan', {label: 'Powhatan County, Virginia', places: [
+        'USA,VA,Powhatan'
     ]}],
     ['USA-VA-Rappahannock', {label: 'Rappahannock County, Virginia', places: [
         'USA,VA,Rappahannock'
@@ -703,12 +697,20 @@ export const _vicinityDefsAll = [
     ['USA-VA-Rockingham', {label: 'Rockingham County, Virginia', places: [
         'USA,VA,Rockingham'
     ]}],
+    ['USA-VA-Scott', {label: 'Scott County, Virginia', places: [
+        'USA,VA,Scott'
+    ]}],
     ['USA-VA-Spotsylvania', {label: 'Spotsylvania County, Virginia', places: [
         'USA,VA,Spotsylvania'
+    ]}],
+    ['USA-VA-Washington', {label: 'Washington County, Virginia', places: [
+        'USA,VA,Washington'
     ]}],
     ['USA-VA-York', {label: 'York County, Virginia', places: [
         'USA,VA,York'
     ]}],
+
+    // West Virginia
     ['USA-VT-Windsor', {label: 'Windsor County, Vermont', places: [
         'USA,VT,Windsor'
     ]}],

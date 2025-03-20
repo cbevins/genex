@@ -1,264 +1,287 @@
 /**
- * Vicinities relevant to the Bevins-Heddens Family Tree
+ * Vicinities relevant to the Bevins-Heddens Family Tree.
+ * This is a subset of _vicintyDefsAll for persons who appear
+ * in the Lineage tree for Collin Bevins
  */
 export const _vicinityDefsCdb = [
+    // Canadia
     ['CAN-ON', {label: 'Ontario, Canada', places: [
         "CAN,ON"
     ]}],
-    ['CAN-QC,', {label: 'Gaspesie-Iles-de-la-Madeleine, Canada', places: [
-        "CAN,QC,Gaspesie"   // Gaspe Peninsula and Magdalen Islands
+    ['CAN-QC-Gaspesie', {label: 'Gaspesie-Iles-de-la-Madeleine, Quebec', places: [
+        "CAN,QC,Gaspesie-Iles-de-la-Madeleine", //  1,    1,    0,    0,   // Gaspe Peninsula and Magdalen Islands
     ]}],
-    ['DEU-RP', {label: 'Rhineland Plantinate, Germany', places: [
-        "DEU,RP"
+
+    // Germany & France
+    ['DEU-BW', {label: 'Rhine River Valley', places: [
+        "DEU,BW",   // 3p: 3b, 0d, 0r   Baden-Württemberg, Germany
+        "DEU,HE",   // 2p: 2b, 2d, 0r   Hessen, Germany
+        "DEU,RP",   // 4p: 4b, 1d, 0r   Rhineland-Plantinate, Germany
+        "FRA,ALS"   // 1p: 1b, 0d, 0r   Alsace, France, borders B-W and Switzerland
     ]}],
-    ['DEU-BW', {label: 'BW, Germany', places: [
-        "DEU,BW"
+
+
+    //--------------------------------------------------------------------------
+    // England - London, Middlesex, and surrounding Counties
+    //--------------------------------------------------------------------------
+    ['ENG-LND', {label: 'London and SUrrounding Counties, England', places: [
+        "ENG,LND",  // London       8p: 3b, 6d, 2r
+        "ENG,MDL",  // Middlesex
+        "ENG,MDX",  // Middlesex    4p: 4b, 1d, 0r
+        "ENG,BKM",  // 1p: 1b, 0d, 0r   Buckinghamshire, England
+        "ENG,OXF",  // 1p: 1b, 0d, 0r Oxfordshire, England
     ]}],
-    ['DEU-HE', {label: 'Hessen, Germany', places: [
-        "DEU,HE"
+    
+    //--------------------------------------------------------------------------
+    // England - South East Coastal Counties
+    //--------------------------------------------------------------------------
+    ['ENG-CAM', {label: 'South East Coastal Counties of England', places: [
+        "ENG,CAM",  // 3p: 2b, 2d, 0r Cambridgeshire, England
+        "ENG,KEN",  // 2p: 1b, 1d   Kent, England
+        "ENG,SFK",  // 1p: 1b, 0d, 0r Suffolk, England
+        "ENG,SXE",  // 1p: 1b, 0d, 0r East Sussex, England
     ]}],
-    ['ENG-CAM', {label: 'Cambridgeshire, England', places: [
-        "ENG,CAM"
+
+    //--------------------------------------------------------------------------
+    // England - South West Coastal Counties
+    //--------------------------------------------------------------------------
+    ['ENG-COR', {label: 'South West Coastal Counties, England', places: [
+        "ENG,COR",  // 4p: 2b, 2d, 0r Cornwall, England
+        "ENG,DEV",  // 23p: Devonshire, England
+        "ENG,DOR",  // 3p: 3b, 0d, 0r Dorset, England
+        "ENG,SOM",  // 4p: 4b, 1d, 0r Somerset, England
     ]}],
-    ['ENG-CHS', {label: 'Cheshire, England', places: [
-        "ENG,CHS"
+
+    //--------------------------------------------------------------------------
+    // England - Welsh Marches
+    //--------------------------------------------------------------------------
+    ['ENG-CHS', {label: 'Welsh Marches, England', places: [
+        "ENG,CHS",  // 3p: 3b, 0d, 0r   Cheshire, England
+        "ENG,SAL",  // 1p: 1b, 0d, 0r   Shropshire (Salop), England
+        "ENG,WOR",  // 1p: 1b, 0d, 0r Worcestershire, England
     ]}],
-    ['ENG-COR', {label: 'Cornwall, England', places: [
-        "ENG,COR"
+
+    //--------------------------------------------------------------------------
+    // England - Scottish Marches
+    //--------------------------------------------------------------------------
+    ['ENG-DUR', {label: 'Scottish Marches, England', places: [
+        "ENG,DUR"   // 7p: 7b, 7d, 0r
     ]}],
-    ['ENG-DEV', {label: 'Devon, England', places: [
-        "ENG,DEV"
+
+    //--------------------------------------------------------------------------
+    // England - Leicestershire and Neighboring Counties
+    //--------------------------------------------------------------------------
+    ['ENG-LEI', {label: 'Leicestershire and Surrounding Counties, England', places: [
+        "ENG,LEI",  // 27p: 
+        "ENG,NOR",  // 3p: 2b, 2d, 0r 28 miles SE of Leicester, in the East Midlands
+        "ENG,NTT",  // 2p: 2b, 0d, 0r
+        "ENG,WAR",  // 3p: 3b, 0d, 0r
     ]}],
-    ['ENG-DOR', {label: 'Dorset, England', places: [
-        "ENG,DOR"
-    ]}],
-    ['ENG-DUR', {label: 'Durham, England', places: [
-        "ENG,DUR"
-    ]}],
-    ['ENG-KEN', {label: 'Kent, England', places: [
-        "ENG,KEN"
-    ]}],
-    ['ENG-LEI', {label: 'Newbold Verdon, England', places: [
-        "ENG,LEI"
-    ]}],
-    ['ENG-LND', {label: 'London, England', places: [
-        "ENG,LND",
-        "ENG,MDL",
-    ]}],
-    ['ENG-NTT', {label: 'Nottinghamshire, England', places: [
-        "ENG,NTT"
-    ]}],
-    ['ENG-SOM', {label: 'Somerset, England', places: [
-        "ENG,SOM"
-    ]}],
-    ['ENG-WAR', {label: 'Warwickshire, England', places: [
-        "ENG,WAR"
-    ]}],
-    ['ENG-SXE', {label: 'East Sussex, England', places: [
-        "ENG,SXE"
-    ]}],
-    ['ENG-WOR', {label: 'Worchestershire, England', places: [
-        "ENG,WOR"
-    ]}],
+
+    //--------------------------------------------------------------------------
+    // England - Yorkshire
+    //--------------------------------------------------------------------------
     ['ENG-YKS', {label: 'Yorkshire, England', places: [
-        "ENG,ERY",
-        "ENG,YKS",
+        "ENG,ERY",  // 5p: 4b, 3d, 0r
+        "ENG,YKS",  // 2p: 1b, 2d, 0r
     ]}],
-    ['ENG-BKM', {label: 'Buckinghamshire, England', places: [
-        "ENG,BKM"
+
+    //--------------------------------------------------------------------------
+    // Ireland & Northern Ireland
+    //--------------------------------------------------------------------------
+    ['IRL-COR', {label: 'County Cork, Irish Republic', places: [
+        "IRL,COR"   // very southern Ireland
     ]}],
-    ['ENG-NOR', {label: 'NOR, England', places: [
-        "ENG,NOR"
+    ['IRL-DON', {label: 'Northern Counties of Ireland', places: [
+        "NIR,ARM",
+        "IRL,DON",   // in very northern ireland, but in Republic
+        "NIR,DOW",
+        "IRL,MOG",   // in northern ireland, but in Republic
     ]}],
-    ['ENG-OXF', {label: 'Oxfordshire, England', places: [
-        "ENG,OXF"
+    ['IRL-DUB', {label: 'County Dublin, Irish Republic', places: [
+        "IRL,DUB"
     ]}],
-    ['ENG-SAL', {label: 'SAL, England', places: [
-        "ENG,SAL"
-    ]}],
-    ['ENG-SFK', {label: 'SFK, England', places: [
-        "ENG,SFK"
-    ]}],
-    ['FRA-ALS', {label: 'ALS, France', places: [
-        "FRA,ALS"
-    ]}],
-    ['IRL', {label: 'Irish Republic', places: [
-        "IRL"
-    ]}],
-    ['NIR', {label: 'Northern Ireland', places: [
-        "NIR"
-    ]}],
-    ['NOR-AKR', {label: 'Akershus, Norway', places: [
+
+    //--------------------------------------------------------------------------
+    // Norway
+    //--------------------------------------------------------------------------
+    ['NOR-AKR', {label: 'Akershus-Hedmark-Oppland, Norway', places: [
         "NOR,AKR",  // south east Norway
-    ]}],
-    ['NOR-HED', {label: 'Hedmark, Norway', places: [
-        // South central Norway, borders to Akersush, Trøndelag, Møre og Romsdal,
-        // Sogn og Fjordane, Buskerud, Akershus, Oslo and Hedmark.
-        // Combined with Hedmark in 2020 to form Innlandet 
-        // No coastline.
-        // Capital is Lillehammer
         "NOR,HED",
-    ]}],
-    ['NOR-OPP', {label: 'Oppland, Norway', places: [
-        // South central Norway, borders Sweden (Dalarna and Varmland counties),
-        // Akersush (south), Trøndelag (north), and Oppland (west)
-        // Combined with Oppland in 2020 to form Innlandet .
-        // No coastline.
         "NOR,OPP",
     ]}],
-    ['SCO-KKD', {label: 'KKD, Scotland', places: [
-        "SCO,KKD"
+
+    //--------------------------------------------------------------------------
+    // Scotland - Clyde
+    //--------------------------------------------------------------------------
+    ['SCO-RFW', {label: 'Renfrewshire, Scotland', places: [
+        "SCO,RFW",  // 4p: 4b, 2d, 0r   Renfrewshire, Scotland
     ]}],
-    ['SCO-LKS', {label: 'LKS, Scotland', places: [
-        "SCO,LKS"
+
+    //--------------------------------------------------------------------------
+    // Scotland - English Marches
+    //--------------------------------------------------------------------------
+    ['SCO-ROX', {label: 'English Marches, Scotland', places: [
+        "SCO,ROX",  // 1p: 1b, 0d, 0r   Roxburghshire, Scotland
+        "SCO,KKD",  // 2p: 2b, 0d, 0r   Kirkcudbrightshire, Scotland
+        "SCO,LKS",  // 1p: 1b, 1d, 0r   Lanarkshire, Scotland
     ]}],
-    ['SCO-MLN', {label: 'MLN, Scotland', places: [
-        "SCO,MLN"
+
+    //--------------------------------------------------------------------------
+    // Scotland - Firth of Forth
+    //--------------------------------------------------------------------------
+    ['SCO-MLN', {label: 'Firth of Forth, Scotland', places: [
+        "SCO,MLN",  // 1p: 1b: 1d, 0r   Midlothian (formerly Edinburghshire), Scotland
+        "SCO,WLN",  // 4p: 4b, 2d   West Lothian (formerly Linlithgowshire), Scotland
+        "SCO,STI",  // 1p: 1b 0d, 0r    Stirlingshire, Scotland
     ]}],
-    ['SCO-RFW', {label: 'RFW, Scotland', places: [
-        "SCO,RFW"
-    ]}],
-    ['SCO-ROX', {label: 'ROX, Scotland', places: [
-        "SCO,ROX"
-    ]}],
-    ['SCO-STI', {label: 'STI, Scotland', places: [
-        "SCO,STI"
-    ]}],
-    ['SCO-WLN', {label: 'WLN, Scotland', places: [
-        "SCO,WLN"
-    ]}],
+
+    //--------------------------------------------------------------------------
+    // USA - Connecticut
+    //--------------------------------------------------------------------------
     ['USA-CT-New London', {label: 'New London County, Connecticut', places: [
         "USA,CT,New London"
     ]}],
     ['USA-CT-Windham', {label: 'Windham County, Connecticut', places: [
         "USA,CT,Windham"
     ]}],
-    ['USA-IL-NC', {label: 'North Central Illinois', places: [
+
+    // Illinois
+    ['USA-IL-Henry', {label: 'Henry County, Illinois', places: [
+        "USA,IL,Henry", //          , 16,    1,    2,    13, []],
+    ]}],
+    ['USA-IL-LaSalle', {label: 'LaSalle County, Illinois', places: [
         //  borders Indiana
         "USA,IL,LaSalle",   //        , 1,    1,    0,    0, []],
     ]}],
-    ['USA-IL-NW', {label: 'North West Illinois', places: [
-        "USA,IL,Henry", //          , 16,    1,    2,    13, []],
-    ]}],
-    ['USA-IN-Carroll', {label: 'Carroll County, Indiana', places: [
+
+    //--------------------------------------------------------------------------
+    // Indiana - North Central
+    //--------------------------------------------------------------------------
+    ['USA-IN-Carroll', {label: 'North Central Indiana', places: [
         "USA,IN,Carroll",
-    ]}],
-    ['USA-IN-Cass', {label: 'Cass County, Indiana', places: [
         "USA,IN,Cass",
-    ]}],
-    ['USA-IN-Kosciusko', {label: 'Kosciusko County, Indiana', places: [
         "USA,IN,Kosciusko",
-    ]}],
-    ['USA-IN-LaGrange', {label: 'LaGrange County, Indiana', places: [
-        "USA,IN,LaGrange",
-    ]}],
-    ['USA-IN-Miami', {label: 'Miami County, Indiana', places: [
+        "USA,IN,LaGrange",  // borders Michigan, half Amish, 3rd largest in US
         "USA,IN,Miami",
     ]}],
+
+    //--------------------------------------------------------------------------
+    // Kansas
+    //--------------------------------------------------------------------------
     ['USA-KS-Coffey', {label: 'Coffey County, Kansas', places: [
         "USA,KS,Coffey",
     ]}],
-    ['USA-KY-E', {label: 'East Kentucky', places: [
+
+    //--------------------------------------------------------------------------
+    // Kentucky - Eastern Counties
+    //--------------------------------------------------------------------------
+    ['USA-KY-Eastern', {label: 'Eastern Counties, Kentucky', places: [
+        // East Kentucky
         // "USA,KY"             //  3,    0,    0,    3,
         "USA,KY,Floyd",         // 48,    3,   12,    33
         "USA,KY,Johnson",       // 18,    1,    2,    15
-        "USA,KY,Martin",        //, 2,    0,    2,    0
     ]}],
-    ['USA-KY-N', {label: 'Lousiville Area, Kentucky', places: [
+    ['USA-KY-Jefferson', {label: 'Jefferson County, Kentucky', places: [
+        // Louisville area
         "USA,KY,Jefferson",     // 1,    0,    1,    0  Louisville
-        "USA,KY,Oldham",        // 1,    0,    1,    0
     ]}],
-    ['USA-MA-Barnstable', {label: 'Barnstable County, Massacheusets', places: [
-        'USA,MA,Barnstable'
+
+    //--------------------------------------------------------------------------
+    // Massacheusets - Colonial COunties
+    //--------------------------------------------------------------------------
+    ['USA-MA-Colonial', {label: 'Colonial Counties, Massacheusets', places: [
+        // 20p: 
+        'USA,MA,Barnstable',
+        'USA,MA,Bristol',
+        'USA,MA,Plymouth',
     ]}],
-    ['USA-MA-Bristol', {label: 'Bristol County, Massacheusets', places: [
-        'USA,MA,Bristol'
-    ]}],
+
     ['USA-MA-Essex', {label: 'Essex County, Massacheusets', places: [
-        'USA,MA,Essex'
+        'USA,MA,Essex', // 3p: 1b, 1d, 1r   north east coast, borders NH
     ]}],
-    ['USA-MA-Plymouth', {label: 'Plymouth County, Massacheusets', places: [
-        'USA,MA,Plymouth'
+
+    //--------------------------------------------------------------------------
+    // Maryland - West Bay
+    //--------------------------------------------------------------------------
+    ['USA-MD-West Bay', {label: 'West Cheapeake Bay, Maryland', places: [
+        'USA,MD,Anne Arundel',  // 17p: 10b, 12d, 1r
+        'USA,MD,Baltimore',
+        'USA,MD,Calvert',       // 2p: 1b, 1d, 0r
+        'USA,MD,Charles',       // 2p: 1b, 2d, 0r
     ]}],
-    ['USA-MD-AA', {label: 'Anne Arundel County & Baltimore, Maryland', places: [
-        'USA,MD,Anne Arundel',
-        'USA,MD,Baltimore'
+
+    //--------------------------------------------------------------------------
+    // Maryland - West Panhandle
+    //--------------------------------------------------------------------------
+    ['USA-MD-Panhandle', {label: 'West Panhandle, Maryland', places: [
+        'USA,MD,Carroll',   // 1p: 1b, 0d, 0r
+        'USA,MD,Frederick', // 13p: 8b, 2d, 5r  borders Adams & Franklin, PA, and Loudoun, VA 
+        'USA,MD,Montgomery',// 2p: 1b, 2d, 0r   borders Fairfax and Loudoun, VA
     ]}],
-    ['USA-MD-Calvert', {label: 'Calvert County, Maryland', places: [
-        'USA,MD,Calvert'
+
+    //--------------------------------------------------------------------------
+    // Maryland - South East
+    //--------------------------------------------------------------------------
+    ['USA-MD-South East', {label: 'South East, Maryland', places: [
+        'USA,MD,Somerset',  // 13p: 6b, 10d, 3r     borders Delaware
+        'USA,MD,Wicomico',  // 2p: 2b, 0d, 0r       borders Delarae
     ]}],
-    ['USA-MD-Carroll', {label: 'Carroll County, Maryland', places: [
-        'USA,MD,Carroll'
+    
+    //--------------------------------------------------------------------------
+    // Minnesota - North Central
+    //--------------------------------------------------------------------------
+    ['USA-MN-North Central', {label: 'North Central Minnesota', places: [
+        // "USA,MN,Beltrami",       //  12,    1,    6,    5
+        "USA,MN,Cass",              //  25,    2,    3,   20
+        // "USA,MN,Crow Wing",      //   1,    0,    1,    0
+        "USA,MN,Hubbard",           //   3,    0,    3,    0
+        "USA,MN,Itasca",            // 185,   23,   28,  134
+        // "USA,MN,Lake of the Woods",// 1,   0,    1,    0
+        // "USA,MN,St. Louis",      //   2,    0,    2,    0
+        // "USA,MN,Todd",           //   1,    1,    0,    0
+        "USA,MN,Wadena",            //  31,    8,   11,   12
     ]}],
-    ['USA-MD-Charles', {label: 'Charles County, Maryland', places: [
-        'USA,MD,Charles'
+
+    //--------------------------------------------------------------------------
+    // Minnesota - North West
+    //--------------------------------------------------------------------------
+    ['USA-MN-North West', {label: 'North West Minnesota', places: [
+        // "USA,MN,Becker",        // 64,   12,    9,   43 North West Minnesota
+        // "USA,MN,Clay",          //  1,    1,    0,    0 North West Minnesota
+        // "USA,MN,Kittson",       //  6,    2,    0,    4 North West Minnesota
+        // "USA,MN,Mahnomen",      //  5,    0,    1,    4 North West Minnesota
+        // "USA,MN,Marshall",      //  1,    1,    0,    0 North West Minnesota
+        // "USA,MN,Norman",        //  2,    0,    1,    1 North West Minnesota
+        "USA,MN,Otter Tail",       //  9,    0,    3,    6 North West Minnesota
+        // "USA,MN,Pennington",    //  6,    0,    0,    6 North West Minnesota
     ]}],
-    ['USA-MD-Frederick', {label: 'Frederick County, Maryland', places: [
-        'USA,MD,Frederick'
+
+    //--------------------------------------------------------------------------
+    // Minnesota - East Central and Metro
+    //--------------------------------------------------------------------------
+    ['USA-MN-East Central', {label: 'East Central, Metro, Minnesota', places: [
+        // "USA,MN,Anoka",
+        // "USA,MN,Carver",    //   0,    0,    0,    9 East Central MN
+        // "USA,MN,Chisago",   //   1,    0,    1,    0 East Central MN
+        // "USA,MN,Dakota",    //   2,    0,    1,    1 East Central MN
+        "USA,MN,Hennepin",     // 258p, 32b,  44d, 182r East Central MN
+        // "USA,MN,Ramsey",    //   6,    1,    4,    1 East Central MN
+        // "USA,MN,McLeod",    //   1,    0,    1,    0 East Central MN
+        "USA,MN,Meeker",       //  39,   10,   10,   19 East Central MN
+        // "USA,MN,Scott",     //   0,    0,    0,    9 East Central MN
+        "USA,MN,Wright",       //  36,    7,    5,   24 East Central MN
     ]}],
-    ['USA-MD-Montgomery', {label: 'Montgomery County, Maryland', places: [
-        'USA,MD,Montgomery'
+
+    //--------------------------------------------------------------------------
+    // North Dakota - North Border
+    //--------------------------------------------------------------------------
+    ['USA-ND-North Border', {label: 'North Border Counties, North Dakota', places: [
+        'USA,ND,Rolette',   // north east ND
+        'USA,ND,Towner',    // north east ND
     ]}],
-    ['USA-MD-Somerset', {label: 'Somerset County, Maryland', places: [
-        'USA,MD,Somerset'
-    ]}],
-    ['USA-MD-Wicomico', {label: 'Wicomico County, Maryland', places: [
-        'USA,MD,Wicomico'
-    ]}],
-    ['USA-MN-NC', {label: 'North Central Minnesota', places: [
-        "USA,MN,Beltrami",      //  12,    1,    6,    5
-        "USA,MN,Cass",          //  25,    2,    3,   20
-        "USA,MN,Crow Wing",     //   1,    0,    1,    0
-        "USA,MN,Hubbard",       //   3,    0,    3,    0
-        "USA,MN,Itasca",        // 185,   23,   28,  134
-        "USA,MN,Lake of the Woods",// 1,   0,    1,    0
-        "USA,MN,St. Louis",     //   2,    0,    2,    0
-        "USA,MN,Todd",          //   1,    1,    0,    0
-        "USA,MN,Wadena",        //  31,    8,   11,   12
-    ]}],
-    ['USA-MN-NW', {label: 'North West Minnesota', places: [
-        "USA,MN,Becker",        // 64,   12,    9,   43
-        "USA,MN,Clay",          //  1,    1,    0,    0
-        "USA,MN,Kittson",       //  6,    2,    0,    4
-        "USA,MN,Mahnomen",      //  5,    0,    1,    4
-        "USA,MN,Marshall",      //  1,    1,    0,    0
-        "USA,MN,Norman",        //  2,    0,    1,    1
-        "USA,MN,Otter Tail",    //  9,    0,    3,    6
-        "USA,MN,Pennington",    //  6,    0,    0,    6
-    ]}],
-    ['USA-MN-EC', {label: 'East Central, Metro, Minnesota', places: [
-        "USA,MN,Carver",        //   0,    0,    0,    9
-        "USA,MN,Chisago",       //   1,    0,    1,    0
-        "USA,MN,Dakota",        //   2,    0,    1,    1
-        "USA,MN,Hennepin",      // 258,   32,   44,  182
-        "USA,MN,Ramsey",        //   6,    1,    4,    1
-        "USA,MN,McLeod",        //   1,    0,    1,    0
-        "USA,MN,Meeker",        //  39,   10,   10,   19
-        "USA,MN,Scott",         //   0,    0,    0,    9
-        "USA,MN,Wright",        //  36,    7,    5,   24
-    ]}],
-    ['USA-MN-SE', {label: 'South East Minnesota', places: [
-        "USA,MN,Freeborn",      //  1,    0,    1,    0
-        "USA,MN,Rice",          //  3,    0,    2,    1
-        "USA,MN,Winona",        //  1,    0,    1,    0
-    ]}],
-    ['USA-MN-SW', {label: 'South West Minnesota', places: [
-        "USA,MN,Nobles",        //  1,    0,    0,    1
-        "USA,MN,Pipestone",     //  1,    0,    1,    0
-    ]}],
-    ['USA-MN-WC', {label: 'West Central Minnesota', places: [
-        "USA,MN,Grant",         //  1,    0,    1,    0
-        "USA,MN,Wilkin",        //  1,    0,    1,    0
-    ]}],
-    ['USA-NC-Surry', {label: 'Surry County, North Carolina', places: [
-        'USA,NC,Surry'
-    ]}],
-    ['USA-ND-Rolette', {label: 'Rolette County, North Dakota', places: [
-        'USA,ND,Rolette'
-    ]}],
-    ['USA-ND-Towner', {label: 'Towner County, North Dakota', places: [
-        'USA,ND,Towner'
-    ]}],
+
+    // New York
     ['USA-NY-Cayuga', {label: 'Cayuga County, New York', places: [
         'USA,NY,Cayuga'
     ]}],
@@ -268,109 +291,120 @@ export const _vicinityDefsCdb = [
     ['USA-NY-Rensselaer', {label: 'Rensselaer County, New York', places: [
         'USA,NY,Rensselaer'
     ]}],
+
+    // Ohio
+    // Western border with Indiana
     ['USA-OH-Darke', {label: 'Darke County, Ohio', places: [
-        'USA,OH,Darke'
+        'USA,OH,Darke'          // borders Preble, and Wayne, Jay, Randall, IN
     ]}],
+    ['USA-OH-Preble', {label: 'Preble County, Ohio', places: [
+        'USA,OH,Preble',        // borders Darke
+    ]}],
+
     ['USA-OH-Hamilton', {label: 'Hamilton County, Ohio', places: [
         'USA,OH,Hamilton'
+    ]}],
+    ['USA-OH-Huron', {label: 'Huron County, Ohio', places: [
+        'USA,OH,Huron'
     ]}],
     ['USA-OH-Pike', {label: 'Pike County, Ohio', places: [
         'USA,OH,Pike'
     ]}],
-    ['USA-OH-Preble', {label: 'Preble County, Ohio', places: [
-        'USA,OH,Preble'
-    ]}],
     ['USA-OH-Stark', {label: 'Stark County, Ohio', places: [
         'USA,OH,Stark'
     ]}],
-    ['USA-PA-Chester', {label: 'Chester County, Pennsylvania', places: [
-        'USA,PA,Chester'
+
+    //--------------------------------------------------------------------------
+    // Pennsylvania - South Border Counties
+    //--------------------------------------------------------------------------
+    ['USA-PA-South Border', {label: 'South Border Counties, Pennsylvania', places: [
+        'USA,PA,Franklin',  // p2: 1b, 0d, 1r   border Frederick & Washington, MD
+        'USA,PA,Greene',    // 2p: 2b, 0d, 0r   south east corner, borders Monongalia & Wetzel, WV
+        'USA,PA,Somerset',  // 4p: 3b, 1d, 0r   borders Garrett & Allegany, MD
+        'USA,PA,Washington',// 1p: 1b, 0d, 0r   borders Brook, Hancock, Ohio, & Marshall, WV
     ]}],
-    ['USA-PA-Bucks', {label: 'Bucks County, Pennsylvania', places: [
-        'USA,PA,Bucks'
+
+    //--------------------------------------------------------------------------
+    // Pennsylvania - East Border Counties
+    //--------------------------------------------------------------------------
+    ['USA-PA-East Border', {label: 'East Border Counties, Pennsylvania', places: [
+        'USA,PA,Bucks',     // 1p: 1b, 0d, 0r   borders New Jersey
+        'USA,PA,Pike',      // 2p: 2b, 0d, 0r   borders New Jersey, New York
     ]}],
-    ['USA-PA-Franklin', {label: 'Franklin County, Pennsylvania', places: [
-        'USA,PA,Franklin'
+
+    //--------------------------------------------------------------------------
+    // Pennsylvania - Dutch
+    //--------------------------------------------------------------------------
+    ['USA-PA-Penn Dutch', {label: 'Penn Dutch Counties, Pennsylvania', places: [
+        'USA,PA,Chester',   // 9p: 6b, 4d, 05   borders New Castle, DE and Cecil, MD
+        'USA,PA,Lancaster', // 2p: 1b, 0d, 1r
     ]}],
-    ['USA-PA-Greene', {label: 'Greene County, Pennsylvania', places: [
-        'USA,PA,Greene'
+
+    //--------------------------------------------------------------------------
+    // Rhode Island
+    //--------------------------------------------------------------------------
+    ['USA-RI', {label: 'Bristol, Newport, Washington County, Rhode Island', places: [
+        'USA,RI,Bristol',       // 1p: 1b: 0d, 0r
+        'USA,RI,Newport',       // 3p: 1b, 2d, 0r
+        'USA,RI,Washington'     // 3p: 2b, 2d, 0r
     ]}],
-    ['USA-PA-Lancaster', {label: 'Lancaster County, Pennsylvania', places: [
-        'USA,PA,Lancaster'
+
+    //--------------------------------------------------------------------------
+    // Virginia - R1, R2, R3, part of R4 (Virginia Assoc of Counties Regions)
+    //--------------------------------------------------------------------------
+    ['USA-VA-Tidewater', {label: 'R1, R2, R3: Tidewater, Virginia', places: [
+        'USA,VA,Accomack',      // 1p: 1b, 0d, 0r   R1, Coastal Island
+        'USA,VA,New Kent',      // 3p: 1b, 2d, 05   R1
+        'USA,VA,King William',  // 2p: 2b, 0d, 0r   R2
+        'USA,VA,Chesterfield',  // 2p: 2b, 0d, 0r   R3
+        'USA,VA,Hanover',       // 6p: 3b, 3d, 1r   R3
+        'USA,VA,Greensville',   // 1p: 1b, 0d, 0r   R4
     ]}],
-    ['USA-PA-Pike', {label: 'Pike County, Pennsylvania', places: [
-        'USA,PA,Pike'
+
+    //--------------------------------------------------------------------------
+    // Virginia - R5, Central Piedmont
+    //--------------------------------------------------------------------------
+    ['USA-VA-Central Piedmont', {label: 'R5: Central Piedmont, Virginia', places: [
+        'USA,VA,Buckingham',    // 1p: 1b, 0d, 1r   R5
+        'USA,VA,Goochland',     // 1: 1b, 0d, 0r    R5
+        'USA,VA,Powhatan',      // 1p: 1b, 0d, 0r   R5
     ]}],
-    ['USA-PA-Somerset', {label: 'Somerset County, Pennsylvania', places: [
-        'USA,PA,Somerset'
+
+    //--------------------------------------------------------------------------
+    // Virginia - R9 & R11: Blue Ridge and Valley Ridge
+    //--------------------------------------------------------------------------
+    ['USA-VA-Blue Ridge', {label: 'R9, R11: Blue Ridge/Valley Ridge, Western Virginia', places: [
+        'USA,VA,Augusta',       // 5p: 3b, 5d, 1r   R9
+        'USA,VA,Botetourt',     // 1p: 1b, 0d, 0r   R11
     ]}],
-    ['USA-PA-Washington', {label: 'Washington County, Pennsylvania', places: [
-        'USA,PA,Washington'
+
+    //--------------------------------------------------------------------------
+    // Virginia - R10
+    //--------------------------------------------------------------------------
+    ['USA-VA-South Piedmont', {label: 'R10: SOuth Piedmont, Virginia', places: [
+        'USA,VA,Franklin',      // 1p: 1b, 0d, 0r
+        'USA,VA,Halifax',       // 1p: 1b, 0d, 0r
     ]}],
-    ['USA-RI-Bristol', {label: 'Bristol County, Rhode Island', places: [
-        'USA,RI,Bristol'
+    
+    //--------------------------------------------------------------------------
+    // Virginia - R12 & R13: Southwest angle,
+    // R13 and R12 are Valley & Ridge, R12 is Blue Ridge
+    //--------------------------------------------------------------------------
+    ['USA-VA-SouthWest', {label: 'R11, R12, R13: SW Blue Ridge, Virginia', places: [
+        'USA,VA,Bland',         // 1p: 1b, 0d, 0r   R12
+        'USA,VA,Washington',    // 6p: 1b, 2d, 8r   R12
+        'USA,VA,Lee',           // 2p: 1b, 0d, 1r   R13
+        'USA,VA,Scott',         // 3p: 1b, 2d, 1r   R13
+        'USA,NC,Surry',         // 3p: 1b, 2d, 3r   borders Patrick, Carroll, and Grayson, VA
     ]}],
-    ['USA-RI-Newport', {label: 'Newport County, Rhode Island', places: [
-        'USA,RI,Newport'
-    ]}],
-    ['USA-RI-Washington', {label: 'Washington County, Rhode Island', places: [
-        'USA,RI,Washington'
-    ]}],
-    ['USA-VA-Augusta', {label: 'Augusta County, Virginia', places: [
-        'USA,VA,Augusta'
-    ]}],
-    ['USA-VA-Accomack', {label: 'Accomack County, Virginia', places: [
-        'USA,VA,Accomack'
-    ]}],
-    ['USA-VA-Bland', {label: 'Bland County, Virginia', places: [
-        'USA,VA,Bland'
-    ]}],
-    ['USA-VA-Botetourt', {label: 'Botetourt County, Virginia', places: [
-        'USA,VA,Botetourt'
-    ]}],
-    ['USA-VA-Buckingham', {label: 'Buckingham County, Virginia', places: [
-        'USA,VA,Buckingham'
-    ]}],
-    ['USA-VA-Chesterfield', {label: 'Chesterfield County, Virginia', places: [
-        'USA,VA,Chesterfield'
-    ]}],
-    ['USA-VA-Franklin', {label: 'Franklin County, Virginia', places: [
-        'USA,VA,Franklin'
-    ]}],
-    ['USA-VA-Goochland', {label: 'Goochland County, Virginia', places: [
-        'USA,VA,Goochland'
-    ]}],
-    ['USA-VA-Greensville', {label: 'Greensville County, Virginia', places: [
-        'USA,VA,Greensville'
-    ]}],
-    ['USA-VA-Halifax', {label: 'Halifax County, Virginia', places: [
-        'USA,VA,Halifax'
-    ]}],
-    ['USA-VA-Lee', {label: 'Lee County, Virginia', places: [
-        'USA,VA,Lee'
-    ]}],
-    ['USA-VA-Hanover', {label: 'Hanover COunty, Virginia', places: [
-        'USA,VA,Hanover'
-    ]}],
-    ['USA-VA-King William', {label: 'King William County, Virginia', places: [
-        'USA,VA,King William'
-    ]}],
-    ['USA-VA-New Kent', {label: 'New Kent County, Virginia', places: [
-        'USA,VA,New Kent'
-    ]}],
-    ['USA-VA-Powhatan', {label: 'Powhatan County, Virginia', places: [
-        'USA,VA,Powhatan'
-    ]}],
-    ['USA-VA-Scott', {label: 'Scott County, Virginia', places: [
-        'USA,VA,Scott'
-    ]}],
-    ['USA-VA-Washington', {label: 'Washington County, Virginia', places: [
-        'USA,VA,Washington'
-    ]}],
+
+    // Vermont
     ['USA-VT-Windsor', {label: 'Windsor County, Vermont', places: [
-        'USA,VT,Windsor'
+        'USA,VT,Windsor',       // 5p: 1b, 4d, 2r
     ]}],
+
+    // Wisconsin
     ['USA-WI-Adams', {label: 'Adams County, Wisconsin', places: [
-        'USA,WI,Adams'
+        'USA,WI,Adams',         // 9p: 2b, 3d, 19r
     ]}],
 ]

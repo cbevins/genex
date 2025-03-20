@@ -27,6 +27,7 @@ export class Vicinities {
         
     _compileEvents(people, vicinities) {
         const gevents = []
+        // Loop for each person...
         for(let i=0; i<people.length; i++) {
             
             // Adds the [person, gevent] to all Vicinity instances in which it occurs

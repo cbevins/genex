@@ -1,4 +1,13 @@
+/**
+ * Vicinities relevant to the Riley-Trombley Family Tree.
+ * This is a subset of _vicintyDefsAll for persons who appear
+ * in the Lineage tree for Barbara Riley
+ */
 export const _vicinityDefsBjr = [
+    ['CAN-NB', {label: 'New Brunswick, Canada', places: [
+        "CAN,NB"
+    ]}],
+
     ['CAN-QC-Lower', {label: 'Lower St Lawarence, Quebec', places: [
                                                 // Tot Birth Death Resid
         "CAN,QC,Bas-Saint-Laurent",             // 32,   25,    7,    0,
@@ -12,88 +21,141 @@ export const _vicinityDefsBjr = [
         "CAN,QC,Matawinie",                     //  1,    0,    1,    0
         "CAN,QC,Monteregie",                    // 15,   13,    2,    0
     ]}],
-    ['DEU-SE', {label: 'South, East Germany', places: [
-        // "DEU",      //  3,    2,    1,    0
-        "DEU,BW",   //  9,    9,    0,    0
-        "DEU,BY",   //  2,    2,    0,    0
-        "DEU,HE",   //  5,    3,    2,    0
-        "DEU,NW",   //  1,    1,    0,    0
-        "DEU,RP",   // 10,    7,    3,    0
+
+    // ['DEU-SE', {label: 'South, East Germany', places: [
+    //     // "DEU",      //  3,    2,    1,    0
+    //     "DEU,BW",   //  9,    9,    0,    0
+    //     "DEU,BY",   //  2,    2,    0,    0
+    //     "DEU,HE",   //  5,    3,    2,    0
+    //     "DEU,NW",   //  1,    1,    0,    0
+    //     "DEU,RP",   // 10,    7,    3,    0
+    // ]}],
+
+    // England
+    ['ENG-DUR', {label: 'Durham, England', places: [
+        "ENG,DUR"
     ]}],
-    ['ENG-DEV', {label: 'Devon, England', places: [
-        "ENG,DEV"
+    ['ENG-ESS', {label: 'Essex, England', places: [
+        "ENG,ESS"
     ]}],
-    ['ENG-LEI', {label: 'Newbold Verdon, England', places: [
-        "ENG,LEI"
+    ['ENG-LND', {label: 'London, England', places: [
+        "ENG,LND",
     ]}],
-    ['IRL', {label: 'Irish Republic', places: [
-        "IRL"
+    ['ENG-MDX', {label: 'Middlesex, England', places: [
+        "ENG,MDL",
+        "ENG,MDX",
     ]}],
-    ['NIR', {label: 'Northern Ireland', places: [
-        "NIR"
+    ['ENG-NBL', {label: 'Northumberland, England', places: [
+        "ENG,NBL"
     ]}],
-    ['NLD-ZUI', {label: 'South Holland', places: [
-        "NLD,ZUI"
+    ['ENG-NOR', {label: 'Northhamptonshire, England', places: [
+        // 28 miles SE of Leicester, in the East Midlands
+        "ENG,NOR"
     ]}],
+    ['ENG-NTT', {label: 'Nottinghamshire, England', places: [
+        "ENG,NTT"
+    ]}],
+    ['ENG-SAL', {label: 'Shropshire (Salop), England', places: [
+        "ENG,SAL"
+    ]}],
+    ['ENG-SFK', {label: 'Suffolk, England', places: [
+        "ENG,SFK"
+    ]}],
+    ['ENG-YKS', {label: 'Yorkshire, England', places: [
+        "ENG,YKS",
+    ]}],
+    ['ENG-ERY', {label: 'East Riding, Yorkshire, England', places: [
+        "ENG,ERY",
+    ]}],
+
+    // Netherlands
+    ['NLD-DRE', {label: 'Drenth, Netherlands', places: [
+        "NLD,DRE" // North East NLD
+    ]}],
+    ['NLD-ZUI', {label: 'Zuid-Holland and Vicinity', places: [
+        "BEL,EFL", // East Flanders, Belguim
+        "NLD,GEL", // Gelderland
+        "NLD,NOR", // North Holland (Amsterdam), Netherlands
+        "NLD,ZUI", // South Holland (Rotterdam), Netherlands
+    ]}],
+
+    // Sweden
     ['SWE-S', {label: 'Southern Sweden', places: [
         "SWE,JON",               //  2,    1,    1,    0,
         "SWE,KRO",               // 35,   23,   12,    0,
         "SWE,VAR",               //  3,    1,    2,    0,
     ]}],
-    ['USA-KY-E', {label: 'East Kentucky', places: [
-        // "USA,KY"             //  3,    0,    0,    3,
-        "USA,KY,Floyd",         // 48,    3,   12,    33
-        "USA,KY,Johnson",       // 18,    1,    2,    15
-        "USA,KY,Martin",        //, 2,    0,    2,    0
+
+    // Iowa
+    ['USA-IA-Jasper', {label: 'Jasper County, Iowa', places: [
+        "USA,IA,Jasper"
     ]}],
-    ['USA-KY-N', {label: 'Lousiville Area, Kentucky', places: [
-        "USA,KY,Jefferson",     // 1,    0,    1,    0  Louisville
-        "USA,KY,Oldham",        // 1,    0,    1,    0
+    ['USA-IA-Keokuk', {label: 'Keokuk County, Iowa', places: [
+        "USA,IA,Keokuk"
     ]}],
-    ['USA-MN-NC', {label: 'North Central Minnesota', places: [
-        "USA,MN,Beltrami",      //  12,    1,    6,    5
-        "USA,MN,Cass",          //  25,    2,    3,   20
-        "USA,MN,Crow Wing",     //   1,    0,    1,    0
-        "USA,MN,Hubbard",       //   3,    0,    3,    0
-        "USA,MN,Itasca",        // 185,   23,   28,  134
-        "USA,MN,Lake of the Woods",// 1,   0,    1,    0
-        "USA,MN,St. Louis",     //   2,    0,    2,    0
-        "USA,MN,Todd",          //   1,    1,    0,    0
-        "USA,MN,Wadena",        //  31,    8,   11,   12
+    ['USA-IA-Marion', {label: 'Marion County, Iowa', places: [
+        "USA,IA,Marion"
     ]}],
-    ['USA-MN-NW', {label: 'North West Minnesota', places: [
-        "USA,MN,Becker",        // 64,   12,    9,   43
-        "USA,MN,Clay",          //  1,    1,    0,    0
-        "USA,MN,Kittson",       //  6,    2,    0,    4
-        "USA,MN,Mahnomen",      //  5,    0,    1,    4
-        "USA,MN,Marshall",      //  1,    1,    0,    0
-        "USA,MN,Norman",        //  2,    0,    1,    1
-        "USA,MN,Otter Tail",    //  9,    0,    3,    6
-        "USA,MN,Pennington",    //  6,    0,    0,    6
+
+    // Maryland
+    ['USA-MD-Baltimore', {label: 'Baltimore, Maryland', places: [
+        'USA,MD,Baltimore'
     ]}],
-    ['USA-MN-EC', {label: 'East Central, Metro, Minnesota', places: [
-        "USA,MN,Carver",        //   0,    0,    0,    9
-        "USA,MN,Chisago",       //   1,    0,    1,    0
-        "USA,MN,Dakota",        //   2,    0,    1,    1
+    ['USA-MD-Frederick', {label: 'Frederick County, Maryland', places: [
+        'USA,MD,Frederick'
+    ]}],
+    ['USA-MD-Harford', {label: 'Harford County, Maryland', places: [
+        'USA,MD,Harford'
+    ]}],
+    ['USA-MD-Washington', {label: 'Washington County, Maryland', places: [
+        'USA,MD,Washington'
+    ]}],
+
+    // Maine
+    ['USA-ME-Aroostook', {label: 'Aroostook County, Maine', places: [
+        'USA,ME,Aroostook'
+    ]}],
+
+    // Minnesota
+    ['USA-MN-Hennepin', {label: 'Hennepin County, Minnesota', places: [
         "USA,MN,Hennepin",      // 258,   32,   44,  182
-        "USA,MN,Ramsey",        //   6,    1,    4,    1
-        "USA,MN,McLeod",        //   1,    0,    1,    0
-        "USA,MN,Meeker",        //  39,   10,   10,   19
-        "USA,MN,Scott",         //   0,    0,    0,    9
-        "USA,MN,Wright",        //  36,    7,    5,   24
     ]}],
-    ['USA-MN-SE', {label: 'South East Minnesota', places: [
-        "USA,MN,Freeborn",      //  1,    0,    1,    0
-        "USA,MN,Rice",          //  3,    0,    2,    1
-        "USA,MN,Winona",        //  1,    0,    1,    0
+
+    // New York
+    ['USA-NY-Clinton', {label: 'Clinton County, New York', places: [
+        'USA,NY,Clinton'
     ]}],
-    ['USA-MN-SW', {label: 'South West Minnesota', places: [
-        "USA,MN,Nobles",        //  1,    0,    0,    1
-        "USA,MN,Pipestone",     //  1,    0,    1,    0
+
+    // Ohio
+    ['USA-OH-Ashtabula', {label: 'Ashtabula County, Ohio', places: [
+        'USA,OH,Ashtabula'
     ]}],
-    ['USA-MN-WC', {label: 'West Central Minnesota', places: [
-        "USA,MN,Grant",         //  1,    0,    1,    0
-        "USA,MN,Wilkin",        //  1,    0,    1,    0
+    ['USA-OH-Athens', {label: 'Athens County, Ohio', places: [
+        'USA,OH,Athens'
     ]}],
+    ['USA-OH-Harrison', {label: 'Harrison County, Ohio', places: [
+        'USA,OH,Harrison'
+    ]}],
+
+    // Rhode Island
+    ['USA-RI-Bristol', {label: 'Bristol County, Rhode Island', places: [
+        'USA,RI,Bristol'
+    ]}],
+
+    // Virginia
+    ['USA-VA-Fauquier', {label: 'Fauquier County, Virginia', places: [
+        'USA,VA,Fauquier'
+    ]}],
+    ['USA-VA-Goochland', {label: 'Goochland County, Virginia', places: [
+        'USA,VA,Goochland'
+    ]}],
+    ['USA-VA-King William', {label: 'King William County, Virginia', places: [
+        'USA,VA,King William'
+    ]}],
+    ['USA-VA-Spotsylvania', {label: 'Spotsylvania County, Virginia', places: [
+        'USA,VA,Spotsylvania'
+    ]}],
+
+
 ]
 

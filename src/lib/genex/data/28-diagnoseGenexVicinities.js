@@ -3,6 +3,7 @@ import { Genex, Channels, Vicinities } from '../genex/index.js'
 // Data
 import { _places } from '../data/generated/genex/_places.js'
 import { _vicinityDefsAll } from './customized/genex/_vicinityDefsAll.js'
+import { _vicinityDefsBjr } from './customized/genex/_vicinityDefsBjr.js'
 import { _vicinityDefsCdb } from './customized/genex/_vicinityDefsCdb.js'
 import { _vicinityDefsBevins } from './customized/genex/_vicinityDefsBevins.js'
 
@@ -24,9 +25,9 @@ function vicinityFor(nameKey, vicinDefs, varName) {
 console.log(`\n${progName}`)
 console.log(`    1 - created Genex with ${genex.people().length} Person and ${genex.family().length} Family instances.`)
 
-vicinityFor('Collin Douglas Bevins 1952', _vicinityDefsAll, '_vicinityResultsCdb')
+vicinityFor('Collin Douglas Bevins 1952', _vicinityDefsCdb, '_vicinityResultsCdb')
 vicinityFor('William Collins Bevins 1931', _vicinityDefsAll, '_vicinityResultsBevins')
-vicinityFor("Barbara Jeanne Riley 1953", _vicinityDefsAll, '_vicinityResultsBjr')
+vicinityFor("Barbara Jeanne Riley 1953", _vicinityDefsBjr, '_vicinityResultsBjr')
 
 // ALL vicinities
 const vicins = new Vicinities(_vicinityDefsAll, genex.people())
