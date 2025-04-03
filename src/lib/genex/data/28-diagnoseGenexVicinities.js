@@ -10,6 +10,17 @@ import { _vicinityDefsBevins } from './customized/genex/_vicinityDefsBevins.js'
 const time1 = new Date()
 const progName = (process.argv[1]).split('\\').pop()
 const genex = new Genex()
+const cdb = genex.person('Collin Douglas Bevins 1952')
+const wlb = genex.person("William Longford Bevins 1815")
+const wab = genex.person("William Alfred Bevins 1843")
+const bjr = genex.person("Barbara Jeanne Riley 1953")
+
+// Add Lineages for Bevins-Heddens and Riley-Trombley to each Person
+const lineageCdb = new Channels(cdb)
+genex.addLineage(lineageCdb, 'Bevins-Heddens', 'BH')
+
+const lineageBjr = new Channels(bjr)
+genex.addLineage(lineageBjr, 'Riley-Trombley', 'RT')
 
 function fix(str) { return JSON.stringify(str) }
 
@@ -51,7 +62,8 @@ function writeVicins(varName, defsArray, vicArray, people, missing=[]) {
         // for(let j=0; j<v.persons().length; j++) {
         for(let j=0; j<parr.length; j++) {
             const [person, gevents] = parr[j]
-            js += `        [${j}, ${fix(person.label())}, ${gevents.length}, [,\n`
+            js += `        [${j}, ${fix(person.nameKey())}, ${person.birthYear()}, `
+            + `${person.lineageGen()}, ${gevents.length}, [,\n`
             // Loop for each GenEvent
             for(let k=0; k<gevents.length; k++) {
                 const gev = gevents[k]

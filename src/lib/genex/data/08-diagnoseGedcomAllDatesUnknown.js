@@ -17,16 +17,22 @@ const dp = new GedcomDateParser(_gedcomKnownDateQuals, _gedcomKnownDateMonths)
 const badDates = []
 const useCases = [0, 0, 0, 0, 0,   0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0]
 let nDates = 0
+let context0 = ''
+let context1 = ''
 for (let i=0; i<_allRecords.length; i++) {
     const record = parseRecord(_allRecords[i], i+1)
     if (record) {
         const [level, type, content] = record
-        if (type === 'DATE') {
-            nDates++
-            const d = dp.parse(content)
-            useCases[d.useCase]++
-            if (! d.useCase) {
-                badDates.push({line: i, content, ...d})
+        if (level === 0) context0 = type
+        else if (level === 1) context1 = type
+        if (context0 !== 'OBJE' && context1 !== '_MILT') {
+            if (type === 'DATE') {
+                nDates++
+                const d = dp.parse(content)
+                useCases[d.useCase]++
+                if (! d.useCase) {
+                    badDates.push({line: i, content, ...d})
+                }
             }
         }
     }

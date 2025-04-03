@@ -1364,7 +1364,7 @@ export const _gedcomKnownPlaces = [
     ["presumed, Edinburgh, Midlothian, Scotland", "SCO,MLN,Edinburgh"],
     ["presumed, Leicestershire, England", "ENG,LEI"],  // 5
     ["presumed, Linlithgowshire, Scotland", "SCO,WLN"],
-    ["presumed, Mevagissey, Cornwall, England", "ENG,LEI,Mevagissey"], 
+    ["presumed, Mevagissey, Cornwall, England", "ENG,COR,Mevagissey"], 
     ["presumed, Middlesex, England", "ENG,MDL"], 
     ["presumed, New York, USA", "USA,NY"],
     ["presumed, New Your, USA", "USA,NY"], 
