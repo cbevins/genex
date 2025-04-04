@@ -1,5 +1,7 @@
 <script>
     import scroll from '/src/lib/maps/SimpleMaps/scroll1.png'
+    import scroll2 from '/src/lib/maps/scrolls/scroll2.png'
+
     const svg1 = {w: 250, h: 350, fill: "blue"}
     const svg2 = {w: 250, h: 700, fill: "blue"}
 
@@ -58,4 +60,10 @@
     <text x={svg1.w/2} y={320+i*20} text-anchor="middle" font-family={font} fill="black">
         {i+1} {font} Newbold Verdon</text>
     {/each}
+</svg>
+
+<p>Scroll2</p>
+<svg width={300} height={360} fill={svg1.fill}>
+    <rect x="0" y="0" width={300} height={360} fill={svg2.fill} />
+    <image href={scroll2} x="0" y="0" width={svg2.w}/>
 </svg>

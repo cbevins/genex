@@ -23,8 +23,7 @@
 
 <svg width="700" height="950" viewBox="300 0 700 1000"
     font-size="16px" font-family="Eagle Lake" font-weight="lighter"
-    fill="black" stroke="black" text-anchor="middle"
->
+    fill="black" stroke="black" text-anchor="middle">
     <defs>
         <style>
             @import url("https://fonts.googleapis.com/css?family=Eagle Lake:400,400i,700,700i");
@@ -83,34 +82,34 @@
     <text x="630" y="400">Scotland</text>
 
     <!-- Newbold Verdon Scroll -->
-    <svg x="680" y="100" width="320" height="600">
-        <image href={scroll} y="160" width="320"/>
-        <image href={scroll} width="320"/>
-        <text x="160" y="42" font-size="20px">The Bevins of</text>
-        <text x="160" y="65" font-size="20px">Newbold Verdon</text>
-        <text x="160" y="85" font-size="16px">Leicestershire, England</text>
+    <svg x="695" y="100" width="300" height="600">
+        <image href={scroll} y="130" width="300"/>
+        <image href={scroll} width="300"/>
+        <text x="150" y="42" font-size="18px">The Bevins of</text>
+        <text x="150" y="65" font-size="18px">Newbold Verdon</text>
+        <text x="150" y="85" font-size="16px">Leicestershire, England</text>
         <line x1="120" y1="95" x2="180" y2="95" stroke="black"/>
-        <text x="160" y="115" font-size="16px">25 Great Grand Parents</text>
-        <text x="160" y="135" font-size="16px">7 Generations Born 1665-1843</text>
-        <line x1="120" y1="145" x2="180" y2="145" stroke="black"/>
+        <text x="150" y="115" font-size="14px">25 Great Grand Parents</text>
+        <text x="150" y="135" font-size="14px">7 Generations Born 1665-1843</text>
+        <line x1="120" y1="150" x2="180" y2="150" stroke="black"/>
         {#each newbold as line, i}
-            <text x="160" y={165+i*16} font-size="12">{line}</text>
+            <text x="150" y={165+i*14} font-size="10">{line}</text>
         {/each}
     </svg>
 
     <!-- Brixham Verdon Scroll -->
-    <svg x="280" y="100" width="320" height="550">
-        <image href={scroll} y="120" width="320"/>
-        <image href={scroll} width="320"/>
-        <text x="160" y="50" font-size="20px">The White-Decent</text>
-        <text x="160" y="70" font-size="20px">Lineage of Brixham</text>
-        <text x="160" y="90" font-size="16px">Devon, England</text>
+    <svg x="280" y="100" width="300" height="550">
+        <image href={scroll} y="100" width="300"/>
+        <image href={scroll} width="300"/>
+        <text x="150" y="50" font-size="18px">The White-Decent</text>
+        <text x="150" y="70" font-size="18px">Lineage of Brixham</text>
+        <text x="150" y="90" font-size="16px">Devon, England</text>
         <line x1="120" y1="100" x2="180" y2="100" stroke="black"/>
-        <text x="160" y="120" font-size="16px">23 Great Grand Parents</text>
-        <text x="160" y="140" font-size="16px">8 Generations Born 1676-1848</text>
-        <line x1="120" y1="145" x2="180" y2="145" stroke="black"/>
+        <text x="150" y="120" font-size="14px">23 Great Grand Parents</text>
+        <text x="150" y="140" font-size="14px">8 Generations Born 1676-1848</text>
+        <line x1="120" y1="150" x2="180" y2="150" stroke="black"/>
         {#each brixham as line, i}
-            <text x="160" y={165+i*16} font-size="12">{line}</text>
+            <text x="150" y={165+i*14} font-size="12">{line}</text>
         {/each}
     </svg>
 
@@ -118,9 +117,9 @@
     <path stroke="red" stroke-width="2" fill="none"
         marker-mid="url(#arrow)" marker-end="url(#arrow)" marker-start="url(#arrow)"
         d="M 730 748 A 300 100 170 0 0 300 850" />
-    <text x="320" y="720" text-anchor='start' font-size="14px">1845: Wm Longford Bevins (30),</text>
-    <text x="320" y="740" text-anchor='start' font-size="14px">wife Mary Bolt (23), and</text>
-    <text x="320" y="760" text-anchor='start' font-size="14px">son Wm Alfred Bevins (2)</text>
+    <text x="320" y="720" text-anchor='start' font-size="14px">1845: 2nd GGP Wm Longford Bevins (30),</text>
+    <text x="320" y="740" text-anchor='start' font-size="14px">2nd GGP Mary Bolt (23), and</text>
+    <text x="320" y="760" text-anchor='start' font-size="14px">son 1st GGP Wm Alfred Bevins (2)</text>
     <text x="320" y="780" text-anchor='start' font-size="14px">emmigrate to USA</text>
 
     <!-- Mary Ann White migration -->
@@ -128,15 +127,23 @@
     <path stroke="white" stroke-width="2" fill="none"
         marker-mid="url(#arrow)" marker-end="url(#arrow)" marker-start="url(#arrow)"
         d="M 610 912 A 203 200 45 0 0 720 770" />
-    <text x="680" y="870" text-anchor='start' font-size="14px">1869: Mary Ann White (20)</text>
-    <text x="680" y="890" text-anchor='start' font-size="14px">and husband Bevins</text>
+    <text x="680" y="870" text-anchor='start' font-size="14px">1869: 1st GGP Mary Ann White (20)</text>
+    <text x="680" y="890" text-anchor='start' font-size="14px">and husband (unknown) Bevins</text>
     <text x="680" y="910" text-anchor='start' font-size="14px">move to Leicestershire</text>
 
     <path stroke="white" stroke-width="2" fill="none"
         marker-mid="url(#arrow)" marker-end="url(#arrow)" marker-start="url(#arrow)"
         d="M 730 748 A 400 200 170 0 0 300 900" />
-    <text x="370" y="860" text-anchor='start' font-size="14px">1871: Mary Ann White (23),</text>
-    <text x="370" y="880" text-anchor='start' font-size="14px">husband Bevins, and dau.</text>
-    <text x="370" y="900" text-anchor='start' font-size="14px">Mary Allace Bevins (1)</text>
-    <text x="370" y="920" text-anchor='start' font-size="14px">emmigrate to USA</text>
+    <text x="320" y="860" text-anchor='start' font-size="14px">1871: 1st GGP Mary Ann White (23),</text>
+    <text x="320" y="880" text-anchor='start' font-size="14px">husband Bevins, and daughter</text>
+    <text x="320" y="900" text-anchor='start' font-size="14px">Mary Allace Bevins (1)</text>
+    <text x="320" y="920" text-anchor='start' font-size="14px">emmigrate to USA</text>
+
+    
+    <path id="curve2" fill="transparent" stroke="none"
+        d="M 600 500 A 200 180 0 0 1 660 650"/>
+    <text>
+        <textpath href="#curve2" text-anchor="start" font-size="32px">England</textpath>
+    </text>
+
 </svg>
