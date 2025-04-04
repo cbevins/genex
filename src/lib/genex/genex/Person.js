@@ -21,6 +21,14 @@ export class Person {
     fams() { return this._data.fams }  // Returns an array
     famsKey(idx) { return this._data.fams[idx].key }
     famsFamily(idx) { return this._data.fams[idx].family }  // Returns a Place object
+    famsSpouseKey(idx) {
+        const fam = this.famsFamily(idx)
+        return (this.gedKey() === fam.motherKey()) ? fam.fatherKey() : fam.motherKey()
+    }
+    famsSpousePerson(idx) {
+        const fam = this.famsFamily(idx)
+        return (this.gedKey() === fam.motherKey()) ? fam.fatherPerson() : fam.motherPerson()
+    }
 
     //--------------------------------------------------------------------------
     // NAME

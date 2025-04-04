@@ -1,6 +1,8 @@
 export class Auditor {
     constructor() {
         this.person = null
+        this.adultAge = 15
+        this.spouseDiff = 10
     }
 
     audit(person) {
@@ -11,59 +13,74 @@ export class Auditor {
 
         function report(code, msg) { log.push([code, msg]) }
         
-        // Test 1
+        // Test 1 - Must have at least 1 family member
         if (! person.famcKey() && ! person.fams().length)
             report('ISOLATE', 'Has no Childhood or Adulthood family members')
 
-        // Test 2
+        // Test 2 - must have been born before death!
         const birthYear = person.birthYear()
         const deathYear = person.deathYear()
         if (birthYear && deathYear && birthYear > deathYear)
-            report('DEAD-BEFORE-BIRTH', `Born in ${birthYear} but died in ${deathYear}`)
+            report('DEATH-BEFORE-BIRTH', `Born in ${birthYear} but died in ${deathYear}`)
 
         const mother = person.mother()
         const father = person.father()
 
-        // If unknown birth year
+        // Test 3 - unknown birth year
         if (! birthYear ) {
-            if (mother && mother.birthYear() && mother.birthYear() > birthYear) {
-                report('BIRTH-MISSING-HINT', `Mother was known to be born in ${mother.birthYear()}`)
+            report('BIRTH-YEAR-MISSING', `Missing birth year`)
+            if (mother && mother.birthYear() && mother.birthYear() < birthYear) {
+                report('BIRTH-YEAR-HINT', `Mother was known to be born in ${mother.birthYear()}`)
             }
-            if (father && father.birthYear() && father.birthYear() > birthYear) {
-                report('BIRTH-MISSING-HINT', `Father was known to be born in ${father.birthYear()}`)
+            if (father && father.birthYear() && father.birthYear() < birthYear) {
+                report('BIRTH-YEAR-HINT', `Father was known to be born in ${father.birthYear()}`)
             }
         }
         // else if known birth year
         else {
-            // compare birth year with mother's birth and death years
-            if (mother) {
-                if (mother.birthYear() && mother.birthYear() > birthYear)
-                    report('BORN-BEFORE-MOTHER', `Born in ${birthYear} but mother '${mother.label()}' was born in ${mother.birthYear()}`)
-                else if (mother.birthYear() && mother.birthYear() > birthYear+15)
-                    report('BORN-UNDERAGE-MOTHER', `Born in ${birthYear} but mother '${mother.label()}' was born in ${mother.birthYear()}`)
+            // Test 4 - compare birth year with mother's birth and death years
+            if (mother && mother.birthYear()) {
+                const age = birthYear - mother.birthYear()
+                if (age < this.adultAge)
+                    report('MOTHER-TOO-YOUNG', `Born in ${birthYear} when mother '${mother.label()} - ${mother.birthYear()}' was age ${age}`)
                 if (mother.deathYear() && mother.deathYear() < birthYear)
-                    report('BORN-DECEASED-MOTHER', `Born in ${birthYear} but mother '${mother.label()}' died in ${mother.birthYear()}`)
+                    report('MOTHER-DECEASED', `Born in ${birthYear} but mother '${mother.label()}' died in ${mother.birthYear()}`)
             }
-            // compare birth year with mother's birth and death years
-            if (father) {
-                if (father.birthYear() && father.birthYear() >= birthYear)
-                    report('BORN-BEFORE-FATHER', `Born in ${birthYear} but father '${father.label()}' was born in ${father.birthYear()}`)
-                else if (father.birthYear() && father.birthYear() > birthYear+15)
-                    report('BORN-UNDERAGE-FATHER', `Born in ${birthYear} but father '${father.label()}' was born in ${father.birthYear()}`)
+            // Test 5 - compare birth year with father's birth and death years
+            if (father && father.birthYear()) {
+                const age = birthYear - father.birthYear()
+                if (age < this.adultAge)
+                    report('FATHER-TOO-YOUNG', `Born in ${birthYear} when father '${father.label()} - ${father.birthYear()}' was age ${age}`)
                 if (father.deathYear() && father.deathYear() < birthYear)
-                    report('BORN-DECEASED-FATHER', `Born in ${birthYear} but father '${father.label()}' died in ${father.birthYear()}`)
+                    report('FATHER-DECEASED', `Born in ${birthYear} but father '${father.label()}' died in ${father.birthYear()}`)
             }
-            // compare brth and death with children
+            // Test 6 -compare age difference with spouses
             for(let i=0; i<person.fams().length; i++) {
                 if (person.famsKey(i)) {
                     const family = person.famsFamily(i)
+                    const spouse = person.famsSpousePerson(i)
+                    if(spouse && spouse.birthYear()) {
+                        const diff = Math.abs(birthYear - spouse.birthYear())
+                        if (diff > this.spouseDiff)
+                            report('SPOUSE-AGE', `Born in ${birthYear} but spouse born in ${spouse.birthYear()}, a ${diff} age diff`)
+                    }
+                    // Test 7 - compare birth and death years with children's birth years
                     for(let j=0; j<family.children().length; j++) {
                         const child = family.childPerson(j)
-                        if (child.birthYear() && child.birthYear() < birthYear+15)
-                            report('CHILD-UNDERAGE', `Born in ${birthYear} but issued child '${child.label()}' in ${child.birthYear()} at age ${child.birthYear()-birthYear}`)
-                        if (deathYear && child.birthYear() && child.birthYear() > deathYear)
-                            report('CHILD-AFTER-DEATH', `Died in ${deathYear} but issued child '${child.label()}' in ${child.birthYear()}`)
+                        if (child.birthYear()) {
+                            const age = child.birthYear() - birthYear
+                            if (age < this.adultAge)
+                                report('NOT-OF-AGE', `Born in ${birthYear} but issued child '${child.label()} - ${child.birthYear()}' at age ${age}`)
+                            if (deathYear && child.birthYear() > deathYear)
+                                report('CHILD-AFTER-DEATH', `Died in ${deathYear} but issued child '${child.label()}' in ${child.birthYear()}`)
+                        }
                     }
+                }
+            }
+
+            if (person.lineage()) {
+                if (person.file() !== person.lineageFile()) {
+                    report('FILE-SEQ', `Seq number ${person.lineageSeq()} expected file '${person.lineageFile()}', not '${person.file()}'`)
                 }
             }
         }

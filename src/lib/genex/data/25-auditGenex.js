@@ -8,17 +8,33 @@ const progName = (process.argv[1]).split('\\').pop()
 const auditName = '_auditResults'
 const auditFile = `./diagnostics/genex/${auditName}.js`
 
+// Create Genex and add lineages
 const genex = new Genex()
+const cdb = genex.person('Collin Douglas Bevins 1952')
+const lineageCdb = new Channels(cdb)
+genex.addLineage(lineageCdb, 'Bevins-Heddens', 'BH')
+
+const bjr = genex.person("Barbara Jeanne Riley 1953")
+const lineageBjr = new Channels(bjr)
+genex.addLineage(lineageBjr, 'Riley-Trombley', 'RT')
+
+// Creat Auditor
 const auditor = new Auditor()
 
 function fix(str) { return JSON.stringify(str) }
 
+// Runs Auditor for each Person instance in the people array
 function audit(people) {
     const findings = []
     for(let i=0; i<people.length; i++) {
         const person = people[i]
-        const report = auditor.audit(person)    // {person, gedKey, nameKey, items}
-        if(report.log.length) findings.push(report)
+        const report = auditor.audit(person)    // {person, gedKey, nameKey, items, gen, file, seq}
+        if(report.log.length) {
+            report.gen = person.lineageGen()
+            report.file = person.lineageFile()
+            report.seq = person.lineageSeq()
+            findings.push(report)
+        }
     }
     return findings
 }
@@ -36,8 +52,8 @@ const bjrAncestors = new Channels(bjrPerson).persons()
 const bjrFindings = audit(bjrAncestors)
 writeFindings('_auditResultsBjr', bjrFindings, bjrAncestors)
 
-const allFindings = audit(genex.people())
-writeFindings('_auditResultsAll', allFindings, genex.people())
+// const allFindings = audit(genex.people())
+// writeFindings('_auditResultsAll', allFindings, genex.people())
 
 // Write Genex _audit.js file
 function writeFindings(auditName, findings, people) {
@@ -47,9 +63,9 @@ function writeFindings(auditName, findings, people) {
         + `export const ${auditName} = [\n`
     let items = 0
     for(let i=0; i<findings.length; i++) {
-        const {person, gedKey, nameKey, log} = findings[i]
+        const {person, gedKey, nameKey, gen, file, seq, log} = findings[i]
         items += log.length
-        js += `    [${fix(gedKey)}, ${fix(nameKey)}, [\n`
+        js += `    [${fix(gedKey)}, ${fix(nameKey)}, ${gen}, ${fix(file)}, ${seq}, [\n`
         for(let j=0; j<log.length; j++) {
             const [code, msg] = log[j]
             js += `        [${fix(code)}, ${fix(msg)}],\n`
