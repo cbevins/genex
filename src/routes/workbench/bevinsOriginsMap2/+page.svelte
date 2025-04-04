@@ -1,4 +1,4 @@
 <script>
-    import BevinsOriginsMap2 from './BevinsOriginsMap2.svelte'
+    import BevinsMigrationMap1 from './BevinsMigrationMap1.svelte'
 </script>
-<BevinsOriginsMap2/>
+<BevinsMigrationMap1/>
