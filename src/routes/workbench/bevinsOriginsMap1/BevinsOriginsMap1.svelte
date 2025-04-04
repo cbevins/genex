@@ -48,8 +48,10 @@
     </path>
     <text x="605" y="890" font-size="11px">Devon</text>
 
+    <!-- Title  -->
     <text x="650" y="50" font-size="32px">Bevins Lineage Origins</text>
 
+    <!-- Main Places -->
     <circle class="Newbold Verdon" cx="730" cy="747.7" id="GBLEC"
         fill={home.fill} stroke={home.stroke}  r={home.r}/>
     <line x1="730" y1="747.7" x2="780" y2="747.7" stroke="black"/>
@@ -59,7 +61,8 @@
         fill={home.fill} stroke={home.stroke} r={home.r}/>
     <line x1="610" y1="912" x2="650" y2="940" stroke="black"/>
     <text x="750" y="960" text-anchor="end" font-size="20px">Brixham</text>
-    
+
+    <!-- Reference Places -->
     <circle class="Torbay" cx="610.8" cy="914.8" id="GBTOB"/>
 
     <circle class="Plymouth" cx="585.8" cy="918.5" id="GBPLY"
@@ -76,10 +79,6 @@
         fill={city.fill} stroke={city.stroke} r={city.r}/>
     <line x1="640.9" y1="688" x2="590" y2="670" stroke="black"/>
     <text x="590" y="670">Liverpool</text>
-
-    <text x="465" y="590">Northern</text>
-    <text x="465" y="610">Ireland</text>
-    <text x="630" y="400">Scotland</text>
 
     <!-- Newbold Verdon Scroll -->
     <svg x="695" y="100" width="300" height="600">
@@ -114,36 +113,37 @@
     </svg>
 
     <!-- William Lomgford Bevins migration -->
-    <path stroke="red" stroke-width="2" fill="none"
-        marker-mid="url(#arrow)" marker-end="url(#arrow)" marker-start="url(#arrow)"
+    <path stroke="red" stroke-width="4" fill="none"
+        marker-mid="url(#arrow)" marker-end="url(#arrow)"
         d="M 730 748 A 300 100 170 0 0 300 850" />
     <text x="320" y="720" text-anchor='start' font-size="14px">1845: 2nd GGP Wm Longford Bevins (30),</text>
-    <text x="320" y="740" text-anchor='start' font-size="14px">2nd GGP Mary Bolt (23), and</text>
+    <text x="320" y="740" text-anchor='start' font-size="14px">wife 2nd GGP Mary Bolt (23), and</text>
     <text x="320" y="760" text-anchor='start' font-size="14px">son 1st GGP Wm Alfred Bevins (2)</text>
     <text x="320" y="780" text-anchor='start' font-size="14px">emmigrate to USA</text>
 
     <!-- Mary Ann White migration -->
     <!-- <x1> <y1> A <r1> <r2> <deg> <longSeg/shortSeg> <left/right> <x2> <y2>-->
-    <path stroke="white" stroke-width="2" fill="none"
-        marker-mid="url(#arrow)" marker-end="url(#arrow)" marker-start="url(#arrow)"
+    <path stroke="white" stroke-width="4" fill="none"
+        marker-mid="url(#arrow)" marker-end="url(#arrow)"
         d="M 610 912 A 203 200 45 0 0 720 770" />
     <text x="680" y="870" text-anchor='start' font-size="14px">1869: 1st GGP Mary Ann White (20)</text>
-    <text x="680" y="890" text-anchor='start' font-size="14px">and husband (unknown) Bevins</text>
+    <text x="680" y="890" text-anchor='start' font-size="14px">and new husband (unknown) Bevins</text>
     <text x="680" y="910" text-anchor='start' font-size="14px">move to Leicestershire</text>
 
-    <path stroke="white" stroke-width="2" fill="none"
-        marker-mid="url(#arrow)" marker-end="url(#arrow)" marker-start="url(#arrow)"
+    <path stroke="white" stroke-width="4" fill="none"
+        marker-mid="url(#arrow)" marker-end="url(#arrow)"
         d="M 730 748 A 400 200 170 0 0 300 900" />
     <text x="320" y="860" text-anchor='start' font-size="14px">1871: 1st GGP Mary Ann White (23),</text>
     <text x="320" y="880" text-anchor='start' font-size="14px">husband Bevins, and daughter</text>
     <text x="320" y="900" text-anchor='start' font-size="14px">Mary Allace Bevins (1)</text>
     <text x="320" y="920" text-anchor='start' font-size="14px">emmigrate to USA</text>
 
-    
-    <path id="curve2" fill="transparent" stroke="none"
-        d="M 600 500 A 200 180 0 0 1 660 650"/>
-    <text>
-        <textpath href="#curve2" text-anchor="start" font-size="32px">England</textpath>
-    </text>
+    <!-- Country Labels -->
+    <text x="465" y="610">Northern</text>
+    <text x="465" y="630">Ireland</text>
+    <path id="curve1" fill="transparent" stroke="none" d="M 590 470 A 200 180 0 0 1 700 350"/>
+    <text><textpath href="#curve1" text-anchor="start" font-size="32px">Scotland</textpath></text>
+    <path id="curve2" fill="transparent" stroke="none" d="M 600 500 A 200 180 0 0 1 670 670"/>
+    <text><textpath href="#curve2" text-anchor="start" font-size="32px">England</textpath></text>
 
 </svg>
