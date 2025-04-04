@@ -38,10 +38,18 @@
 <svg width="700" height="500" viewBox="0 0 700 400"
     font-size="14px" font-family="serif" font-style="normal"
     fill="black" stroke="black" text-anchor="middle">
+    <defs>
+        <style>
+            @import url("https://fonts.googleapis.com/css?family=Eagle Lake:400,400i,700,700i");
+        </style>
+    </defs>
 
     <!-- Background images -->
     <rect x="0" y="0" width="700" height="950" fill="blue"/>
     <image href={usaEastTopo} x="0" y="0" width="1180" height="731"/>
+
+    <text x="350" y="60" font-size="32px" font-family="Eagle Lake">
+        Bevins Migration Routes in USA</text>
 
     <!-- Places -->
     {#each places as p}
@@ -56,6 +64,8 @@
         <polyline fill="none" stroke-width="4" opacity="0.75"
             stroke={r.stroke} points={r.points}/>
     {/each}
+
+    <text x="695" y="200" text-anchor='end' font-family="Eagle Lake">England</text>
 
     <svg x={legend.x} y={legend.y} width={legend.width} height={legend.height}>
         <image href={scroll} x="0" y="0" width={legend.width}/>
