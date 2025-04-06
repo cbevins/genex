@@ -24,7 +24,7 @@ export const _vicinityDefsCdb = [
     //--------------------------------------------------------------------------
     // England - London, Middlesex, and surrounding Counties
     //--------------------------------------------------------------------------
-    ['ENG-LND', {label: 'London and SUrrounding Counties, England', places: [
+    ['ENG-LND', {label: 'London and Surrounding Counties, England', places: [
         "ENG,LND",  // London       8p: 3b, 6d, 2r
         "ENG,MDL",  // Middlesex
         "ENG,MDX",  // Middlesex    4p: 4b, 1d, 0r
@@ -64,7 +64,7 @@ export const _vicinityDefsCdb = [
     //--------------------------------------------------------------------------
     // England - Scottish Marches
     //--------------------------------------------------------------------------
-    ['ENG-DUR', {label: 'Scottish Marches, England', places: [
+    ['ENG-DUR', {label: 'Durham, England', places: [
         "ENG,DUR"   // 7p: 7b, 7d, 0r
     ]}],
 
@@ -114,23 +114,11 @@ export const _vicinityDefsCdb = [
     //--------------------------------------------------------------------------
     // Scotland - Clyde
     //--------------------------------------------------------------------------
-    ['SCO-RFW', {label: 'Renfrewshire, Scotland', places: [
+    ['SCO-RFW', {label: 'Scottish Lowlands', places: [
         "SCO,RFW",  // 4p: 4b, 2d, 0r   Renfrewshire, Scotland
-    ]}],
-
-    //--------------------------------------------------------------------------
-    // Scotland - English Marches
-    //--------------------------------------------------------------------------
-    ['SCO-ROX', {label: 'English Marches, Scotland', places: [
         "SCO,ROX",  // 1p: 1b, 0d, 0r   Roxburghshire, Scotland
         "SCO,KKD",  // 2p: 2b, 0d, 0r   Kirkcudbrightshire, Scotland
         "SCO,LKS",  // 1p: 1b, 1d, 0r   Lanarkshire, Scotland
-    ]}],
-
-    //--------------------------------------------------------------------------
-    // Scotland - Firth of Forth
-    //--------------------------------------------------------------------------
-    ['SCO-MLN', {label: 'Firth of Forth, Scotland', places: [
         "SCO,MLN",  // 1p: 1b: 1d, 0r   Midlothian (formerly Edinburghshire), Scotland
         "SCO,WLN",  // 4p: 4b, 2d   West Lothian (formerly Linlithgowshire), Scotland
         "SCO,STI",  // 1p: 1b 0d, 0r    Stirlingshire, Scotland

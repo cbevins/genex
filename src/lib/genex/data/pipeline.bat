@@ -19,4 +19,5 @@ node .\24-generateGenex.js
 node .\25-auditGenex.js
 node .\26-genexLineage.js
 node .\27-diagnoseGenexPlaces.js
-node .\28-diagnoseGenexVicinities.js
+node .\28-diagnoseGenexVicinityEvents.js
+node .\29-diagnoseGenexVicinityBirths.js

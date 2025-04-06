@@ -2,7 +2,7 @@ export class Auditor {
     constructor() {
         this.person = null
         this.adultAge = 15
-        this.spouseDiff = 10
+        this.spouseDiff = 15
     }
 
     audit(person) {
@@ -62,7 +62,7 @@ export class Auditor {
                     if(spouse && spouse.birthYear()) {
                         const diff = Math.abs(birthYear - spouse.birthYear())
                         if (diff > this.spouseDiff)
-                            report('SPOUSE-AGE', `Born in ${birthYear} but spouse born in ${spouse.birthYear()}, a ${diff} age diff`)
+                            report('SPOUSE-AGE', `Born in ${birthYear} but spouse born in ${spouse.birthYear()}, a ${diff} year diff`)
                     }
                     // Test 7 - compare birth and death years with children's birth years
                     for(let j=0; j<family.children().length; j++) {

@@ -1,7 +1,7 @@
 import fs from 'fs'
 import { Genex, Channels, Vicinities } from '../genex/index.js'
 // Data
-import { _places } from '../data/generated/genex/_places.js'
+import { _places } from './generated/genex/_places.js'
 import { _vicinityDefsAll } from './customized/genex/_vicinityDefsAll.js'
 import { _vicinityDefsBjr } from './customized/genex/_vicinityDefsBjr.js'
 import { _vicinityDefsCdb } from './customized/genex/_vicinityDefsCdb.js'
@@ -10,17 +10,11 @@ import { _vicinityDefsBevins } from './customized/genex/_vicinityDefsBevins.js'
 const time1 = new Date()
 const progName = (process.argv[1]).split('\\').pop()
 const genex = new Genex()
+
 const cdb = genex.person('Collin Douglas Bevins 1952')
 const wlb = genex.person("William Longford Bevins 1815")
 const wab = genex.person("William Alfred Bevins 1843")
 const bjr = genex.person("Barbara Jeanne Riley 1953")
-
-// Add Lineages for Bevins-Heddens and Riley-Trombley to each Person
-const lineageCdb = new Channels(cdb)
-genex.addLineage(lineageCdb, 'Bevins-Heddens', 'BH')
-
-const lineageBjr = new Channels(bjr)
-genex.addLineage(lineageBjr, 'Riley-Trombley', 'RT')
 
 function fix(str) { return JSON.stringify(str) }
 
@@ -36,15 +30,15 @@ function vicinityFor(nameKey, vicinDefs, varName) {
 console.log(`\n${progName}`)
 console.log(`    1 - created Genex with ${genex.people().length} Person and ${genex.family().length} Family instances.`)
 
-vicinityFor('Collin Douglas Bevins 1952', _vicinityDefsCdb, '_vicinityResultsCdb')
-vicinityFor('William Collins Bevins 1931', _vicinityDefsAll, '_vicinityResultsBevins')
-vicinityFor("Barbara Jeanne Riley 1953", _vicinityDefsBjr, '_vicinityResultsBjr')
+vicinityFor('Collin Douglas Bevins 1952', _vicinityDefsCdb, '_vicinityEventsCdb')
+vicinityFor('William Collins Bevins 1931', _vicinityDefsAll, '_vicinityEventsBevins')
+vicinityFor("Barbara Jeanne Riley 1953", _vicinityDefsBjr, '_vicinityEventsBjr')
 
 // ALL vicinities
 const vicins = new Vicinities(_vicinityDefsAll, genex.people())
 const vicArray = vicins.vicinityArray()
 const missing = vicins.missing()
-writeVicins('_vicinityResultsAll', _vicinityDefsAll, vicArray, genex.people(), missing)
+writeVicins('_vicinityEventsAll', _vicinityDefsAll, vicArray, genex.people(), missing)
 
 // Write Genex _vicins.js file
 function writeVicins(varName, defsArray, vicArray, people, missing=[]) {
@@ -63,7 +57,7 @@ function writeVicins(varName, defsArray, vicArray, people, missing=[]) {
         for(let j=0; j<parr.length; j++) {
             const [person, gevents] = parr[j]
             js += `        [${j}, ${fix(person.nameKey())}, ${person.birthYear()}, `
-            + `${person.lineageGen()}, ${gevents.length}, [,\n`
+            + `${person.lineageGen()}, ${gevents.length}, [\n`
             // Loop for each GenEvent
             for(let k=0; k<gevents.length; k++) {
                 const gev = gevents[k]

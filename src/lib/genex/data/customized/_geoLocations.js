@@ -3,7 +3,7 @@ export const _geoLocations = [
     ["", [0, 0, "Not Stated"]],
     ["AUS", [-25, 136, "Australia"]],
     ["AUS,WA", [-26, 121, "Western Australia"]],
-    ["BAR", [13.174084336581434, -59.56204956193527, "Barbados"]],
+    ["BAR", [13.17408, -59.56205, "Barbados"]],
     ["BEL", [50.689, 4.572, "Belgium"]],
     ["BEL,ANT", [0, 0, "Antwerp"]],
     ["BEL,EFL", [51.0646, 3.73141, "East Flanders"]],

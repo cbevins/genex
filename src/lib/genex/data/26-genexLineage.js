@@ -24,18 +24,10 @@ function log(person) {
     console.log(lines.join('\n'))
 }
 
-// Add Lineages for Bevins-Heddens and Riley-Trombley to each Person
-const lineageCdb = new Channels(cdb)
-genex.addLineage(lineageCdb, 'Bevins-Heddens', 'BH')
-
-const lineageBjr = new Channels(bjr)
-genex.addLineage(lineageBjr, 'Riley-Trombley', 'RT')
-
-// Make sure it worked...
-log(wlb)
-log(bjr)
-
 console.log(`\n${progName}`)
 console.log(`    1 - created Genex with ${genex.people().length} Person and ${genex.family().length} Family instances.`)
 // console.log(`    2 - wrote ${items} Genex Auditor items for ${findings.length} Persons into '${auditFile}'.`)
+// Make sure it worked...
+log(wlb)
+log(bjr)
 console.log(`    Successfully completed in ${new Date()-time1} msec`)

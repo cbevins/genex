@@ -8,7 +8,7 @@ export const _vicinityDefsBjr = [
         "CAN,NB"
     ]}],
 
-    ['CAN-QC-Lower', {label: 'Lower St Lawarence, Quebec', places: [
+    ['CAN-QC-Lower', {label: 'Lower St Lawrence, Quebec', places: [
                                                 // Tot Birth Death Resid
         "CAN,QC,Bas-Saint-Laurent",             // 32,   25,    7,    0,
         "CAN,QC,Capitale-Nationale",            //  1,    1,    0,    0,
@@ -16,7 +16,7 @@ export const _vicinityDefsBjr = [
         "CAN,QC,Gaspesie-Iles-de-la-Madeleine", //  1,    1,    0,    0,
         "CAN,QC,Saguenay–Lac-Saint-Jean",       //  1,    1,    0,    0,
     ]}],
-    ['CAN-QC-Upper', {label: 'Upper St Lawarence, Quebec', places: [
+    ['CAN-QC-Upper', {label: 'Montreal, Upper St Lawrence, Quebec', places: [
         "CAN,QC,Lanaudiere",                    // 68,   42,   26,    0
         "CAN,QC,Matawinie",                     //  1,    0,    1,    0
         "CAN,QC,Monteregie",                    // 15,   13,    2,    0
