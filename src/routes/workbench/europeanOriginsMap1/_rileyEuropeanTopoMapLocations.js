@@ -5,13 +5,15 @@
 // fill, ancestors, genMin, genMax, birthMin, birthMax]
 
 const rt = 'magenta'
-const _rileyEuropeanTopoMapLocations = [
+const nelson = "yellow"
+const dereuss = "orange"
+export const _rileyEuropeanTopoMapLocations = [
     ["Zuid-Holland", "NLD,ZUI",
-        51.9880, 4.490, 330, 335,
-        rt, 93, 4, 15, 1479, 1839],
+        51.9880, 4.490, 330, 335, dereuss,
+        93, 4, 15, 1479, 1839],
     ["Kronoberg", "SWE,KRO",
-        56.77, 14.59, 520, 210,
-        rt, 14, 3, 6, 1753, 1876],
+        56.77, 14.59, 520, 210, nelson,
+        14, 3, 6, 1753, 1876],
     ["Lower St Lawrence", "CAN,QC,Bas-Saint-Laurent",
         48.27348, -68.29465, 0, 0,
         rt,  7, 5, 6, 1786, 1835],

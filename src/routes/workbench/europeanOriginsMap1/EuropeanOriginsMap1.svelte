@@ -32,7 +32,7 @@
 
     {#each all as [label, loc, lat, lon, cx, cy, fill, ancestors, genMin, genMax, birthMin, birthMax]}
         {#if cx}
-            <circle cx={cx} cy={cy} r="12" fill={fill} opacity="0.5"/>
+            <circle cx={cx} cy={cy} r="12" fill={fill} opacity="0.75"/>
             <text x={cx} y={cy+5} text-anchor="middle">{ancestors}</text>
             <text x={cx+12} y={cy+5} text-anchor="start">{label}</text>
         {/if}
