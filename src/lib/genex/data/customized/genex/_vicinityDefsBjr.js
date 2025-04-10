@@ -33,7 +33,8 @@ export const _vicinityDefsBjr = [
 
     // England
     ['ENG-DUR', {label: 'Durham, England', places: [
-        "ENG,DUR"
+        "ENG,DUR",
+        "ENG,NBL"
     ]}],
     ['ENG-ESS', {label: 'Essex, England', places: [
         "ENG,ESS"
@@ -44,9 +45,6 @@ export const _vicinityDefsBjr = [
     ['ENG-MDX', {label: 'Middlesex, England', places: [
         "ENG,MDL",
         "ENG,MDX",
-    ]}],
-    ['ENG-NBL', {label: 'Northumberland, England', places: [
-        "ENG,NBL"
     ]}],
     ['ENG-NOR', {label: 'Northhamptonshire, England', places: [
         // 28 miles SE of Leicester, in the East Midlands

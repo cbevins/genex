@@ -548,7 +548,7 @@ export const _gedcomKnownPlaces = [
     ["Floyd County, Kentucky, USA", "USA,KY,Floyd"],
     ["Floyd County, Kentucky", "USA,KY,Floyd"],
     ["Floyd County, Virginia, United States of America", "USA,VA,Floyd"],
-    ["Floyd, Floyd, Kentucky, USA", "USA,KY,Floyd,Floyd"], // 4
+    ["Floyd, Floyd, Kentucky, USA", "USA,KY,Floyd"], // 4 - there is a Floyd County, but no Floyd locality
     ["Floyd, Floyd, Virginia, USA", "USA,VA,Floyd,Floyd"],
     ["Floyd, Kentucky, United States", "USA,KY,Floyd"],
     ["Floyd, Kentucky, USA", "USA,KY,Floyd"],
@@ -1356,7 +1356,7 @@ export const _gedcomKnownPlaces = [
     ["Presque Isle, Aroostook, Maine, USA", "USA,ME,Aroostook,Presque Isle"],
     ["Prestonsburg, Floyd, Kentucky, United States", "USA,KY,Floyd,Prestonburg"],
     ["Prestonsburg, Floyd, Kentucky, USA", "USA,KY,Floyd,Prestonburg"],
-    ["presumed, Barbadoes", "BAR"], // 1
+    ["presumed, Barbadoes", "BRB"], // 1
     ["presumed, Connecticut, USA", "USA,CT"], 
     ["presumed, Cornwall, England", "ENG,COR"], 
     ["presumed, Devon, England", "ENG,DEV"],
@@ -1557,7 +1557,7 @@ export const _gedcomKnownPlaces = [
     ["Sheffield, Bureau, Illinois, United States", "USA,IL,Bureau,Sheffield"], 
     ["Shenton, Leicestershire, England", "ENG,LEI,Shenton"],
     ["Shepshed, Leicestershire, England", "ENG,LEI,Shepshed"],
-    ["Shereden, Cherokee, Iowa", "USA,IA,Cherokee,Shereden Township"],
+    ["Shereden, Cherokee, Iowa", "USA,IA,Cherokee,Sheriden Township"],
     ["Sheridan, Cherokee, Iowa, USA", "USA,IA,Cherokee,Sheridan Township"],
     ["Sheridan, Griffithsville, Lincoln, West Virginia, USA", "USA,WV,Lincoln,Griffithsville"],
     ["Sheridan, Meriden, Cherokee, Iowa, USA", "USA,IA,Cherokee,Meriden,Sheridan"],
@@ -1697,7 +1697,7 @@ export const _gedcomKnownPlaces = [
     ["stepney parish, Wicomico County, Maryland, USA", "USA,MD,Wicomico,Stepney Parish"],
     ["Stepney, London, London, England, United Kingdom", "ENG,MDL,Stepney Parish"],
     ["Sterling, Whiteside, Illinois, United States", "USA,IL,Whiteside,Sterling"], // 1
-    ["Stettler, Wainwright Census Division, Alberta, Canada", "CAN,AB,Wainwright, Census Division,Stettler"], // 1
+    ["Stettler, Wainwright Census Division, Alberta, Canada", "CAN,AB,Wainwright Census Division,Stettler"], // 1
     ["Stirlingshire, Scotland", "SCO,STI"],
     ["Stock, Harrison, Ohio, United States", "USA,OH,Harrison,Stock"], // 1
     ["Stonington, Connecticut, USA", "USA,CT,New London,Stonington"], 

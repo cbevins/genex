@@ -9,7 +9,7 @@
  * {stroke, width, fill, d}
  * @returns 
  */
-export function originsSvgGxml(image, imgWd, imgHt, places=[], paths=[]) {
+export function originsSvgGxml(image, imgWd, imgHt, places=[], paths=[], texts=[]) {
     // fit image onto 7" wide page
     const ratio = 700 / imgWd
     const rw = ratio * imgWd
@@ -31,10 +31,11 @@ export function originsSvgGxml(image, imgWd, imgHt, places=[], paths=[]) {
     ]}
     
     for(let i=0; i<places.length; i++) {
-        const {t, cx, cy, r, ta, fill, ff, fs, fw} = places[i]
-        gxml.els.push({el: 'circle', cx, cy, r, fill})
-        gxml.els.push({el: 'text', x: cx, y: cy,
+        const {t, cx, cy, r, tx, ty, ta, fill, fc, ff, fs, fw, data} = places[i]
+        gxml.els.push({el: 'circle', cx, cy, r, fill, opacity: 0.6})
+        gxml.els.push({el: 'text', x: tx, y: ty, stroke: fc, fill: fc,
             'text-anchor': ta, 'font-family': ff, 'font-weight': fw, 'font-size': fs, 
+            'stroke-width': "1",
             els: [{el: 'inner', content: t}]
         })
     }
@@ -42,6 +43,14 @@ export function originsSvgGxml(image, imgWd, imgHt, places=[], paths=[]) {
     for(let i=0; i<paths.length; i++) {
         const {stroke, width, fill, d} = paths[i]
         gxml.els.push({el: 'path', stroke, 'stroke-width': width, fill, d})
+    }
+    
+    for(let i=0; i<texts.length; i++) {
+        const {x, y, ta, fc, ff, fs, fw, t} = texts[i]
+        gxml.els.push({el: 'text', x, y, stroke: fc, fill: fc,
+            'text-anchor': ta, 'font-family': ff, 'font-weight': fw, 'font-size': fs, 
+            els: [{el: 'inner', content: t}]
+        })
     }
     return gxml
 }
