@@ -10,7 +10,7 @@
         "/workbench/maps/google/europe1",
         "/workbench/maps/mapbox",
         "/workbench/resources",
-        "/workbench/topo/europe",
+        "/workbench/maps/topo/europe",
     ]]]
 </script>
 

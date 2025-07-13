@@ -1,4 +1,4 @@
 <script>
-    import EuropeMaps from '../../europeMaps/EuropeMaps.svelte'
+    import EuropeMaps from './EuropeMaps.svelte'
 </script>
 <EuropeMaps/>

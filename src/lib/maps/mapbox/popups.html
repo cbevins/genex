@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Add interactions to a Mapbox Standard Style</title>
+        <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+        <link href="https://api.mapbox.com/mapbox-gl-js/v3.11.0/mapbox-gl.css" rel="stylesheet">
+        <script src="https://api.mapbox.com/mapbox-gl-js/v3.11.0/mapbox-gl.js"></script>
+        <style>
+            body { margin: 0; padding: 0; }
+            #map { position: absolute; top: 0; bottom: 0; width: 100%; }
+        </style>
+    </head>
+<body>
+<style>
+    .map-overlay {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 230px;
+        padding: 10px;
+        color: #1a2224;
+        font: 12px/20px sans-serif;
+        display: none;
+    }
+
+    .map-overlay-inner {
+        background: #fff;
+        padding: 10px;
+        border-radius: 3px;
+    }
+</style>
+
+<div id="map"></div>
+<div class="map-overlay" id="properties"></div>
+
+<script>
+	mapboxgl.accessToken = 'pk.eyJ1IjoiY2JldmlucyIsImEiOiJjbTk4eHVpajgwODRzMnJvbnIwYmtrY3RzIn0.z42bbizuu5LcTcF6fPiKhQ';
+    const map = new mapboxgl.Map({
+        container: 'map',
+        center: [-74, 40.72],
+        zoom: 12,
+        bearing: 30,
+        style: 'mapbox://styles/mapbox/standard',
+        config: {
+            // Mapbox Standard offers a set of configuration properties that can be used to change the appearance of the basemap.
+            // The configuration can be updated in runtime using `setConfigProperty` or by providing the `config` object during map initialization.
+            // See the full list of available properties in the Mapbox Standard style documentation: https://docs.mapbox.com/mapbox-gl-js/guides/styles/#mapbox-standard-1
+            'basemap': {
+                'colorPlaceLabelHighlight': 'red',
+                'colorPlaceLabelSelect': 'blue'
+            }
+        }
+    });
+
+    let selectedPlace;
+    let hoveredPlace;
+
+    const card = document.getElementById('properties');
+    const showCard = (feature) => {
+        const state = Object.entries(map.getFeatureState(feature))
+            .map(([key, value]) => `<li><b>${key}</b>: ${value}</li>`)
+            .join('');
+
+        const properties = Object.entries(feature.properties)
+            .map(([key, value]) => `<li><b>${key}</b>: ${value}</li>`)
+            .join('');
+
+        card.innerHTML = `
+                <div class="map-overlay-inner">
+                    <b>featureset</b>: <code>${feature.target.featuresetId}</code><br>
+                    <b>feature state</b>: <code>${state}</code>
+                    <hr><b>Properties</b>
+                    ${properties}
+                </div>`;
+
+        card.style.display = 'block';
+    };
+
+    // Place Click Interaction:
+    // Uses 'select' feature state to persistently highlight selected place
+    // Selected color controlled by `colorPlaceLabelSelect` configuration property
+    map.addInteraction('place-click', {
+        type: 'click',
+        target: { featuresetId: 'place-labels', importId: 'basemap' },
+        handler: ({ feature }) => {
+            if (selectedPlace) {
+                map.setFeatureState(selectedPlace, { select: false });
+            }
+            selectedPlace = feature;
+            map.setFeatureState(feature, { select: true });
+            showCard(feature);
+        }
+    });
+
+    // Place Hover Interaction:
+    // Uses `highlight` feature state for temporary hover effect
+    // Highlight color controlled by `colorPlaceLabelHighlight` configuration property
+    map.addInteraction('place-mouseenter', {
+        type: 'mouseenter',
+        target: { featuresetId: 'place-labels', importId: 'basemap' },
+        handler: ({ feature }) => {
+            if (hoveredPlace && hoveredPlace.id === feature.id) return;
+
+            if (hoveredPlace) {
+                map.setFeatureState(hoveredPlace, { highlight: false });
+            }
+
+            hoveredPlace = feature;
+            map.setFeatureState(feature, { highlight: true });
+            map.getCanvas().style.cursor = 'pointer';
+
+            if (!selectedPlace) {
+                showCard(feature);
+            }
+        }
+    });
+
+    // Place Hover Interaction:
+    // Removes `highlight` feature state when mouse leaves place label
+    map.addInteraction('place-mouseleave', {
+        type: 'mouseleave',
+        target: { featuresetId: 'place-labels', importId: 'basemap' },
+        handler: () => {
+            if (hoveredPlace) {
+                map.setFeatureState(hoveredPlace, { highlight: false });
+                hoveredPlace = null;
+            }
+            if (!selectedPlace) {
+                card.style.display = 'none';
+            }
+            map.getCanvas().style.cursor = '';
+            return false;
+        }
+    });
+
+    // Map Click Interaction:
+    // Clears 'select' feature state when clicking on map background
+    map.addInteraction('map-click', {
+        type: 'click',
+        handler: () => {
+            if (selectedPlace) {
+                map.setFeatureState(selectedPlace, { select: false });
+                selectedPlace = null;
+            }
+            card.style.display = 'none';
+            return false;
+        }
+    });
+</script>
+
+</body>
+</html>
