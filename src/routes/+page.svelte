@@ -1,5 +1,6 @@
 <script>
     const topics = [ ['Site Map', [
+        "/story/bevins",
         "/workbench/bevinsMigrationMap1",
         "/workbench/bevinsOriginsMap1",
         "/workbench/europeanOriginsMap1",
@@ -10,7 +11,7 @@
         "/workbench/maps/google/europe1",
         "/workbench/maps/mapbox",
         "/workbench/resources",
-        "/workbench/maps/topo/europe",
+        "/workbench/topo/europe",
     ]]]
 </script>
 
